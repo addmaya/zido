@@ -432,15 +432,15 @@ jQuery(document).ready(function($) {
 	});
 	team.init();
 
+	//analytics
+
 
 	//transitions
 	Barba.Pjax.start();
 	var FadeTransition = Barba.BaseTransition.extend({
 	  start: function() {
 	    $("html, body").animate({ scrollTop: 0 }, "slow");
-	    Promise
-	      .all([this.newContainerLoading, this.fadeOut()])
-	      .then(this.fadeIn.bind(this));
+	    Promise.all([this.newContainerLoading, this.fadeOut()]).then(this.fadeIn.bind(this));
 	    $('.c-edges').addClass('is-active');
 	    $('body').addClass('is-exiting');
 	  },
@@ -454,15 +454,11 @@ jQuery(document).ready(function($) {
 	    var $el = $(this.newContainer);
 
 	    $(this.oldContainer).hide();
-
-	    $el.css({
-	      visibility : 'visible',
-	      opacity : 0
-	    });
-	    
+	    $el.css({visibility : 'visible',opacity : 0});
 	    $('.c-loader').addClass('is-exiting');
 	    $('body').removeClass('is-exiting');
 	    $('.c-edges').removeClass('is-active');
+
 	    window.setTimeout(function(){
 	    	$('.c-loader').removeClass('is-exiting');
 	    }, 1000);
@@ -472,7 +468,6 @@ jQuery(document).ready(function($) {
 	      AOS.init();
 	      loadLazyImages($('.js-lazy'));
 	      p = parseInt(posts_per_page);
-
 	    });
 	  }
 	});
@@ -484,6 +479,5 @@ jQuery(document).ready(function($) {
 	AOS.init();
 	loadLazyImages($('.js-lazy'));
 	submitRequest();
-	
 });
 

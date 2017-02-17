@@ -12,11 +12,7 @@
 
 		<link href="https://fonts.googleapis.com/css?family=Poppins:400,700|Roboto+Condensed:700|Source+Code+Pro" rel="stylesheet">
 		<link rel="shortcut icon" href="<?php echo get_stylesheet_directory_uri(); ?>/favicon.ico"/>
-		<link href="<?php echo get_stylesheet_directory_uri(); ?>/style.css" rel="stylesheet">
-
-		<script src="<?php echo get_stylesheet_directory_uri(); ?>/js/build/vendors.js"></script>
-		<script src="<?php echo get_stylesheet_directory_uri(); ?>/js/build/app.js"></script>
-		
+		<link href="<?php echo get_stylesheet_directory_uri(); ?>/style.css" rel="stylesheet">		
 		<?php wp_head(); ?>
 	</head>
 	<body class="is-booting <?php 

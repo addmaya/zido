@@ -216,7 +216,7 @@ p{line-height: 1.6; font-size: 0.95em}
 .o-album__info{position: absolute; z-index: 2; margin: 1.5em; bottom:1.5em; color: white; @include prefix((transition: color 0.5s ease));
   &:after{content:""; width: 120%; height: 130%; background-color:$orange; top:-6px; left: -1.5em; z-index: -1; @include prefix((transform: scale3d(0,1,1))); @include prefix((transition: transform 0.5s cubic-bezier(0.7, 0.14, 0, 0.99))); @include prefix((transform-origin:0% 0%)); position: absolute}
 }
-.o-meta{font-size:0.75em; opacity: 0.5; @include prefix((transition:opacity 0.5s ease)); @include  u-source-code;
+.o-meta{font-size:0.75em; opacity: 0.5; @include prefix((transition:opacity 0.5s ease)); @include  u-source-code; text-transform: uppercase;
   >li{display: inline-block;
     &:after{content: "/"; padding: 0 0.75em}
   }

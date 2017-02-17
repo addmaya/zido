@@ -57,7 +57,11 @@
 		<?php $projects = new WP_Query(array('post_type'=>array('wedding', 'engagement'), 'meta_query'=> array(array('key'=>'pmt_album', 'value'=>'', 'compare'=> '!=')))); if ($projects->have_posts()): ?>
 		<div class="o-collection">
 			<header>
-				<span>Updated: 2 days ago</span>
+				<?php $latest = new WP_Query(array('posts_per_page'=>1, 'post_type'=>array('wedding', 'engagement'))); ?>
+				<?php while ( $latest->have_posts() ) : $latest->the_post(); ?>
+					<span>Updated: <?php echo time_ago(); ?></span>
+				<?php endwhile; ?>
+				<?php wp_reset_postdata(); ?>
 			</header>
 			<section class="u-clear">
 				<?php $p = 1; $d=1; ?>
@@ -66,7 +70,7 @@
 					$pjt_thumb = get_post_thumb();
 					$pjt_link = get_permalink();
 					$pjt_date = time_ago();
-					$pjt_cats = get_the_category();
+					$pjt_posttype = get_post_type();
 					if($p > 8){$p = 1;}
 					if($d > 3){$d = 1;}
 				?>
@@ -85,13 +89,7 @@
 								<h3><?php echo $pjt_title; ?></h3>
 								<ul class="o-meta">
 									<li><?php echo $pjt_date; ?></li>
-									<?php
-										if($pjt_cats){
-											foreach ($pjt_cats as $pjt_cat) {
-												echo '<li>'.$pjt_cat->name.'</li>';
-											}
-										}
-									?>
+									<li><?php echo $pjt_posttype; ?></li>
 								</ul>
 							</section>
 						</a>
