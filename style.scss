@@ -1,0 +1,554 @@
+/*
+Theme Name: NIDO
+Author: Arthur Nakkaka
+Author URI: http://addmaya.com/
+*/
+
+@import 'reset';
+@import 'animate';
+@import 'swiper';
+@import 'aos';
+
+/*variables*/
+$red: #FA3131;
+$black: #212121;
+$grey: #e6e6e6;
+$orange: #fdb73f;
+$powerEase: cubic-bezier(0.46, -0.01, 0, 0.99);
+
+/*functions*/
+@mixin image($image){background-image: url('images/'+$image)}
+@mixin device($device){
+  @if $device == xs {@media only screen and (max-width: 767px){@content}}
+  @else if $device == xs-landscape{@media only screen and (max-width: $tablet - 1) and (orientation : landscape){@content}}
+  @else if $device == sm {@media only screen and (max-width: 959px){@content}}
+  @else if $device == md{@media only screen and (max-width: 1200px){@content}}
+  @else if $device == lg{@media only screen and (max-width: 1600px){@content}}
+  @else if $device == xlg{@media only screen and (min-width:1900px){@content}}
+}
+@mixin prefix($map, $vendors: webkit moz ms o) {
+  @each $prop, $value in $map {
+        @if $vendors {
+          @each $vendor in $vendors {
+            #{"-" + $vendor + "-" + $prop}: #{$value};
+          }
+        }
+        #{$prop}: #{$value};
+  }
+}
+@mixin u-roboto {font-family: 'Roboto Condensed', sans-serif}
+@mixin u-poppins {font-family: 'Poppins', sans-serif}
+@mixin u-source-code{font-family: 'Source Code Pro', monospace}
+@mixin u-tt(){@include prefix((transition: transform 0.5s $powerEase))}
+
+
+/*utilities*/
+.u-clear:after{visibility:hidden;display:block;font-size:0;content:" ";clear:both;height:0}* html .clear{zoom:1}*:first-child+html .clear{zoom:1}
+.u-box {width: 70em; margin:0 auto}
+.u-wrap{padding: 1.5em}
+.u-canvas{width: 100%; height: 100%}
+.u-height{height: 100%}
+.u-table{display: table}
+.u-cell{display: table-cell}
+.u-bkg-grey{position: relative;
+  &:after{top:0; left:0; position: absolute; width: 100%;height: 100%; background-color: #222; z-index: -2; content:"";}
+}
+.u-align-center{text-align: center}
+.u-pdl-075{padding-left: 0.75em}
+.u-pd-075{padding:0.75em}
+.u-w93p{width: 93%; margin: 0 auto}
+.u-mb-1em{margin-bottom: 1em;}
+.u-half{float: left; width: 50%;
+  &.s--right{float: right;}
+}
+.u-hide{display: none}
+.u-oh{overflow: hidden}
+.u-full{float:left; width:100%}
+.u-third{width: percentage(1/3); float: left}
+.u-link{display: inline-block; font-size: 0.875em; position: relative; @include prefix((transition:color 0.5s ease)); 
+  &:after{content:""; position: absolute; bottom: 12px; left: 0; height: 2px; width: 30%; background-color: $red; @include prefix((transition:transform 0.5s ease)); @include prefix((transform-origin:0% 0%));}
+  &:hover{color: $red;
+    &:after{@include prefix((transform:scale3d(2,1,1)))}
+  }
+}
+.u-super{vertical-align: super; font-size: 50%; color: $red; letter-spacing: 0}
+.u-bkg-img{background-size:cover; background-repeat:no-repeat; background-position:center}
+
+/*objects*/
+#barba-wrapper, .barba-container{width:100%; height: 100%}
+html,body{width:100%; height:100%}
+body{font-size: 1em; @include u-poppins;color: #636363; @include prefix((transition: background-color 0.5s ease));
+  &.t-home{background-color: #FFF}
+  &.t-team{background-color: #121212}
+  &.t-weddings{
+    .c-tint{background-color: #eef0ff}
+  }
+  &.t-engagements{
+    .c-tint{background-color: #ffeef5}
+  }
+  &.t-video{
+    .c-tint{background-color: #eefffb}
+  }
+  &.t-single{
+    .c-tint{background-color: #eee}
+  }
+}
+a{color: inherit;}
+h1{font-weight: 700; font-size: 3em; letter-spacing: -0.02em; line-height: 1.2; color: $black;}
+h2{font-weight: 700; font-size: 2em; letter-spacing: -0.02em; line-height: 1.2; color: $black;}
+h3{font-size: 1.5em; line-height: 1.2}
+h4{@include u-source-code; text-transform: uppercase; font-size: 0.875em; margin-bottom: 0.625em; opacity: 0.5}
+p{line-height: 1.6; font-size: 0.95em}
+
+.o-line{display: inline-block;background-color: $black; height: 3px; width: 30%;
+  &.u-hide{opacity: 0}
+}
+.o-edge{position: absolute; margin: 1.5em;
+  span{display: inline-block; background-color: $red; position: absolute;}
+  &.s--tl{top:0; left:0;
+    span{left:0;}
+    span:first-child{top:0; height: 5px; width: 16px;}
+    span:last-child{top:5px; width: 6px; height: 10px;}
+  }
+  &.s--tr{top:0; right:0;
+    span{right:0;}
+    span:first-child{top:0; height: 5px; width: 16px;}
+    span:last-child{top:5px; width: 6px; height: 10px;}
+  }
+  &.s--bl{bottom:0; left: 0;
+    span{left:0;}
+    span:first-child{top:0; height: 5px; width: 16px;}
+    span:last-child{top:-10px; width: 6px; height: 10px;}
+  }
+  &.s--br{bottom:0; right: 0;
+    span{right:0;}
+    span:first-child{top:0; height: 5px; width: 16px;}
+    span:last-child{top:-10px; width: 6px; height: 10px;}
+  }
+}
+.o-icon{display: block; width: 1em; height:1em; background-size:contain; background-repeat:no-repeat; background-position:center; margin:0.5em;
+  &.s--fb{@include image('fb-white.svg')}
+  &.s--ig{@include image('ig-white.svg')}
+  &.s--tw{@include image('tw-white.svg')}
+  &.s--ph{@include image('phone.svg')}
+  &.s--yt{@include image('youtube.svg')}
+  &.s--cht{@include image('cht-white.svg')}
+  &.s--tp{@include image('up-arrow.svg')}
+  &.s--pt{@include image('pinterest.svg')}
+  &.s--ml{@include image('envelope.svg')}
+  &.s--gp{@include image('google-plus.svg')}
+  &.s--sh{@include image('share.svg')}
+  &.s--close{@include image('close.svg')}
+  &.s--video{@include image('btn-play.svg'); width: 5em; height: 5em; top:35%; left: 38%; position: absolute; z-index: 5}
+}
+.o-icon__wrap{display: inline-block; background-color: $black; border-radius: 2em; @include prefix((transition: background-color 0.3s ease));
+  &:hover{background-color: $red}
+}
+.o-list{line-height: 1.6;
+  &.s--inline{
+    li{display: inline-block;}
+  }
+  &.s--frame{@include prefix((transform: rotate(90deg))); opacity:0.5; display: inline-block; position: absolute; left:20px; top:40%; width:300px; @include prefix((transform-origin: left top 0))}
+}
+.o-button{display: inline-block; padding: 1.5em; border:solid 2px white; @include u-roboto; text-transform: uppercase; color:white; position: relative; padding-top: 1.2em; font-size: 0.875em; overflow: hidden; @include prefix((transition: color 0.3s ease));
+  span{display: block; position: relative; z-index: 2;
+     &:after{content:""; position: absolute; bottom: -7px; left: 0; height:0.125em; width: 15%; background-color: $red; z-index: 1;}
+  }
+  &.s--big{color:black; text-transform: none; @include u-poppins; font-weight: 700; font-size: 2em; border:none; letter-spacing: -0.02em;
+  }
+  &.s--med{color:black; text-transform: none; @include u-poppins; font-weight: 700; font-size: 1.5em; border:none; letter-spacing: -0.02em;
+  }
+  &.is-loading{
+    span:after{@include infinite; @include pace}
+  }
+  &.u-hide{display: none}
+  &:hover{color:white;
+    &:after{@include prefix((transform:scale3d(1,1,1)))}
+    span:after{background-color: #fff;}
+    .u-super{color:white}
+  }
+  &:after{content: ""; position: absolute; left:0; top:10%; width: 100%; height: 100%; background-color: $red; @include prefix((transition: transform 0.5s cubic-bezier(0.7, 0.14, 0, 0.99))); @include prefix((transform-origin:left top)); @include prefix((transform:scale3d(0,1,1))); z-index: 0}
+}
+.o-collection{
+  header{@include u-source-code; text-transform: uppercase; font-size:0.75em; margin-bottom: 1.5em; padding-left: 0.95em}
+  footer{text-align: center}
+}
+.o-collection__list{
+  &.s--empty{min-height:480px}
+}
+.o-album{
+  a{display: block; position: relative; margin: 0.75em; overflow: hidden;
+    &:hover{
+      .o-album__info{color: black;
+        &:after{@include prefix((transform:scale3d(1,1,1)))}
+      }
+      .c-edges{@include prefix((transform:scale3d(1,1,1)))}
+      .o-line{@include prefix((transform:scale3d(0,1,1)))}
+      .o-album__cover{@include prefix((transform:scale3d(1.03,1.03,1.03)));
+        &:after{background-color:rgba(0,0,0,0)}
+      }
+      .o-meta{opacity: 1}
+      h3{@include prefix((transform: translateY(0)))}
+    }
+  }
+  h3{margin-bottom: 0.3em; @include prefix((transform: translateY(30px))); @include prefix((transition: transform 0.5s cubic-bezier(0.7, 0.14, 0, 0.99)))}
+  &.u-half{
+    a{padding-bottom:65%}
+  }
+  &.u-full{
+    a{padding-bottom: 50%}
+  }
+  &.u-third{
+    a{padding-bottom: 75%}
+  }
+  .o-line{position: absolute; background-color: red; width: 5%; margin: 1.5em; z-index: 3; @include prefix((transform-origin: 100% 0%)); @include u-tt;}
+  .c-edges{position: absolute; z-index: 2; @include u-tt; @include prefix((transform:scale3d(1.5,1.5,1.5)));}
+  .o-edge{margin: 1em}
+  .o-meta{opacity:0}
+}
+.o-album__cover{position: absolute; width: 100%; height: 100%; top:0; left:0; background-color: $grey; z-index: 2; background-position: center; background-size: cover; background-repeat: no-repeat; @include u-tt;
+  &:after{position: absolute; content:""; top:0; left:0; background-color: rgba(0,0,0,0.1); z-index: 1; width: 100%; height: 100%; @include prefix((transition:background-color 0.9s ease))}
+  &:before{position: absolute; z-index:2; width: 100%; height: 100%; content: ""; top:0; left: 0; @include prefix((transform-origin:100% 0%)); background-color: #e2e1d1; @include prefix((transition: transform 0.8s cubic-bezier(1, 0, 0, 1)))}
+  &.is-loaded{
+    &:before{@include prefix((transform: scale3d(0,1,1)))}
+  }
+}
+.o-album__info{position: absolute; z-index: 2; margin: 1.5em; bottom:1.5em; color: white; @include prefix((transition: color 0.5s ease));
+  &:after{content:""; width: 120%; height: 130%; background-color:$orange; top:-6px; left: -1.5em; z-index: -1; @include prefix((transform: scale3d(0,1,1))); @include prefix((transition: transform 0.5s cubic-bezier(0.7, 0.14, 0, 0.99))); @include prefix((transform-origin:0% 0%)); position: absolute}
+}
+.o-meta{font-size:0.75em; opacity: 0.5; @include prefix((transition:opacity 0.5s ease)); @include  u-source-code;
+  >li{display: inline-block;
+    &:after{content: "/"; padding: 0 0.75em}
+  }
+  &.s--tags{opacity: 1; text-transform: uppercase; padding-top: 0.5em; color: darken($orange, 30%);
+    >li:after{padding: 0; opacity: 0.5}
+    a{padding: 0.375em; display: inline-block; position: relative;
+      &:hover{color:$black;
+        &:after{@include prefix((transform: scale3d(1,1,1)))}
+      }
+      &:after{content:""; position: absolute; bottom: 0; height: 2px; width: 60%; left: 0.375em; @include prefix((transform-origin: 0% 0%)); @include prefix((transform: scale3d(0,1,1))); @include prefix((transition: transform 0.5s $powerEase)); background-color: #000;}
+    }
+  }
+}
+.o-input{margin-bottom: 0.75em;
+  select, input, textarea{width: 100%; padding:1em 0 0.4em; border-bottom: solid 2px $red; @include u-poppins; font-size: 0.875em}
+  select{@include image('arrow-down.svg'); background-repeat:no-repeat; background-position: right center; background-size:18px}
+}
+.o-submit{margin-top: 2.5em;
+  button{cursor: pointer;
+    &:hover{color: $red;
+      span:after{@include prefix((transform:scale3d(2,1,1)))}
+    }
+    &.is-submiting{
+      span:after{@include infinite; @include pace}
+    }
+  }
+  span{font-weight: 700; font-size: 1.2em; @include u-poppins; position: relative;
+    &:after{content:""; position: absolute; bottom: 0; left: 0; height: 2px; width: 30%; background-color: $red; @include prefix((transition:transform 0.5s ease)); @include prefix((transform-origin:0% 0%));}
+  }
+  
+}
+.o-filter__wrap{position: relative; z-index: 10;
+  .is-booting &{@include anim; @include fadeInUp; @include delay(0.4)}
+}
+.o-filter{position: relative; display: inline-block; z-index: 2;
+  &:hover{
+    .o-filter-list{display: block}
+  }
+}
+.o-filter__label{display: inline-block; border:solid 1px $red; padding:0.75em; color: $red;
+  span{display: inline-block;}
+  .o-icon{@include image('arrow-down.svg'); margin: 0; margin-left: 0.75em}
+  &:hover{background-color: $red; color: white;
+    .o-arrow span{background-color: white}
+  }
+}
+.o-filter-list{position:absolute; display: none; width: 9em; top:105%; background-color: #fff; z-index: 200;
+  a{display: block; padding: 0.75em; border:solid 1px $red; border-bottom: none; color:$red; position: relative;
+    &:after{content:""; position: absolute; right:0.75em; width: 1em; height: 1em; top:0.75em; display: none; background-size:contain; background-repeat:no-repeat; background-position: center; @include image('check-white.svg'); z-index:2}
+    &:hover{
+      &:after{display: block; @include image('check-red.svg')}
+    }
+    &.is-selected{background-color: $red; color: white;
+      &:after{@include image('check-white.svg'); display: block}
+      &:hover{
+        &:after{@include image('check-white.svg')}
+      }
+    }
+  }
+  li:last-child{border-bottom: solid 1px $red}
+}
+.o-filter__button{display: inline-block; border: solid 1px #FA3131; padding: 0.75em; color: #FA3131;
+  &:hover{background-color: $red; color: white}
+  &.u-hide{display: none}
+}
+
+$a:0.8em;
+.o-arrow{ width:$a; height: $a; display: inline-block; position: relative; margin-left:0.75em; top:1px; left:-2px;
+  span{display: block; height: 2px; background-color: $red; position: absolute; top:0; width: 100%;
+    &:first-child{@include prefix((transform-origin:left top 0)); @include prefix((transform: rotate(45deg)))}
+    &:last-child{@include prefix((transform-origin:right top 0)); @include prefix((transform: rotate(-45deg))); left: 2px}
+  }
+}
+
+.o-staff{margin: 1.5em 1.5em 4em;
+  a{display: block; position: relative; width: 100%; margin-bottom: 1.5em}
+  figure{position: absolute; top:0; left: 0; background-color: blue; width: 100%;height: 100%; background-repeat: no-repeat; background-size:cover; background-position: center;
+    &:after{content:""; position: absolute; top: 0; left: 0; z-index:1; @include prefix((transform-origin:100% 0)); background-color:$orange; @include u-tt; width: 100%; height: 100%}
+  }
+  &.aos-animate{
+    figure:after{@include prefix((transform:scale3d(0,1,1))); @include prefix((transition-delay:0.5s))}
+  }
+  h2{color:white; padding-bottom: 0.125em}
+  span{display: block; color: white; font-weight: 700; @include u-poppins; font-size: 0.875em}
+  &.s--h1{
+    a{padding-bottom: 100%}
+  }
+  &.s--h2{
+    a{padding-bottom: 80%}
+  }
+  &.s--h3{
+    a{padding-bottom: 70%}
+  }
+  &.s--h4{
+    a{padding-bottom: 60%}
+  }
+}
+.o-moment{background-size: cover; background-repeat: no-repeat; background-position: center;
+  &.s--h1{padding-bottom: 20%; width: 25%; background-color:red}
+  &.s--h2{padding-bottom: 40%; width: 50%; background-color:blue}
+  &.s--h3{padding-bottom: 20%; width: 50%; background-color:yellow}
+  &.s--h4{padding-bottom: 40%; width: 25%; background-color:purple}
+}
+.o-photo{
+  section{margin:0.75em}
+  figure{background-color: $grey; position: relative; background-size:cover; background-position: center; background-repeat: no-repeat;
+    &:after{content:""; position: absolute; width: 100%;height: 100%; top:0; left: 0; background-color:$orange; @include prefix((transform-origin:100% 50%)); @include prefix((transition:transform 0.5s ease));
+    }
+  }
+  .o-caption{margin:1.2em 0 2em}
+  &.u-half{
+    figure{padding-bottom: 150%}
+  }
+  &.u-full{
+    figure{padding-bottom: 60%}
+    .o-caption{width: 50%}
+  }
+  &.aos-animate{
+    figure:after{@include prefix((transform:scale3d(0,1,1))); @include prefix((transition-delay:0.5s))}
+  }
+}
+.o-caption{font-size: 0.875em}
+.o-header{@extend .u-clear; padding: 7.5em 0.75em 3em;
+  h1,h2{padding-right:0.75em;
+    .is-booting &{@include anim; @include fadeInUp; @include delay(0.5)}
+    .is-exiting &{@include animFast; @include fadeOutUp}
+  }
+  .o-header__brief{
+    .is-booting &{@include anim; @include fadeInUp; @include delay(0.7)}
+  }
+  section{float: left; width: 50%; overflow: hidden;}
+  .o-line{display: block; margin-top: 3em}
+  .u-wrap{padding-top: 0; padding-left: 0.75em}
+  &.s--reset{padding-top: 0;}
+}
+#form--quote{margin-top: 1.5em; @extend .u-clear}
+.o-spinner__prop{position: absolute; top: 50%; left: 50%; @include prefix((transform: translate(-50%, -50%)))}
+.o-spinner__wrap{overflow: visible; padding-top: 2em; height: 0; width: 2em; @extend .o-spinner__prop; z-index:3}
+.o-spinner{@extend .o-spinner__prop; height: 0; width: 0; box-sizing: border-box; border: 0 solid #FE665C; border-radius: 50%; @include spinner}
+
+/*components*/
+.c-logo{display: inline-block; width: 10em; height: 2em; @include image('logo.svg'); background-size:contain; background-repeat:no-repeat; @include u-tt; margin-left: 1.2em; 
+  &:hover{@include prefix((transform: translate3d(-10%, 0, 0)))}
+}
+.c-menu{@include u-roboto; text-transform: uppercase; display: inline-block; float: right; @include prefix((transition: opacity 1s ease));
+  >ul{margin-right: 1.2em}
+  &.is-invisible{opacity: 0}
+  .is-fixed &{
+    &.is-invisible{opacity: 1}
+  }
+}
+.c-menu__item{display: inline-block; margin-right: 1.2em; font-size: 0.875em;
+  &.s--active{color: $red}
+  &:last-child{margin-right: 0;}
+  a{display: inline-block; padding: 1em 0; color:$black; position: relative;
+    span{display: block; @include u-tt}
+    &:after{content:""; position: absolute; width: 105%;height:6px; left: 0; top:20px; background-color: $red; @include prefix((transform-origin:0% 50%)); @include prefix((transform:scale3d(0,1,1))); @include u-tt}
+    &:hover{
+      span{@include prefix((transform: translate3d(0, -100%, 0)))}
+      &:after{@include prefix((transform: scale3d(1,1,1)))}
+    }
+  }
+  &.is-active{
+    a{
+      span{@include prefix((transform: translate3d(0, -100%, 0)))}
+      &:after{@include prefix((transform: scale3d(1,1,1)))}
+    }
+  }
+  .t-team &{
+    a{color:white}
+  }
+}
+.c-header{padding-top:2em; position: fixed; top:0; width: 100%; z-index: 2; @include prefix((transition: transform 0.5s $powerEase));
+  .o-line{width: 2em; height: 2px; left: 49%; top:40%; position: absolute;}
+  .u-box{position: relative;
+    &:before, &:after{content:""; position: absolute; top:-2em; width: 50%; height: 225%; z-index: -1; @include prefix((transform-origin:0% 0%)); @include prefix((transform: translate3d(0,-100%,0))); @include prefix((transition: transform 0.5s $powerEase))}
+    &:before{left:0; background-color: #fff;}
+    &:after{right:0; @include image('p5.png');
+      .t-team &{background-image:none; background-color: $black}
+    }
+  }
+  &.is-fixed{@include prefix((transform: translateY(-1em)));
+    .u-box{
+      &:after, &:before{ @include prefix((transform: translate3d(0,0,0)))}
+    }
+  }
+  .is-booting &{
+    .u-box{@include anim; @include fadeInDown; @include delay(1.3)}
+  }
+}
+.c-loader{height:2px; width: 100%; background-color:$red; position: absolute; top:40%; z-index: -3; @include prefix((transform-origin:0% 0%)); @include prefix((transform: scale3d(0,1,1)));
+  .is-exiting &{@include scaleInLeft; @include duration(3)}
+  &.is-exiting{@include prefix((transform-origin:100% 0%)); @include scaleOutLeft; @include duration(0.5);}
+}
+.c-edges{position: fixed; width: 100%;height: 100%; top:0; left:0; z-index: -2; @include prefix((transition: transform 0.9s $powerEase));
+  .is-booting &{@include animBack; @include zoomIn;}
+  &.is-active{@include prefix((transform: scale3d(0.7,0.7,0.7)));
+    .o-edge{@include blink; @include infinite;}
+  }
+}
+.c-frame__left{display: inline-block; @include prefix((transform: rotate(90deg))); position: fixed; left:40px; top:17%; font-size: 0.875em; opacity: 0.5; @include prefix((transform-origin:left top 0)); z-index: 2; @include u-source-code; font-size: 0.875em;
+  section{display: inline-block; margin-right: 2em;
+    .is-booting &{@include anim; @include fadeInUp; @include delay(0.7)}
+  }
+  .is-exiting &{@include anim; @include fadeOut;}
+}
+.c-frame__right{position: fixed; height: 100%; right:20px; z-index: 2; top:0; @include u-source-code; font-size: 0.875em;
+  .is-booting &{
+    .c-social{@include anim; @include fadeInRight; @include delay(0.7)}
+    .s--frame li{@include anim; @include fadeInDown; @include delay(0.7)}
+    .c-chat{@include anim; @include fadeInRight; @include delay(0.7)}
+  }
+  .is-exiting &{@include anim; @include fadeOut;}
+}
+.c-social{padding-top:9em;
+  >li{padding-bottom:0.5em}
+}
+.c-pattern{position: fixed; height:100%; width: 50%; background-color: #f3f3f3; right: 0; top:0; z-index:-5; @include image('p5.png');
+  .t-team &{background:none}
+  .is-booting &{@include animMed; @include fadeInRightBig; @include prefix((animation-timing-function: cubic-bezier(0.75,-0.01, 0, 1.01)))}
+  .is-exiting &{@include animMed; @include fadeOutRight; @include prefix((animation-timing-function: cubic-bezier(0.75,-0.01, 0, 1.01)));}
+}
+.c-tint{position: absolute; top:0; left: 0; width: 100%; height: 26em; z-index: -4; @include prefix((transform-origin: 100% 0%)); @include prefix((mix-blend-mode: multiply));
+  .is-booting &{@include animMed; @include scaleInLeft; @include prefix((animation-timing-function: cubic-bezier(0.75,-0.01, 0, 1.01))); @include delay(0.5);
+  }
+}
+.c-footer{position: relative; padding-top: 4em;
+  .o-line{margin-bottom:2em}
+  .t-team &{
+    &:after{content:""; position: absolute; top:0; left: 0; height: 100%;width: 100%; background-color: #fff; z-index: -2}
+  }
+}
+.c-contact__info{
+  .c-social{padding-top: 0;
+    li{display: inline-block; margin-right: 0.5em}
+  }
+  section{padding-bottom: 2em}
+  .u-link{padding: 1.5em 0}
+}
+.c-profile{color:white; width: 100%; height: 100%;
+  h1{color:white; padding-bottom: 1em}
+  p{padding-bottom: 1.5em; font-size: 0.875em}
+  a{margin-top: 1.5em}
+  figure{position: absolute; height: 100%; width: 45%; top:0; left:0; z-index: -1; background-color:#5e0cff; z-index: -5;
+    .is-booting &{@include fadeInLeft; @include anim; @include delay(0.2)}
+  }
+  section{
+    .is-booting &{@include anim; @include fadeInRight; @include delay(0.3)}
+  }
+  .u-table{width: 100%;height: 100%;}
+  .u-cell{vertical-align: middle}
+}
+.c-team{padding-top: 4em}
+.c-album__cover{height:80%; padding:7.5em 0em 3em;
+  .u-box{height: 100%}
+  figure{height:80%; background-color:$grey; margin-bottom: 2em; background-size:cover; background-repeat: no-repeat; background-position: center; position: relative;
+    .js-share{position: absolute; margin:1.5em; bottom: 0; right: 0; background-color: $red; z-index: 1;
+      &:hover{background-color: darken($red, 20%)}
+      &.is-active{background-color: darken($red, 20%)}
+    }
+    .c-social{padding-top: 0; position: absolute; right: 0; margin: 1.5em; bottom: 3em; z-index: 1; display: none;
+      &.is-visible{display: block;}
+    }
+  }
+  h1{color:$black}
+  .o-line{margin-top:1.5em}
+}
+.c-album{padding-top: 3em;
+  .o-line{margin: 2em 0 3em; width: 5%; background-color: #c5c5c5;}
+  .c-social{padding-top: 0;
+    li{display: inline-block; margin-right:0.5em}
+  }
+}
+.c-share{padding-top: 2em}
+.c-share__wrap{@extend .u-clear; padding: 0.75em}
+.c-slider{height:100%}
+.c-slides{height: 100%;
+  .swiper-slide{height: 100%}
+  .swiper-wrapper{@include prefix((transition-timing-function: cubic-bezier(0.63, -0.01, 0.15, 1)))}
+  .swiper-button-prev, .swiper-button-next{background-size: contain; background-repeat:no-repeat; width: 2.5em; height: 2.5em;}
+  .swiper-button-prev{@include image('btn-back.svg'); left: 24px}
+  .swiper-button-next{@include image('btn-next.svg'); right: 24px}
+}
+.c-slide{margin-top:7.5em; height: 80%; display: block; background-size:cover; background-repeat: no-repeat; background-position: center; position: relative; opacity:0; @include prefix((transition: opacity 0.5s ease));
+  section{width: 60%; padding-bottom:3em; padding-left:3em; position: absolute; bottom:0; left: 0;}
+  h1{padding-bottom: 0.75em; color: #fff}
+  .swiper-slide-active &{opacity:1}
+  &:after{content:""; width: 100%; height: 100%; z-index:1; background-color:#fff; position: absolute; @include prefix((transform-origin: 0% 0%));
+    .is-booting &{@include anim; @include scaleOutLeft; @include delay(0.8); @include prefix((animation-timing-function: cubic-bezier(0.75,-0.01, 0, 1.01)))}
+  }
+}
+.c-slide__copy{height: 100%; width: 100%; position: absolute; top:0; left:0;}
+.c-slide__button{padding: 1.5em; position: relative; display: inline-block; color: white; @include u-roboto; text-transform: uppercase;
+  .c-edges{z-index: 2; position: absolute; @include u-tt}
+  .o-edge{margin: 0}
+  &:hover{
+    .c-edges{@include prefix((transform:scale3d(0.8,0.8,0.8))); @include infinite; @include blink;}
+    .o-edge span{background-color: #fff;}
+    .c-slide__button__title:after{@include prefix((transform:scale3d(1,1,1)))}
+  }
+}
+.c-slide__button__title{display: block; position: relative;
+  &:after{content:""; position: absolute; bottom:-6px; left: 0; width: 100%; height: 20%; background-color: #fff; @include prefix((transform-origin: 0% 50%)); @include prefix((transform:scale3d(0,1,1))); @include u-tt}
+}
+.c-tags{padding-top: 2em}
+.c-suggest{background-color: #ebebeb; padding-top: 2em}
+.c-pop{position: fixed; top: 0; left:0; background-color:rgba(0, 0, 0, 0.53); width: 100%; height: 100%; z-index: 200; display: none;
+  .u-table{width: 100%;height: 100%;}
+  .u-cell{vertical-align: middle}
+  .u-canvas{width: 100%; height: 540px}
+  iframe{width: 100%; height: 100%; top:0; left: 0; position: absolute; z-index: 1}
+  .js-close-pop{position: absolute; top: -36px; right: 0}
+}
+.c-pop__box{background-color: #fff; width: 960px; height: auto; margin: 0 auto; position: relative; box-shadow: 30px 30px 50px 0px rgba(0, 0, 0, 0.35);
+  @include device(sm){width:auto}
+}
+.c-chat{position: absolute; bottom: 5em; right: 0;
+  &:hover{
+    .c-msg__btn{background-color:$red}
+    .c-msg__btn{opacity: 1}
+  }
+}
+.c-msg__btn{height:2em; width: 10em; background-color: #212121; position: absolute; top:0; color: white; z-index: -1; border-radius:36px 0 0 36px; right: 1em; opacity: 0;@include prefix((transition: opacity 0.5s ease));
+  &.is-visible{opacity: 1}
+  span{padding: 0.65em 0 0 1em; display: inline-block; text-transform: uppercase; font-size: 0.875em}
+}
+.c-top{position: absolute; bottom: 8em; right: 0; opacity: 0; @include prefix((transition: opacity 0.5s ease)); background-color: $red;
+  &.is-visible{opacity: 1}
+}
+.c-contact__wrap{@extend .u-clear; padding: 1.5em 1.5em 2em;
+  .c-contact__info{width: 40%; padding-top: 1em}
+  .c-contact__form{width: 60%}
+}
+.c-form__status{font-size:0.75em; @include  u-source-code; text-transform: uppercase; padding:2em 0.5em; display: block}
+

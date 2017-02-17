@@ -1,0 +1,5 @@
+<li><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=<?php echo $pjt_sharelink; ?>" class="o-icon__wrap"><span class="o-icon s--fb"></span></a></li>
+<li><a target="_blank" href="https://twitter.com/home?status=<?php echo $pjt_sharelink; ?>" class="o-icon__wrap"><span class="o-icon s--tw"></span></a></li>
+<li><a target="_blank" href="https://plus.google.com/share?url=<?php echo $pjt_sharelink; ?>" class="o-icon__wrap"><span class="o-icon s--gp"></span></a></li>
+<li><a target="_blank" href="https://pinterest.com/pin/create/button/?url=<?php echo $pjt_sharelink; ?>&media=<?php echo $pjt_cover; ?>&description=<?php echo $pjt_title; ?>" class="o-icon__wrap"><span class="o-icon s--pt"></span></a></li>
+<li><a target="_blank" href="mailto:?&subject=Check out this Project by Paramount Images" class="o-icon__wrap"><span class="o-icon s--ml"></span></a></li>
