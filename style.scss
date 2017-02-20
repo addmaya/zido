@@ -391,7 +391,7 @@ $a:0.8em;
     a{color:white}
   }
 }
-.c-header{padding-top:2em; position: fixed; top:0; width: 100%; z-index: 2; @include prefix((transition: transform 0.5s $powerEase));
+.c-header{padding-top:2em; position: fixed; top:0; width: 100%; z-index: 10; @include prefix((transition: transform 0.5s $powerEase));
   .o-line{width: 2em; height: 2px; left: 49%; top:40%; position: absolute;}
   .u-box{position: relative;
     &:before, &:after{content:""; position: absolute; top:-2em; width: 50%; height: 225%; z-index: -1; @include prefix((transform-origin:0% 0%)); @include prefix((transform: translate3d(0,-100%,0))); @include prefix((transition: transform 0.5s $powerEase))}

@@ -15,11 +15,4 @@
 		<link href="<?php echo get_stylesheet_directory_uri(); ?>/style.css" rel="stylesheet">		
 		<?php wp_head(); ?>
 	</head>
-	<body class="is-booting <?php 
-		if(is_front_page()){echo 't-home';}
-		if(is_page('team')){echo 't-team';}
-		if(is_page('weddings')){echo 't-weddings';}
-		if(is_page('engagements')){echo 't-engagements';}
-		if(is_page('video')){echo 't-video';}
-		if(is_single()){echo 't-single';}
-		?>">
+	<body class="is-booting">

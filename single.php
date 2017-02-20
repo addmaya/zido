@@ -2,7 +2,7 @@
 <?php 
 	$pjt_permalink = get_permalink();
 	$pjt_sharelink = preg_replace('#^https?://#', '', $pjt_permalink);
-	$pjt_cover = $pjt_thumb = get_post_thumb();
+	$pjt_cover = get_post_thumb();
 	$pjt_title = get_the_title();
 	$pjt_date = time_ago();
 	$pjt_posttype = get_post_type();
@@ -117,7 +117,7 @@
 							<?php } ?>
 						</div>
 						<div class="u-half">
-							<a href="<?php echo home_url(); ?>/weddings" class="o-button s--med js-show-contact">
+							<a href="#talk" class="o-button s--med">
 								<span>Let's talk Business</span>
 							</a>
 						</div>
@@ -130,7 +130,6 @@
 		<?php endif ?>
 	</div>
 </section>
-
 <?php $link = get_field('pmt_link'); 
 	if($link){ 
 		$post = $link; 
@@ -189,40 +188,47 @@
 		<?php endwhile; wp_reset_postdata(); } ?>
 <?php } ?>
 <?php 
-	$args = array('post_type'=>$pjt_posttype, 'post__not_in' => array($pjt_id), 'meta_query'=> array(array('key'=>'pmt_album', 'value'=>'0', 'compare'=> '!=')));
-	$projects = new WQ_Query($args);
+	$projects = new WP_Query(array('posts_per_page'=>3, 'post__not_in' => array($pjt_id), 'post_type'=>$post_type, 'meta_query'=> array(array('key'=>'pmt_album', 'value'=>'0', 'compare'=> '!='))));
  ?>
-<?php if ( $projects->have_posts() ) : ?>
-<section class="c-suggest">
-	<div class="u-box">
-		<section class="u-clear u-mb-1em">
-			<?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
-				<div class="o-album u-third">
-					<a href="<?php the_permalink(); ?>">
-						<div class="c-edges">
-							<div class="o-edge s--tl"><span></span><span></span></div>
-							<div class="o-edge s--tr"><span></span><span></span></div>
-							<div class="o-edge s--bl"><span></span><span></span></div>
-							<div class="o-edge s--br"><span></span><span></span></div>
-						</div>
-						<span class="o-line"></span>
-						<figure class="o-album__cover js-lazy" data-thumb="<?php echo get_stylesheet_directory_uri(); ?>/images/dummy/dummy-3.jpg"></figure>
-						<section class="o-album__info">
-							<h3><?php the_title(); ?></h3>
-							<ul class="o-meta">
-								<li>28 January 2016</li>
-							</ul>
-						</section>
-					</a>
-				</div>
-			<?php endwhile; ?>
-		</section>
-		<div class="u-align-center">
-			<a href="<?php echo home_url(); ?>/weddings" class="o-button s--med">
-				<span>More <i class="u-super">50</i></span>
-			</a>
-		</div>
-	</div>
-</section>
-<?php endif; ?>
+ <?php if ( $projects->have_posts() ) : ?>
+ <section class="c-suggest">
+ 	<div class="u-box">
+ 		<section class="u-clear u-mb-1em">
+ 			<?php while ( $projects->have_posts() ) : $projects->the_post(); ?>
+ 				<div class="o-album u-third">
+ 					<a href="<?php the_permalink(); ?>">
+ 						<div class="c-edges">
+ 							<div class="o-edge s--tl"><span></span><span></span></div>
+ 							<div class="o-edge s--tr"><span></span><span></span></div>
+ 							<div class="o-edge s--bl"><span></span><span></span></div>
+ 							<div class="o-edge s--br"><span></span><span></span></div>
+ 						</div>
+ 						<span class="o-line"></span>
+ 						<figure class="o-album__cover js-lazy" data-thumb="<?php echo get_post_thumb(); ?>"></figure>
+ 						<section class="o-album__info">
+ 							<h3><?php the_title(); ?></h3>
+ 							<ul class="o-meta">
+ 								<li><?php echo time_ago(); ?></li>
+ 							</ul>
+ 						</section>
+ 					</a>
+ 				</div>
+ 			<?php endwhile; ?>
+ 			<?php wp_reset_postdata(); ?>
+ 		</section>
+ 		<div class="u-align-center">
+ 			<?php if ($pjt_posttype == 'wedding'): ?>
+ 				<a href="<?php echo home_url(); ?>/weddings" class="o-button s--med">
+ 					<span>More Weddings <i class="u-super">50</i></span>
+ 				</a>
+ 			<?php endif ?>
+ 			<?php if ($pjt_posttype == 'engagement'): ?>
+ 				<a href="<?php echo home_url(); ?>/engagements" class="o-button s--med">
+ 					<span>More Engagements <i class="u-super">50</i></span>
+ 				</a>
+ 			<?php endif ?>
+ 		</div>
+ 	</div>
+ </section>
+ <?php endif; ?>
 <?php Starkers_Utilities::get_template_parts( array( 'parts/shared/footer','parts/shared/html-footer') ); ?>

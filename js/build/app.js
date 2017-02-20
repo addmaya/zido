@@ -388,6 +388,19 @@ jQuery(document).ready(function($) {
 	});
 	engagements.init();
 
+
+	//single
+	var single = Barba.BaseView.extend({
+	  namespace: 'single',
+	  onEnter: function() {
+	  	$('body').addClass('t-single');
+	  },
+	  onLeave: function(){
+	  	$('body').removeClass('t-single');
+	  }
+	});
+	single.init();
+
 	
 	//video
 	var video = Barba.BaseView.extend({
@@ -439,7 +452,6 @@ jQuery(document).ready(function($) {
 	Barba.Pjax.start();
 	var FadeTransition = Barba.BaseTransition.extend({
 	  start: function() {
-	    $("html, body").animate({ scrollTop: 0 }, "slow");
 	    Promise.all([this.newContainerLoading, this.fadeOut()]).then(this.fadeIn.bind(this));
 	    $('.c-edges').addClass('is-active');
 	    $('body').addClass('is-exiting');
@@ -455,6 +467,7 @@ jQuery(document).ready(function($) {
 
 	    $(this.oldContainer).hide();
 	    $el.css({visibility : 'visible',opacity : 0});
+	    $("html, body").animate({ scrollTop: 0 }, 0);
 	    $('.c-loader').addClass('is-exiting');
 	    $('body').removeClass('is-exiting');
 	    $('.c-edges').removeClass('is-active');

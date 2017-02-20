@@ -108,6 +108,7 @@
 			if(is_page('video')){echo 'video';}
 			if(is_page('team')){echo 'team';}
 			if(is_tag()) {echo 'archive'; }
+			if(is_singular(array('wedding', 'engagement'))) {echo 'single'; }
 		?>">
 		<div class="c-tint"></div>
 
