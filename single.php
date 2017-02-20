@@ -30,7 +30,7 @@
 				<li><a target="_blank" href="mailto:?&subject=Check out this Project by Paramount Images" class="o-icon__wrap"><span class="o-icon s--ml"></span></a></li>
 			</ul>
 		</figure>
-		<section>
+		<section data-aos="fade-up" data-aos-duration="1000" data-aos-delay="500">
 			<div class="u-clear">
 				<div class="u-half">
 					<h1><?php echo $pjt_title; ?></h1>
