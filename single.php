@@ -2,13 +2,22 @@
 <?php 
 	$pjt_permalink = get_permalink();
 	$pjt_sharelink = preg_replace('#^https?://#', '', $pjt_permalink);
-	$pjt_cover = get_stylesheet_directory_uri().'/images/single/single-5.jpg';
+	$pjt_cover = $pjt_thumb = get_post_thumb();
 	$pjt_title = get_the_title();
+	$pjt_date = time_ago();
+	$pjt_posttype = get_post_type();
+	$pjt_video = get_youtube_id(get_field('pt_video'));
+	$pjt_brief = get_field('pmt_brief');
 ?>
 <header class="c-album__cover">
 	<div class="u-box">
 		<figure class="js-lazy" data-thumb="<?php echo $pjt_cover; ?>" data-aos="fade-up" data-aos-duration="1000">
-			<a href="" class="o-icon__wrap js-share">
+			<?php if ($pjt_video): ?>
+				<a href="#" class="js-video no-barba" data-video="<?php echo $pjt_video; ?>">
+					<span class="o-icon s--video"></span>
+				</a>
+			<?php endif ?>
+			<a href="#" class="o-icon__wrap js-share">
 				<span class="o-icon s--sh"></span>
 			</a>
 			<ul class="c-social">
@@ -20,15 +29,14 @@
 				<div class="u-half">
 					<h1><?php echo $pjt_title; ?></h1>
 					<ul class="o-meta">
-						<li>Wedding</li>
-						<li>23 January 2016</li>
-						<li>Kampala</li>
+						<li><?php echo $pjt_posttype; ?></li>
+						<li><?php echo $pjt_date; ?></li>
 					</ul>
 					<span class="o-line"></span>
 				</div>
 				<div class="u-half">
 					<section class="u-pdl-075">
-						<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when </p>
+						<p><?php echo $pjt_brief;?></p>
 					</section>
 				</div>
 			</div>

@@ -139,7 +139,9 @@ p{line-height: 1.6; font-size: 0.95em}
   &.s--gp{@include image('google-plus.svg')}
   &.s--sh{@include image('share.svg')}
   &.s--close{@include image('close.svg')}
-  &.s--video{@include image('btn-play.svg'); width: 5em; height: 5em; top:35%; left: 38%; position: absolute; z-index: 5}
+  &.s--video{@include image('btn-play.svg'); width: 5em; height: 5em; top:35%; left: 38%; position: absolute; z-index: 5;
+    .c-album__cover &{left: 46%; top: 37%}
+  }
 }
 .o-icon__wrap{display: inline-block; background-color: $black; border-radius: 2em; @include prefix((transition: background-color 0.3s ease));
   &:hover{background-color: $red}
