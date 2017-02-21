@@ -54,7 +54,7 @@
 			</header>
 		<?php endif ?>
 		
-		<?php $projects = new WP_Query(array('post_type'=>array('wedding', 'engagement'), 'meta_query'=> array(array('key'=>'pmt_album', 'value'=>'', 'compare'=> '!=')))); if ($projects->have_posts()): ?>
+		<?php $projects = new WP_Query(array('post_type'=>array('wedding', 'engagement'), 'meta_query'=> array(array('key'=>'pmt_album', 'value'=>'0', 'compare'=> '!=')))); if ($projects->have_posts()): ?>
 		<div class="o-collection">
 			<header>
 				<?php $latest = new WP_Query(array('posts_per_page'=>1, 'post_type'=>array('wedding', 'engagement'))); ?>
@@ -66,7 +66,7 @@
 			<section class="u-clear">
 				<?php $p = 1; $d=1; ?>
 				<?php while ($projects->have_posts() ) : $projects->the_post();
-					$pjt_title = get_the_title();
+					$pjt_title = str_replace('and', '<span>&</span>', get_the_title());
 					$pjt_thumb = get_post_thumb();
 					$pjt_link = get_permalink();
 					$pjt_date = time_ago();

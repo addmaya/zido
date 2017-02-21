@@ -86,6 +86,13 @@
 	<section class="c-header">
 		<div class="u-box">
 			<a href="<?php echo home_url();?>" class="c-logo"></a>
+			<a href="#" class="c-menu__toggle">
+				<div>
+					<span></span>
+					<span></span>
+					<span></span>
+				</div>
+			</a>
 			<nav class="c-menu">
 				<ul>
 					<li class="c-menu__item <?php if(is_page('weddings')){echo 'is-active';} ?>"><a href="<?php echo home_url();?>/weddings">

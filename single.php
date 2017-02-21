@@ -33,7 +33,7 @@
 		<section data-aos="fade-up" data-aos-duration="1000" data-aos-delay="500">
 			<div class="u-clear">
 				<div class="u-half">
-					<h1><?php echo $pjt_title; ?></h1>
+					<h1><?php echo str_replace('and', '<span>&</span>', $pjt_title); ?></h1>
 					<ul class="o-meta">
 						<li><?php echo $pjt_posttype; ?></li>
 						<li><?php echo $pjt_date; ?></li>
@@ -135,26 +135,28 @@
 		$post = $link; 
 		setup_postdata( $post );
 ?>
-	<section style="padding:10em" class="u-clear">
-		<h1>See the Engagement</h1>
-		<div class="o-album u-full" data-aos="fade-up" data-aos-duration="800">
-			<a href="<?php echo get_permalink(); ?>">
-				<div class="o-spinner__wrap"><div class="o-spinner"></div></div>
-				<div class="c-edges">
-					<div class="o-edge s--tl"><span></span><span></span></div>
-					<div class="o-edge s--tr"><span></span><span></span></div>
-					<div class="o-edge s--bl"><span></span><span></span></div>
-					<div class="o-edge s--br"><span></span><span></span></div>
-				</div>
-				<span class="o-line"></span>
-				<figure class="o-album__cover js-lazy" data-thumb="<?php echo get_post_thumb(); ?>"></figure>
-				<section class="o-album__info">
-					<h3><?php echo get_the_title(); ?></h3>
-					<ul class="o-meta">
-						<li><?php echo time_ago(); ?></li>
-					</ul>
-				</section>
-			</a>
+	<section class="c-album__link">
+		<div class="u-box">
+			<h2>See the Engagement</h2>
+			<div class="o-album u-full" data-aos="fade-up" data-aos-duration="800">
+				<a href="<?php echo get_permalink(); ?>">
+					<div class="o-spinner__wrap"><div class="o-spinner"></div></div>
+					<div class="c-edges">
+						<div class="o-edge s--tl"><span></span><span></span></div>
+						<div class="o-edge s--tr"><span></span><span></span></div>
+						<div class="o-edge s--bl"><span></span><span></span></div>
+						<div class="o-edge s--br"><span></span><span></span></div>
+					</div>
+					<span class="o-line"></span>
+					<figure class="o-album__cover js-lazy" data-thumb="<?php echo get_post_thumb(); ?>"></figure>
+					<section class="o-album__info">
+						<h3><?php echo str_replace('and', '<span>&</span>', get_the_title()); ?></h3>
+						<ul class="o-meta">
+							<li><?php echo time_ago(); ?></li>
+						</ul>
+					</section>
+				</a>
+			</div>
 		</div>
 	</section>
 <?php wp_reset_postdata(); } 
@@ -163,26 +165,28 @@
 		if ($reverse->have_posts()){
 ?>
 		<?php while ($reverse->have_posts() ) : $reverse->the_post(); ?>
-			<section style="padding:10em" class="u-clear">
-				<h1>See the Wedding</h1>
-				<div class="o-album u-full" data-aos="fade-up" data-aos-duration="800">
-					<a href="<?php echo get_permalink(); ?>">
-						<div class="o-spinner__wrap"><div class="o-spinner"></div></div>
-						<div class="c-edges">
-							<div class="o-edge s--tl"><span></span><span></span></div>
-							<div class="o-edge s--tr"><span></span><span></span></div>
-							<div class="o-edge s--bl"><span></span><span></span></div>
-							<div class="o-edge s--br"><span></span><span></span></div>
-						</div>
-						<span class="o-line"></span>
-						<figure class="o-album__cover js-lazy" data-thumb="<?php echo get_post_thumb(); ?>"></figure>
-						<section class="o-album__info">
-							<h3><?php echo get_the_title(); ?></h3>
-							<ul class="o-meta">
-								<li><?php echo time_ago(); ?></li>
-							</ul>
-						</section>
-					</a>
+			<section class="c-album__link"> 
+				<div class="u-box u-clear">
+					<h2>See the Wedding</h2>
+					<div class="o-album u-full" data-aos="fade-up" data-aos-duration="800">
+						<a href="<?php echo get_permalink(); ?>">
+							<div class="o-spinner__wrap"><div class="o-spinner"></div></div>
+							<div class="c-edges">
+								<div class="o-edge s--tl"><span></span><span></span></div>
+								<div class="o-edge s--tr"><span></span><span></span></div>
+								<div class="o-edge s--bl"><span></span><span></span></div>
+								<div class="o-edge s--br"><span></span><span></span></div>
+							</div>
+							<span class="o-line"></span>
+							<figure class="o-album__cover js-lazy" data-thumb="<?php echo get_post_thumb(); ?>"></figure>
+							<section class="o-album__info">
+								<h3><?php echo str_replace('and', '<span>&</span>', get_the_title()); ?></h3>
+								<ul class="o-meta">
+									<li><?php echo time_ago(); ?></li>
+								</ul>
+							</section>
+						</a>
+					</div>
 				</div>
 			</section>
 		<?php endwhile; wp_reset_postdata(); } ?>
@@ -206,7 +210,7 @@
  						<span class="o-line"></span>
  						<figure class="o-album__cover js-lazy" data-thumb="<?php echo get_post_thumb(); ?>"></figure>
  						<section class="o-album__info">
- 							<h3><?php the_title(); ?></h3>
+ 							<h3><?php echo str_replace('and', '<span>&</span>', get_the_title()); ?></h3>
  							<ul class="o-meta">
  								<li><?php echo time_ago(); ?></li>
  							</ul>
@@ -219,12 +223,12 @@
  		<div class="u-align-center">
  			<?php if ($pjt_posttype == 'wedding'): ?>
  				<a href="<?php echo home_url(); ?>/weddings" class="o-button s--med">
- 					<span>More Weddings <i class="u-super">50</i></span>
+ 					<span>More Weddings</span>
  				</a>
  			<?php endif ?>
  			<?php if ($pjt_posttype == 'engagement'): ?>
  				<a href="<?php echo home_url(); ?>/engagements" class="o-button s--med">
- 					<span>More Engagements <i class="u-super">50</i></span>
+ 					<span>More Engagements</span>
  				</a>
  			<?php endif ?>
  		</div>
