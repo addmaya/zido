@@ -75,7 +75,7 @@
 					if($d > 3){$d = 1;}
 				?>
 					<div data-index="<?php echo $p; ?>" class="o-album <?php if(($p == 3) || ($p == 8)){echo 'u-full';} else{echo 'u-half';} ?>" data-aos="fade-up">
-						<a href="<?php echo $pjt_link; ?>">
+						<a data-target="<?php echo get_post_type(); ?>" href="<?php echo $pjt_link; ?>">
 							<div class="o-spinner__wrap"><div class="o-spinner"></div></div>
 							<div class="c-edges">
 								<div class="o-edge s--tl"><span></span><span></span></div>
@@ -98,10 +98,10 @@
 			</section>
 			<footer>
 				<a href="#" class="o-button s--big">
-					<span>weddings <i class="u-super"><?php echo get_category_count(2); ?></i></span>
+					<span>weddings <i class="u-super"><?php echo wp_count_posts('wedding')->publish; ?></i></span>
 				</a>
 				<a href="#" class="o-button s--big">
-					<span>engagements <i class="u-super"><?php echo get_category_count(3); ?></i></span>
+					<span>engagements <i class="u-super"><?php echo wp_count_posts('insights')->publish; ?></i></span>
 				</a>
 			</footer>
 		</div>

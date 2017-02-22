@@ -84,7 +84,7 @@
 						<?php endif ?>
 					<?php } else {?>
 						<div data-index="<?php echo $p; ?>" class="o-album <?php if(($p == 3) || ($p == 8)){echo 'u-full';} else{echo 'u-half';} ?>" data-aos="fade-up" data-aos-duration="800">
-							<a href="<?php echo $pjt_link; ?>">
+							<a data-target="<?php echo get_post_type(); ?>" href="<?php echo $pjt_link; ?>">
 								<div class="o-spinner__wrap"><div class="o-spinner"></div></div>
 								<div class="c-edges">
 									<div class="o-edge s--tl"><span></span><span></span></div>

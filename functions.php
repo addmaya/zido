@@ -187,7 +187,7 @@
 				}
 				else{
 					if (is_array($pjt_album)) {
-						$html .= '<div data-category-balance="'.$category_balance.'" data-index="'.$index.'" class="is-appended o-album '.$class.'" data-aos="fade-up" data-aos-duration="800"><a href="'.$pjt_link.'"><div class="o-spinner__wrap"><div class="o-spinner"></div></div><div class="c-edges"><div class="o-edge s--tl"><span></span><span></span></div><div class="o-edge s--tr"><span></span><span></span></div><div class="o-edge s--bl"><span></span><span></span></div><div class="o-edge s--br"><span></span><span></span></div></div><span class="o-line"></span><figure class="o-album__cover js-lazy" data-thumb="'.$pjt_thumb.'"></figure><section class="o-album__info"><h3>'.$pjt_title.'</h3><ul class="o-meta"><li>'.$pjt_date.'</li></ul></section></a></div>';
+						$html .= '<div data-category-balance="'.$category_balance.'" data-index="'.$index.'" class="is-appended o-album '.$class.'" data-aos="fade-up" data-aos-duration="800"><a data-target="'.get_post_type().'" href="'.$pjt_link.'"><div class="o-spinner__wrap"><div class="o-spinner"></div></div><div class="c-edges"><div class="o-edge s--tl"><span></span><span></span></div><div class="o-edge s--tr"><span></span><span></span></div><div class="o-edge s--bl"><span></span><span></span></div><div class="o-edge s--br"><span></span><span></span></div></div><span class="o-line"></span><figure class="o-album__cover js-lazy" data-thumb="'.$pjt_thumb.'"></figure><section class="o-album__info"><h3>'.$pjt_title.'</h3><ul class="o-meta"><li>'.$pjt_date.'</li></ul></section></a></div>';
 					}
 				}
 				$index ++;

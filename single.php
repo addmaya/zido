@@ -58,16 +58,38 @@
 				<div class="c-album__group">
 					<h2><?php echo $pjt_album['pmt_album_title']; ?></h2>
 					<div class="u-clear">
-						<?php $photos = $pjt_album['pmt_album_gallery']; ?>
+						<?php 
+							$photos = $pjt_album['pmt_album_gallery'];
+							$landscapes = array();
+							$portraits = array();
+						?>
 						<?php foreach ($photos as $photo):
+							$photo_width = $photo['width'];
+							$photo_height = $photo['height'];
+
+							if ($photo_width > $photo_height){
+								array_push($landscapes, $photo);
+							}
+							else{
+								array_push($portraits, $photo);
+							}
+						?>
+						<?php endforeach ?>
+						
+						<?php 
+							$l=1; 
+							$landscapes_count = count($landscapes);
+							foreach ($landscapes as $photo): 
 							$photo_url = $photo['url'];
 							$photo_thumb = $photo['sizes']['medium'];
 							$photo_caption = $photo['caption'];
-							$photo_width = $photo['width'];
-							$photo_height = $photo['height'];
+							if($landscapes_count > 5){
+								if($l > 5){
+									$l = 1;
+								}
+							}
 						?>
-						<?php if ($photo_width > $photo_height){//landscape ?>
-							<article class="u-full o-photo" data-aos="fade-up" data-aos-duration="1000">
+							<article class="u-full o-photo <?php if(($l == 4) || ($l == 5)){echo 's--square';} ?>" data-aos="fade-up" data-aos-duration="700">
 								<section>
 									<figure class="js-lazy" data-thumb="<?php echo $photo_url; ?>"></figure>
 									<?php if ($photo_caption): ?>
@@ -77,8 +99,17 @@
 									<?php endif; ?>
 								</section>
 							</article>
-						<?php } else {//portrait ?>
-							<article class="u-half o-photo" data-aos="fade-up" data-aos-duration="1000">
+						<?php $l++; endforeach ?>
+
+						<?php 
+							$p=1; 
+							$portraits_count = count($portraits);
+							foreach ($portraits as $photo): 
+							$photo_url = $photo['url'];
+							$photo_thumb = $photo['sizes']['medium'];
+							$photo_caption = $photo['caption'];
+						?>
+							<article class="u-half o-photo" data-aos="fade-up" data-aos-duration="700">
 								<section>
 									<figure class="js-lazy" data-thumb="<?php echo $photo_url; ?>"></figure>
 									<?php if ($photo_caption): ?>
@@ -88,8 +119,8 @@
 									<?php endif; ?>
 								</section>
 							</article>
-						<?php } ?>
-						<?php endforeach ?>
+						<?php $p++; endforeach ?>
+
 					</div>
 				</div>
 			<?php endforeach ?>
@@ -139,7 +170,7 @@
 		<div class="u-box">
 			<h2>See the Engagement</h2>
 			<div class="o-album u-full" data-aos="fade-up" data-aos-duration="800">
-				<a href="<?php echo get_permalink(); ?>">
+				<a data-target="engagement" href="<?php echo get_permalink(); ?>">
 					<div class="o-spinner__wrap"><div class="o-spinner"></div></div>
 					<div class="c-edges">
 						<div class="o-edge s--tl"><span></span><span></span></div>
@@ -169,7 +200,7 @@
 				<div class="u-box u-clear">
 					<h2>See the Wedding</h2>
 					<div class="o-album u-full" data-aos="fade-up" data-aos-duration="800">
-						<a href="<?php echo get_permalink(); ?>">
+						<a data-target="wedding" href="<?php echo get_permalink(); ?>">
 							<div class="o-spinner__wrap"><div class="o-spinner"></div></div>
 							<div class="c-edges">
 								<div class="o-edge s--tl"><span></span><span></span></div>

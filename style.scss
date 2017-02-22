@@ -44,8 +44,10 @@ $powerEase: cubic-bezier(0.46, -0.01, 0, 0.99);
 
 /*utilities*/
 .u-clear:after{visibility:hidden;display:block;font-size:0;content:" ";clear:both;height:0}* html .clear{zoom:1}*:first-child+html .clear{zoom:1}
-.u-box {width: 70em; margin:0 auto;
+.u-box {width: 80%; margin:0 auto;
   .c-album__link &{width: 75%; @extend .u-clear}
+  @include device(xlg){width: 75%}
+  @include device(md){width: 85%}
   @include device(xs){width:90%}
 }
 .u-wrap{padding: 1.5em}
@@ -93,7 +95,7 @@ body{font-size: 1em; @include u-poppins;color: #636363; @include prefix((transit
   &.t-home{background-color: #FFF}
   &.t-team{background-color: #121212;
     @include device(xs){
-      .u-canvas{height:auto;}
+      .u-canvas{height:auto; width:auto; overflow:hidden;}
     }
   }
   &.t-weddings{
@@ -111,6 +113,7 @@ body{font-size: 1em; @include u-poppins;color: #636363; @include prefix((transit
 }
 a{color: inherit;}
 h1{font-weight: 700; font-size: 3em; letter-spacing: -0.02em; line-height: 1.2; color: $black;
+  @include device(md){font-size:2.5em}
   @include device(xs){font-size:2em}
 }
 h2{font-weight: 700; font-size: 2em; letter-spacing: -0.02em; line-height: 1.2; color: $black}
@@ -540,6 +543,9 @@ $a:0.8em;
   }
   section{padding-bottom: 2em}
   .u-link{padding: 1.5em 0}
+  @include device(sm){
+    .u-half{width:auto; float:none; margin-bottom: 1.5em}
+  }
   @include device(xs){
     section{width:50%; float:left; padding:1.5em 0}
   }
@@ -671,4 +677,9 @@ $a:0.8em;
   .c-contact__form{width: 60%}
 }
 .c-form__status{font-size:0.75em; @include  u-source-code; text-transform: uppercase; padding:2em 0.5em; display: block}
+.c-form{
+  @include device(sm){
+    .u-half{float:none; width:auto}
+  }
+}
 

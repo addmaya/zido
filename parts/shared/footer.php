@@ -17,13 +17,17 @@
 												<?php foreach ($pmt_telephones as $pmt_telephone): 
 													$pmt_number = $pmt_telephone['pmt_phone_number'];
 												?>
-													<li><a href="tel:<?php echo str_replace(' ', '', $pmt_number); ?>"><?php echo $pmt_number; ?></a></li>
+													<li><p>
+														<a href="tel:<?php echo str_replace(' ', '', $pmt_number); ?>"><?php echo $pmt_number; ?></a>
+													</p></li>
 												<?php endforeach ?>
 											</ul>
 										</section>
 										<section>
 											<?php $pmt_email = get_field('pmt_email',14); ?>
-											<a href="mailto:<?php echo $pmt_email; ?>"><?php echo $pmt_email; ?></a>
+											<p>
+												<a href="mailto:<?php echo $pmt_email; ?>"><?php echo $pmt_email; ?></a>
+											</p>
 										</section>
 										<section>
 											<ul class="c-social">

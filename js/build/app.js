@@ -81,7 +81,7 @@ jQuery(document).ready(function($) {
 	        });
 		});
 	}
-
+	
 	//lazy images
 	function loadLazyImages(obj){
 		obj.each(function() {
@@ -120,6 +120,9 @@ jQuery(document).ready(function($) {
 		$('.c-menu').removeClass('is-open');
 		$('.c-menu__toggle').removeClass('is-active');
 	});
+	$('.c-logo').click(function() {
+		$('.c-menu').find('.is-active').removeClass('is-active');
+	});
 
 	$('.c-menu__toggle').click(function(e) {
 		e.preventDefault();
@@ -138,6 +141,7 @@ jQuery(document).ready(function($) {
 			$('.c-menu__toggle').removeClass('is-active');
 	    }
 	});
+	
 
 	//share
 	$('.js-share').click(function(event) {
@@ -374,6 +378,7 @@ jQuery(document).ready(function($) {
 	  onEnter: function() {
 	  	fetchProjects();
 	  	filterProjects();
+	  	$('.c-menu .is-active').removeClass('is-active');
 	  }
 	});
 	archive.init();
@@ -383,12 +388,15 @@ jQuery(document).ready(function($) {
 	  namespace: 'weddings',
 	  onEnter: function() {
 	  	$('body').addClass('t-weddings');
+	  	$('.c-menu .is-active').removeClass('is-active');
+	  	$('.js-wedding').addClass('is-active');
 	
 	  	fetchProjects();
 	  	filterProjects();
 	  },
 	  onLeave: function(){
 	  	$('body').removeClass('t-weddings');
+	  	$('.js-wedding').removeClass('is-active');
 	  }
 	});
 	weddings.init();
@@ -398,12 +406,15 @@ jQuery(document).ready(function($) {
 	  namespace: 'engagements',
 	  onEnter: function() {
 	  	$('body').addClass('t-engagements');
+	  	$('.c-menu .is-active').removeClass('is-active');
+	  	$('.js-engagement').addClass('is-active');
 	
 	  	fetchProjects();
 	  	filterProjects();
 	  },
 	  onLeave: function(){
 	  	$('body').removeClass('t-engagements');
+	  	$('.js-engagement').removeClass('is-active');
 	  }
 	});
 	engagements.init();
@@ -427,12 +438,14 @@ jQuery(document).ready(function($) {
 	  namespace: 'video',
 	  onEnter: function() {
 	  	$('body').addClass('t-video');
+	  	$('.js-video').addClass('is-active');
 	
 	  	fetchProjects();
 	  	filterProjects();
 	  },
 	  onLeave: function(){
 	  	$('body').removeClass('t-video');
+	  	$('.js-video').removeClass('is-active');
 	  }
 	});
 	video.init();
@@ -442,6 +455,8 @@ jQuery(document).ready(function($) {
 	  namespace: 'team',
 	  onEnter: function() {
 	  	$('body').addClass('t-team');
+  	    $('.js-team').addClass('is-active');
+
   	    //random class
   	    var classes = ["s--h1", "s--h2", "s--h3","s--h4"];
   		$('.c-team article').each(function(){
@@ -461,12 +476,20 @@ jQuery(document).ready(function($) {
 	  },
 	  onLeave: function(){
 	  	$('body').removeClass('t-team');
+	  	$('.js-team').removeClass('is-active');
 	  }
 	});
 	team.init();
 
-	//analytics
-
+	//targets
+	$('#barba-wrapper').on('click', '.o-album a', function() {
+		var me = $(this);
+		var target = me.data('target');
+		if(target){
+			$('.c-menu .is-active').removeClass('is-active');
+			$('.js-'+target).addClass('is-active');
+		}
+	});
 
 	//transitions
 	Barba.Pjax.start();
