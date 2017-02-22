@@ -173,8 +173,8 @@
 					}
 				}
 				else{
-					if(get_category_count($category_id) > 0){
-						$category_balance = get_category_count($category_id) - ($offset * 2);
+					if($collection_count > 0){
+						$category_balance = $collection_count - ($offset * 2);
 						if($category_balance < 0){
 							$category_balance = 0;
 						}
