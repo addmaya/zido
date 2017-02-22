@@ -54,6 +54,7 @@ jQuery(document).ready(function($) {
 		           			if(e == '0'){
 		           				m.html('<span>back top</span>');
 		           			}
+		           			console.log(e);
 		           		}
 		           		else{
 							$('html, body').animate({scrollTop: 0}, 500);
