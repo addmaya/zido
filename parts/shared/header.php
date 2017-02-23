@@ -99,7 +99,7 @@
 						<span>Weddings</span></a>
 					</li>
 					<li class="js-engagement c-menu__item <?php if(is_page('engagements')){echo 'is-active';} ?>"><a href="<?php echo home_url();?>/engagements"><span>Engagements</span></a></li>
-					<li class="js-video c-menu__item <?php if(is_page('video')){echo 'is-active';} ?>"><a href="<?php echo home_url();?>/video"><span>Video</span></a></li>
+					<li class="js-videos c-menu__item <?php if(is_page('video')){echo 'is-active';} ?>"><a href="<?php echo home_url();?>/video"><span>Video</span></a></li>
 					<li class="js-team c-menu__item <?php if(is_page('team')){echo 'is-active';} ?>"><a href="<?php echo home_url();?>/team"><span>Team</span></a></li>
 					<li class="c-menu__item"><a href="#talk"><span>Contact</span></a></li>
 				</ul>

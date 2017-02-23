@@ -454,18 +454,19 @@ jQuery(document).ready(function($) {
 	  namespace: 'video',
 	  onEnter: function() {
 	  	$('body').addClass('t-video');
-	  	$('.js-video').addClass('is-active');
+	  	$('.js-videos').addClass('is-active');
 	
 	  	fetchProjects();
 	  	filterProjects();
 	  },
 	  onLeave: function(){
 	  	$('body').removeClass('t-video');
-	  	$('.js-video').removeClass('is-active');
+	  	$('.js-videos').removeClass('is-active');
 	  }
 	});
 	video.init();
 
+	
 	//team
 	var team = Barba.BaseView.extend({
 	  namespace: 'team',
