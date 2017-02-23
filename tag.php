@@ -51,7 +51,7 @@
 
 			<?php if($category_count > $posts_per_page): ?>
 				<footer class="o-collection__footer">
-					<a href="#" class="o-button s--big js-fetch-projects js-append" data-query="update" data-year="all" data-tag="<?php echo $category_id; ?>">
+					<a href="#" class="o-button s--big js-fetch-projects js-append" data-post-type="all" data-query="update" data-year="all" data-tag="<?php echo $category_id; ?>">
 						<span>more <?php echo $category_name; ?><i class="u-super" data-category-balance="<?php echo $category_balance ?>"><?php echo $category_balance; ?></i></span>
 					</a>
 				</footer>

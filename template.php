@@ -47,7 +47,28 @@
 			if ($projects->have_posts()): ?>
 		<div class="o-collection">
 			<header>
-				<?php Starkers_Utilities::get_template_parts( array( 'parts/shared/filter')); ?>
+				<div class="o-filter__wrap">
+					<div class="o-filter">
+						<a href="#" class="o-filter__label">
+							<span class="o-filter__active"><?php echo date("Y"); ?></span>
+							<div class="o-arrow">
+								<span></span><span></span>
+							</div>
+						</a>
+						<div class="o-filter-list js-months">
+							<ul>
+								<li><a href="#" data-query="fetch" data-type="year" data-content="all">All</a></li>
+								<?php 
+									$i = 2014;
+									foreach (range(date('Y'), $i) as $y) {
+									    echo '<li><a href="#" data-query="fetch" data-type="year" data-content="'.$y.'">'.$y.'</a></li>';
+									}
+								 ?>
+							</ul>
+						</div>
+					</div>
+					<a href="#" class="o-filter__button u-hide js-fetch-projects" data-query="fetch" data-post-type="<?php echo $post_type; ?>"><span>Filter</span></a>
+				</div>
 			</header>
 			<section class="u-clear o-collection__list">
 				<?php $p = 1; ?>

@@ -36,5 +36,5 @@
 			</ul>
 		</div>
 	</div> -->
-	<a href="#" class="o-filter__button u-hide js-fetch-projects" data-query="fetch" data-category="<?php echo $category_id; ?>"><span>Filter</span></a>
+	<a href="#" class="o-filter__button u-hide js-fetch-projects" data-post-type="<?php echo $post_type; ?>"  data-query="fetch" data-category="<?php echo $category_id; ?>"><span>Filter</span></a>
 </div>

@@ -223,7 +223,7 @@
 		<?php endwhile; wp_reset_postdata(); } ?>
 <?php } ?>
 <?php 
-	$projects = new WP_Query(array('posts_per_page'=>3, 'post__not_in' => array($pjt_id), 'post_type'=>$post_type, 'meta_query'=> array(array('key'=>'pmt_album', 'value'=>'0', 'compare'=> '!='))));
+	$projects = new WP_Query(array('orderby'=>'rand', 'posts_per_page'=>3, 'post__not_in' => array($pjt_id), 'post_type'=>$post_type, 'meta_query'=> array(array('key'=>'pmt_album', 'value'=>'0', 'compare'=> '!='))));
  ?>
  <?php if ( $projects->have_posts() ) : ?>
  <section class="c-suggest">

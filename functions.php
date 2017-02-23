@@ -93,6 +93,10 @@
 		$projects_args = array();
 		$collection_args = array();
 
+		if($post_type == 'all'){
+			$post_type = array('wedding', 'engagement');
+		}
+
 		if(!$tag){
 			if($post_type != 'video'){
 				if ($year != 'all') {
