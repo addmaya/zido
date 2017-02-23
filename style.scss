@@ -40,6 +40,12 @@ $powerEase: cubic-bezier(0.46, -0.01, 0, 0.99);
 @mixin u-poppins {font-family: 'Poppins', sans-serif}
 @mixin u-source-code{font-family: 'Source Code Pro', monospace}
 @mixin u-tt(){@include prefix((transition: transform 0.5s $powerEase))}
+@mixin lazy(){
+  &:before{position: absolute; z-index:2; width: 100%; height: 100%; content: ""; top:0; left: 0; @include prefix((transform-origin:100% 0%)); background-color: #e2e1d1; @include prefix((transition: transform 0.8s cubic-bezier(1, 0, 0, 1)))}
+  &.is-loaded{
+    &:before{@include prefix((transform: scale3d(0,1,1)))}
+  }
+}
 
 
 /*utilities*/
@@ -248,12 +254,8 @@ p{line-height: 1.6; font-size: 0.95em;
     .o-line{margin:1em}
   }
 }
-.o-album__cover{position: absolute; width: 100%; height: 100%; top:0; left:0; background-color: $grey; z-index: 2; background-position: center; background-size: cover; background-repeat: no-repeat; @include u-tt;
+.o-album__cover{position: absolute; width: 100%; height: 100%; top:0; left:0; background-color: $grey; z-index: 2; background-position: center; background-size: cover; background-repeat: no-repeat; @include u-tt; @include lazy();
   &:after{position: absolute; content:""; top:0; left:0; background-color: rgba(0,0,0,0.1); z-index: 1; width: 100%; height: 100%; @include prefix((transition:background-color 0.9s ease))}
-  &:before{position: absolute; z-index:2; width: 100%; height: 100%; content: ""; top:0; left: 0; @include prefix((transform-origin:100% 0%)); background-color: #e2e1d1; @include prefix((transition: transform 0.8s cubic-bezier(1, 0, 0, 1)))}
-  &.is-loaded{
-    &:before{@include prefix((transform: scale3d(0,1,1)))}
-  }
 }
 .o-album__info{position: absolute; z-index: 2; margin: 1.5em; bottom:1.5em; color: white; @include prefix((transition: color 0.5s ease));
   &:after{content:""; width: 120%; height: 130%; background-color:$orange; top:-6px; left: -1.5em; z-index: -1; @include prefix((transform: scale3d(0,1,1))); @include prefix((transition: transform 0.5s cubic-bezier(0.7, 0.14, 0, 0.99))); @include prefix((transform-origin:0% 0%)); position: absolute}
@@ -363,7 +365,9 @@ $a:0.8em;
     &.s--h4{a{padding-bottom:100%}}
   }
 }
-.o-moment{background-size: cover; background-repeat: no-repeat; background-position: center;
+
+
+.o-moment{background-size: cover; background-repeat: no-repeat; background-position: center; @include lazy;
   &.s--h1{padding-bottom: 20%; width: 25%;}
   &.s--h2{padding-bottom: 40%; width: 50%;}
   &.s--h3{padding-bottom: 20%; width: 50%;}
@@ -377,12 +381,7 @@ $a:0.8em;
 }
 .o-photo{
   section{margin:0.75em; position: relative}
-  figure{background-color: $grey; position: relative; background-size:cover; background-position: center; background-repeat: no-repeat;
-    &:before{position: absolute; z-index:2; width: 100%; height: 100%; content: ""; top:0; left: 0; @include prefix((transform-origin:100% 0%)); background-color: #e2e1d1; @include prefix((transition: transform 0.8s cubic-bezier(1, 0, 0, 1)))}
-    &.is-loaded{
-      &:before{@include prefix((transform: scale3d(0,1,1)))}
-    }
-  }
+  figure{background-color: $grey; position: relative; background-size:cover; background-position: center; background-repeat: no-repeat; @include lazy();}
   .o-caption{margin:1.2em 0 2em}
   &.u-half{
     figure{padding-bottom: 150%}
@@ -600,6 +599,7 @@ $a:0.8em;
     h2{margin-left:0; font-size: 1.5em}
   }
 }
+.c-album__group{margin-bottom: 2em}
 .c-album__link{padding-bottom:5em;
   h2{padding-left:0.3em; padding-bottom: 0.5em}
   figure{background-blend-mode: luminosity}

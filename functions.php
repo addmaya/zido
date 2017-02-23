@@ -149,7 +149,7 @@
 		if ($projects->have_posts()){
 			while ($projects->have_posts()){
 				$projects->the_post();
-				$pjt_title = get_the_title();
+				$pjt_title = str_replace('and', '<span>&</span>', get_the_title());
 				$pjt_thumb = get_post_thumb();
 				$pjt_link = get_permalink();
 				$pjt_date = time_ago();
