@@ -81,7 +81,7 @@
 							$landscapes_count = count($landscapes);
 							foreach ($landscapes as $photo): 
 							$photo_url = $photo['url'];
-							$photo_thumb = $photo['sizes']['medium'];
+							$photo_thumb = $photo['sizes']['large'];
 							$photo_caption = $photo['caption'];
 							if($landscapes_count > 5){
 								if($l > 5){
@@ -91,7 +91,8 @@
 						?>
 							<article class="u-full o-photo <?php if(($l == 4) || ($l == 5)){echo 's--square';} ?>" data-aos="fade-up" data-aos-duration="700">
 								<section>
-									<figure class="js-lazy" data-thumb="<?php echo $photo_url; ?>"></figure>
+									<div class="o-spinner__wrap"><div class="o-spinner"></div></div>
+									<figure class="js-lazy" data-thumb="<?php echo $photo_url; ?>" data-src="<?php echo $photo_thumb; ?>"></figure>
 									<?php if ($photo_caption): ?>
 										<div class="o-caption">
 											<p><?php echo $photo_caption; ?></p>
@@ -106,12 +107,13 @@
 							$portraits_count = count($portraits);
 							foreach ($portraits as $photo): 
 							$photo_url = $photo['url'];
-							$photo_thumb = $photo['sizes']['medium'];
+							$photo_thumb = $photo['sizes']['large'];
 							$photo_caption = $photo['caption'];
 						?>
 							<article class="u-half o-photo" data-aos="fade-up" data-aos-duration="700">
 								<section>
-									<figure class="js-lazy" data-thumb="<?php echo $photo_url; ?>"></figure>
+									<div class="o-spinner__wrap"><div class="o-spinner"></div></div>
+									<figure class="js-lazy" data-thumb="<?php echo $photo_url; ?>" data-src="<?php echo $photo_thumb; ?>"></figure>
 									<?php if ($photo_caption): ?>
 										<div class="o-caption">
 											<p><?php echo $photo_caption; ?></p>

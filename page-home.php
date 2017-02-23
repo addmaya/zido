@@ -7,14 +7,14 @@
 	<section class="u-box c-slider">
 		<div class="swiper-container c-slides">
 			<div class="swiper-wrapper">
-				<?php while ( $slides->have_posts() ) : $slides->the_post();
+				<?php $s=0; while ( $slides->have_posts() ) : $slides->the_post();
 					$slide_title = get_the_title();
 					$slide_thumb = get_field('pmt_slide_image');
 					$button_txt = get_field('pmt_slide_cta_text');
 					$button_link = get_field('pmt_slide_link');
 				?>
-				<div class="swiper-slide scene">
-					<a href="<?php echo $button_link; ?>" class="c-slide js-lazy layer" data-thumb="<?php echo $slide_thumb; ?>" data-depth="0.20">
+				<div class="swiper-slide scene" <?php if($s < 1){echo 'data-swiper-autoplay="8000"';} ?>>
+					<a href="<?php echo $button_link; ?>" class="c-slide layer" data-thumb="<?php echo $slide_thumb; ?>" data-depth="0.20">
 						<div class="c-slide__copy layer" data-depth="0.40">
 							<section>
 								<h1><?php echo $slide_title; ?></h1>
@@ -31,7 +31,7 @@
 						</div>
 					</a>
 				</div>
-				<?php endwhile; wp_reset_postdata();?>
+				<?php $s++; endwhile; wp_reset_postdata();?>
 			</div>
 			<div class="swiper-button-prev"></div>
 			<div class="swiper-button-next"></div>
@@ -97,11 +97,11 @@
 				<?php $p++; $d++; endwhile; wp_reset_postdata();?>
 			</section>
 			<footer>
-				<a href="#" class="o-button s--big">
+				<a href="<?php echo home_url(); ?>/weddings" class="o-button s--big">
 					<span>weddings <i class="u-super"><?php echo wp_count_posts('wedding')->publish; ?></i></span>
 				</a>
-				<a href="#" class="o-button s--big">
-					<span>engagements <i class="u-super"><?php echo wp_count_posts('insights')->publish; ?></i></span>
+				<a href="<?php echo home_url(); ?>/engagements" class="o-button s--big">
+					<span>engagements <i class="u-super"><?php echo wp_count_posts('engagement')->publish; ?></i></span>
 				</a>
 			</footer>
 		</div>

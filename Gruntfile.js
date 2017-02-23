@@ -13,7 +13,8 @@ module.exports = function(grunt) {
                 "backgroundblendmode"
             ],
             "options": [
-                "setClasses"
+                "setClasses",
+                "mq"
             ],
             "uglify": true
           }

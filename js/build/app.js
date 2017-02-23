@@ -47,7 +47,7 @@ jQuery(document).ready(function($) {
 	           			m.removeClass('is-loading');
 		           		if(data != '0'){
 		           			$('.o-collection__list').append(data);
-		           			loadLazyImages($('.is-appended .js-lazy'));
+		           			loadImages($('.is-appended .js-lazy'));
 		           			e = $('.o-album').last().data('overflow');
 		           			m.find('.u-super').html(e);
 		           			p = p + parseInt(posts_per_page);
@@ -65,7 +65,7 @@ jQuery(document).ready(function($) {
 	           			m.removeClass('is-loading');
 	           			if(data != '0'){
 	           				k.append(data);
-	           				loadLazyImages($('.is-appended .js-lazy'));
+	           				loadImages($('.is-appended .js-lazy'));
 	           				e = $('.o-album').last().data('overflow');
 	           				if(e == '0'){
 	           					q.addClass('u-hide');
@@ -83,12 +83,20 @@ jQuery(document).ready(function($) {
 	}
 	
 	//lazy images
-	function loadLazyImages(obj){
-		obj.each(function() {
-	    	var m = $(this);
-	    	var u = m.data('thumb');
-	    	var i = document.createElement('img');
-	    	if(u){
+	function loadImages(obj){
+		obj.bind('inview', function (event, isInView) {
+	      if (isInView) {
+	      	var m = $(this);
+	      	var u = m.data('thumb');
+	      	var l = m.data('src');
+	      	var i = document.createElement('img');
+
+	      	if (l && Modernizr.mq('(max-width: 640px)')) {
+	      		u = m.data('src');
+			}
+
+	      	if(u){
+	      		m.removeClass('js-lazy');
 		    	i.src = u;
 		    	i.onload = function(){
 		    		m.css('background-image', 'url(' + u + ')');
@@ -96,6 +104,7 @@ jQuery(document).ready(function($) {
 		    		m.parent().find('.o-spinner__wrap').hide();
 		    	}
 	    	}
+	      }
 	    });
     }
 
@@ -355,6 +364,13 @@ jQuery(document).ready(function($) {
 	  namespace: 'home',
 	  onEnter: function() {
 	  	$('body').addClass('t-home');
+	  	$('.c-slide').each(function() {
+	    	var m = $(this);
+	    	var u = m.data('thumb');
+	    	var i = document.createElement('img');
+	    	m.css('background-image', 'url(' + u + ')');
+	    });
+
 	  	var splashSwiper = new Swiper('.c-slides', {
 	    	loop: true,
 	    	speed: 800,
@@ -522,7 +538,7 @@ jQuery(document).ready(function($) {
 	    $el.animate({ opacity: 1 }, 400, function() {
 	      _this.done();
 	      AOS.init();
-	      loadLazyImages($('.js-lazy'));
+	      loadImages($('.js-lazy'));
 	      p = parseInt(posts_per_page);
 	    });
 	  }
@@ -533,7 +549,7 @@ jQuery(document).ready(function($) {
 	
 	//init
 	AOS.init();
-	loadLazyImages($('.js-lazy'));
 	submitRequest();
+	loadImages($('.js-lazy'));
 });
 
