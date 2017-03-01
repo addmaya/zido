@@ -163,11 +163,9 @@
 		<?php endif ?>
 	</div>
 </section>
-<?php $link = get_field('pmt_link'); 
-	if($link){ 
-		$post = $link; 
-		setup_postdata( $post );
-?>
+<?php $link = get_field('pt_link');  if($link){ ?>
+	<?php foreach ($link as $post): ?>
+	<?php setup_postdata($post); ?>
 	<section class="c-album__link">
 		<div class="u-box">
 			<h2>See the Engagement</h2>
@@ -192,9 +190,10 @@
 			</div>
 		</div>
 	</section>
+	<?php endforeach ?>
 <?php wp_reset_postdata(); } 
 	else {
-		$reverse = new WP_Query(array('post_type'=>array('wedding', 'engagement'), 'meta_query'=> array(array('key'=>'pmt_link', 'value'=>get_the_id(), 'compare'=> '='))));
+		$reverse = new WP_Query(array('post_type'=>array('wedding', 'engagement'), 'meta_query'=> array(array('key'=>'pt_link', 'value'=>'"' . get_the_ID() . '"', 'compare'=> 'LIKE'))));
 		if ($reverse->have_posts()){
 ?>
 		<?php while ($reverse->have_posts() ) : $reverse->the_post(); ?>
@@ -224,6 +223,7 @@
 			</section>
 		<?php endwhile; wp_reset_postdata(); } ?>
 <?php } ?>
+
 <?php 
 	$projects = new WP_Query(array('orderby'=>'rand', 'posts_per_page'=>3, 'post__not_in' => array($pjt_id), 'post_type'=>$post_type, 'meta_query'=> array(array('key'=>'pmt_album', 'value'=>'0', 'compare'=> '!='))));
  ?>

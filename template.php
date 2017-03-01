@@ -78,6 +78,8 @@
 					$pjt_link = get_permalink();
 					$pjt_date = time_ago();
 					$pjt_video = get_youtube_id(get_field('pt_video'));
+					$pjt_video_thumb = get_field('pt_video_thumb');
+
 					if($p > 8){$p = 1;}
 				?>
 					<?php if((is_page('video'))){ ?>
@@ -93,7 +95,7 @@
 										<div class="o-edge s--br"><span></span><span></span></div>
 									</div>
 									<span class="o-line"></span>
-									<figure class="o-album__cover js-lazy" data-thumb="<?php echo $pjt_thumb; ?>"></figure>
+									<figure class="o-album__cover js-lazy" data-thumb="<?php if($pjt_thumb) {echo $pjt_thumb;} else {echo $pjt_video_thumb;} ?>"></figure>
 									<section class="o-album__info">
 										<h3><?php echo $pjt_title; ?></h3>
 										<ul class="o-meta">

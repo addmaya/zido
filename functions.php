@@ -157,6 +157,7 @@
 				$projects_count = $projects->post_count;
 				$collection_count = $collection->post_count;
 				$pjt_album = get_field('pmt_album');
+				$pjt_video_thumb = get_field('pt_video_thumb');
 
 				if($index > 8){
 					$index = 1;
@@ -187,6 +188,9 @@
 
 
 				if($post_type == 'video'){
+					if(!$pjt_thumb){
+						$pjt_thumb = $pjt_video_thumb;
+					}
 					$html .= '<div data-overflow="'.$category_balance.'" data-index="'.$index.'" class="is-appended o-album '.$class.'" data-aos="fade-up" data-aos-duration="800"><a href="'.$pjt_link.'" class="js-video no-barba" data-video="'.$pjt_video.'"><span class="o-icon s--video"></span><div class="o-spinner__wrap"><div class="o-spinner"></div></div><div class="c-edges"><div class="o-edge s--tl"><span></span><span></span></div><div class="o-edge s--tr"><span></span><span></span></div><div class="o-edge s--bl"><span></span><span></span></div><div class="o-edge s--br"><span></span><span></span></div></div><span class="o-line"></span><figure class="o-album__cover js-lazy" data-thumb="'.$pjt_thumb.'"></figure><section class="o-album__info"><h3>'.$pjt_title.'</h3><ul class="o-meta"><li>'.$pjt_date.'</li></ul></section></a></div>';
 				}
 				else{
@@ -264,4 +268,46 @@
 	  wp_deregister_script( 'wp-embed' );
 	}
 	add_action( 'wp_footer', 'my_deregister_scripts' );
+
+	function get_youtube_meta($yt_id){
+		$yt_apikey = 'AIzaSyCuQTR5LVpmHgs2EPrhBVbAGjmHunxTmMk';
+		$yt_query = wp_remote_get('https://www.googleapis.com/youtube/v3/videos?id='.$yt_id.'&key='.$yt_apikey.'&fields=items(snippet(title,description,publishedAt,thumbnails(maxres,default)),statistics(viewCount))&part=snippet,statistics');
+		$yt_response = json_decode($yt_query['body']);
+		$yt_meta['yt_thumb'] = $yt_response->items[0]->snippet->thumbnails->maxres->url;
+        $yt_meta['yt_thumb_std'] = $yt_response->items[0]->snippet->thumbnails->default->url;
+		return $yt_meta;
+	}
+
+	add_action('acf/save_post', 'save_video', 20);
+	function save_video( $post_id ) {
+	    global $post; 
+	    if ( ($post->post_type == 'wedding') || ($post->post_type == 'engagement') ){
+	        $pt_video = get_post_meta($post_id, 'pt_video', true);
+	        if($pt_video){
+		        $yt_video_id = get_youtube_id($pt_video);
+		        $yt_video = get_youtube_meta($yt_video_id);
+		        
+		        $yt_thumb = $yt_video['yt_thumb'];
+		        $yt_thumb_std = $yt_video['yt_thumb_std'];
+		        	        
+		        if($yt_thumb != ''){
+		            update_field('pt_video_thumb', $yt_thumb, $post_id);
+		        }
+		        else{
+		            update_field('pt_video_thumb', $yt_thumb_std, $post_id);
+		        }
+	        }
+	    }
+	}
+
+	 function my_acf_admin_head() {
+	 ?>
+	     <style type="text/css">
+	         #acf_1035 {display: none}
+	     </style>
+	     <?php
+	 }
+	//add_action('acf/input/admin_head', 'my_acf_admin_head');
+
+
 ?>
