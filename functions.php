@@ -119,22 +119,22 @@
 			else {//videos
 				if ($year != 'all') {	
 					if($method == 'update'){
-						$projects_args = array('post_type'=>$post_type, 'offset'=>$offset, 'meta_query'=> array(array('key'=>'pt_video', 'value'=>'', 'compare'=> '!=')), 'date_query' => array(array('year'=>$year)));
+						$projects_args = array('post_type'=> array('wedding', 'engagement'), 'offset'=>$offset, 'meta_query'=> array(array('key'=>'pt_video', 'value'=>'', 'compare'=> '!=')), 'date_query' => array(array('year'=>$year)));
 					}
 					else {
-						$projects_args = array('post_type'=>$post_type, 'meta_query'=> array(array('key'=>'pt_video', 'value'=>'', 'compare'=> '!=')), 'date_query' => array(array('year'=>$year)));
+						$projects_args = array('post_type'=> array('wedding', 'engagement'), 'meta_query'=> array(array('key'=>'pt_video', 'value'=>'', 'compare'=> '!=')), 'date_query' => array(array('year'=>$year)));
 					}
 
-					$collection_args = array('posts_per_page'=>'-1', 'post_type'=>$post_type, 'meta_query'=> array(array('key'=>'pt_video', 'value'=>'', 'compare'=> '!=')), 'date_query' => array(array('year'=>$year)));
+					$collection_args = array('posts_per_page'=>'-1', 'post_type'=> array('wedding', 'engagement'), 'meta_query'=> array(array('key'=>'pt_video', 'value'=>'', 'compare'=> '!=')), 'date_query' => array(array('year'=>$year)));
 				}
 				else {
 					if($method == 'update'){
-						$projects_args = array('post_type'=>$post_type, 'offset'=>$offset, 'meta_query'=> array(array('key'=>'pt_video', 'value'=>'', 'compare'=> '!=')));
+						$projects_args = array('post_type'=> array('wedding', 'engagement'), 'offset'=>$offset, 'meta_query'=> array(array('key'=>'pt_video', 'value'=>'', 'compare'=> '!=')));
 					}
 					else{
-						$projects_args = array('post_type'=>$post_type, 'meta_query'=> array(array('key'=>'pt_video', 'value'=>'', 'compare'=> '!=')));
+						$projects_args = array('post_type'=> array('wedding', 'engagement'), 'meta_query'=> array(array('key'=>'pt_video', 'value'=>'', 'compare'=> '!=')));
 					}
-					$collection_args = array('posts_per_page'=>'-1', 'post_type'=>$post_type, 'meta_query'=> array(array('key'=>'pt_video', 'value'=>'', 'compare'=> '!=')));
+					$collection_args = array('posts_per_page'=>'-1', 'post_type'=> array('wedding', 'engagement'), 'meta_query'=> array(array('key'=>'pt_video', 'value'=>'', 'compare'=> '!=')));
 				}
 			}
 		}
@@ -303,11 +303,11 @@
 	 function my_acf_admin_head() {
 	 ?>
 	     <style type="text/css">
-	         #acf_1035 {display: none}
+	         #acf_1236 {display: none}
 	     </style>
 	     <?php
 	 }
-	//add_action('acf/input/admin_head', 'my_acf_admin_head');
+	add_action('acf/input/admin_head', 'my_acf_admin_head');
 
 
 ?>

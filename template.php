@@ -22,6 +22,7 @@
 	if(is_page('video')){
 		$videos = new WP_Query(array('posts_per_page'=>-1, 'post_type'=>array('wedding', 'engagement'), 'meta_query'=> array(array('key'=>'pt_video', 'value'=>'', 'compare'=> '!='))));
 		$posts_count = $videos->post_count;
+		$posts_excess = $posts_count - $posts_per_page;
 		$page_title = 'Video';
 		wp_reset_postdata();
 	}
@@ -130,7 +131,7 @@
 			</section>
 			<?php if($posts_excess > 0): ?>
 				<footer class="o-collection__footer">
-					<a href="#" class="o-button s--big js-fetch-projects js-append" data-query="update" data-year="all" data-post-type="<?php echo $post_type; ?>">
+					<a href="#" class="o-button s--big js-fetch-projects js-append" data-query="update" data-year="all" data-post-type="<?php if(!is_page('video')){echo $post_type;} else{echo 'video';} ?>">
 						<span>more <?php echo $page_title; ?><i class="u-super" data-overflow="<?php echo $posts_excess ?>"><?php echo $posts_excess; ?></i></span>
 					</a>
 				</footer>
