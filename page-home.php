@@ -59,11 +59,11 @@
 			<header>
 				<?php $latest = new WP_Query(array('posts_per_page'=>1, 'post_type'=>array('wedding', 'engagement'))); ?>
 				<?php while ( $latest->have_posts() ) : $latest->the_post(); ?>
-					<span>Updated: <?php echo time_ago(); ?></span>
+					<span>Lastest Work. Updated: <?php echo time_ago(); ?></span>
 				<?php endwhile; ?>
 				<?php wp_reset_postdata(); ?>
 			</header>
-			<section class="u-clear">
+			<section class="clear">
 				<?php $p = 1; $d=1; ?>
 				<?php while ($projects->have_posts() ) : $projects->the_post();
 					$pjt_title = str_replace('and', '<span>&</span>', get_the_title());
@@ -97,8 +97,12 @@
 				<?php $p++; $d++; endwhile; wp_reset_postdata();?>
 			</section>
 			<footer>
+				<?php 
+					$weddings = new WP_Query(array('posts_per_page'=>-1, 'post_type'=>'wedding', 'meta_query'=> array(array('key'=>'pmt_album', 'value'=>'0', 'compare'=> '!=')))); 
+					$weddings_count = $weddings->post_count;
+				?>
 				<a href="<?php echo home_url(); ?>/weddings" class="o-button s--big">
-					<span>weddings <i class="u-super"><?php echo wp_count_posts('wedding')->publish; ?></i></span>
+					<span>weddings <i class="u-super"><?php echo $weddings_count; ?></i></span>
 				</a>
 				<a href="<?php echo home_url(); ?>/engagements" class="o-button s--big">
 					<span>engagements <i class="u-super"><?php echo wp_count_posts('engagement')->publish; ?></i></span>

@@ -18,7 +18,7 @@
 <section class="u-bkg-grey">
 	<div class="u-box">
 		<div class="c-team">
-			<div class="u-clear">
+			<div class="clear">
 				<?php 
 					$staff = new WP_Query(array('posts_per_page'=>-1, 'post_type'=>'staff'));
 					$col1 = '';

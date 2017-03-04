@@ -16,7 +16,7 @@
 			<header>
 				<?php Starkers_Utilities::get_template_parts (array('parts/shared/filter')); ?>
 			</header>
-			<section class="u-clear o-collection__list">
+			<section class="clear o-collection__list">
 				<?php $p = 1; ?>
 				<?php while (have_posts()):the_post();
 					$pjt_title = get_the_title();

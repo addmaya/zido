@@ -10,6 +10,7 @@
 	$pjt_brief = get_field('pmt_brief');
 	$pjt_albums = get_field('pmt_album');
 	$pjt_id = get_the_id();
+	$pjt_credits = get_field('pt_credits');
 ?>
 <header class="c-album__cover">
 	<div class="u-box">
@@ -31,7 +32,7 @@
 			</ul>
 		</figure>
 		<section data-aos="fade-up" data-aos-duration="1000" data-aos-delay="500">
-			<div class="u-clear">
+			<div class="clear">
 				<div class="u-half">
 					<h1><?php echo str_replace('and', '<span>&</span>', $pjt_title); ?></h1>
 					<ul class="o-meta">
@@ -57,7 +58,7 @@
 			<?php foreach ($pjt_albums as $pjt_album): ?>
 				<div class="c-album__group">
 					<h2><?php echo $pjt_album['pmt_album_title']; ?></h2>
-					<div class="u-clear">
+					<div class="clear">
 						<?php 
 							$photos = $pjt_album['pmt_album_gallery'];
 							$landscapes = array();
@@ -126,18 +127,11 @@
 					</div>
 				</div>
 			<?php endforeach ?>
-			<div class="u-clear">
+			<div class="clear">
 				<div class="u-full c-share">
 					<div class="c-share__wrap">
 						<div class="u-half">
-							<h4>Share</h4>
-							<ul class="c-social s--inline">
-								<li><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=<?php echo $pjt_sharelink; ?>" class="o-icon__wrap"><span class="o-icon s--fb"></span></a></li>
-								<li><a target="_blank" href="https://twitter.com/home?status=<?php echo $pjt_sharelink; ?>" class="o-icon__wrap"><span class="o-icon s--tw"></span></a></li>
-								<li><a target="_blank" href="https://plus.google.com/share?url=<?php echo $pjt_sharelink; ?>" class="o-icon__wrap"><span class="o-icon s--gp"></span></a></li>
-								<li><a target="_blank" href="https://pinterest.com/pin/create/button/?url=<?php echo $pjt_sharelink; ?>&media=<?php echo $pjt_cover; ?>&description=<?php echo $pjt_title; ?>" class="o-icon__wrap"><span class="o-icon s--pt"></span></a></li>
-								<li><a target="_blank" href="mailto:?&subject=Check out this Project by Paramount Images" class="o-icon__wrap"><span class="o-icon s--ml"></span></a></li>
-							</ul>
+							
 							<?php $project_tags = get_the_tags(); if ($project_tags) {?>
 							<section class="c-tags">
 								<h4>Tagged</h4>
@@ -148,9 +142,35 @@
 								</ul>
 							</section>
 							<?php } ?>
+							<?php if ($pjt_credits): ?>
+								<section class="c-credits__wrap">
+									<h4>Credits</h4>
+									<ul class="c-credits">
+										<?php foreach ($pjt_credits as $credit):
+											$credit_name = $credit['credit_name'];
+											$credit_role = $credit['credit_role'];
+											$credit_website = $credit['credit_website'];
+										?>
+											<?php if ($credit_name && $credit_role): ?>
+												<li><a target="_blank" <?php if($credit_website){echo 'href="'.$credit_website.'"';} ?>><?php echo $credit_role; ?> - <?php echo $credit_name; ?></a></li>
+											<?php endif ?>	
+										<?php endforeach ?>
+									</ul>
+								</section>
+							<?php endif ?>
 						</div>
 						<div class="u-half">
-							<a href="#talk" class="o-button s--med">
+							<section class="c-album__share">
+								<h4>Share</h4>
+								<ul class="c-social s--inline">
+									<li><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=<?php echo $pjt_sharelink; ?>" class="o-icon__wrap"><span class="o-icon s--fb"></span></a></li>
+									<li><a target="_blank" href="https://twitter.com/home?status=<?php echo $pjt_sharelink; ?>" class="o-icon__wrap"><span class="o-icon s--tw"></span></a></li>
+									<li><a target="_blank" href="https://plus.google.com/share?url=<?php echo $pjt_sharelink; ?>" class="o-icon__wrap"><span class="o-icon s--gp"></span></a></li>
+									<li><a target="_blank" href="https://pinterest.com/pin/create/button/?url=<?php echo $pjt_sharelink; ?>&media=<?php echo $pjt_cover; ?>&description=<?php echo $pjt_title; ?>" class="o-icon__wrap"><span class="o-icon s--pt"></span></a></li>
+									<li><a target="_blank" href="mailto:?&subject=Check out this Project by Paramount Images&body=<?php echo $pjt_sharelink; ?>" class="o-icon__wrap"><span class="o-icon s--ml"></span></a></li>
+								</ul>
+							</section>
+							<a href="#talk" class="o-button s--med s--call">
 								<span>Let's talk Business</span>
 							</a>
 						</div>
@@ -198,7 +218,7 @@
 ?>
 		<?php while ($reverse->have_posts() ) : $reverse->the_post(); ?>
 			<section class="c-album__link"> 
-				<div class="u-box u-clear">
+				<div class="u-box clear">
 					<h2>See the Wedding</h2>
 					<div class="o-album u-full" data-aos="fade-up" data-aos-duration="800">
 						<a data-target="wedding" href="<?php echo get_permalink(); ?>">
@@ -230,7 +250,7 @@
  <?php if ( $projects->have_posts() ) : ?>
  <section class="c-suggest">
  	<div class="u-box">
- 		<section class="u-clear u-mb-1em">
+ 		<section class="clear u-mb-1em">
  			<?php while ( $projects->have_posts() ) : $projects->the_post(); ?>
  				<div class="o-album u-third">
  					<a href="<?php the_permalink(); ?>">

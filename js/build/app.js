@@ -16,7 +16,7 @@ jQuery(document).ready(function($) {
 			var t = m.data('tag');
 
 			if(year){
-				y = year
+				y = year;
 			} else{
 				y = 'all';
 			}
@@ -37,9 +37,8 @@ jQuery(document).ready(function($) {
 	           		}
 	           		else{
 	           			m.addClass('is-loading');
-	           			m.html('loading');
 	           			k.addClass('s--empty');
-	           			k.html('');
+	           			k.html('<a class="o-button is-loading s--big"><span>Smile :) </span></a>');
 	           		}
 	           },
 	           success: function(data){
@@ -61,10 +60,10 @@ jQuery(document).ready(function($) {
 	           		}
 	           		else {
 	           			k.removeClass('s--empty');
-	           			m.html('Filter');
+	           			// m.html('Filter');
 	           			m.removeClass('is-loading');
 	           			if(data != '0'){
-	           				k.append(data);
+	           				k.html(data);
 	           				loadImages($('.is-appended .js-lazy'));
 	           				e = $('.o-album').last().data('overflow');
 	           				if(e == '0'){
@@ -153,9 +152,11 @@ jQuery(document).ready(function($) {
 	
 
 	//share
-	$('.js-share').click(function(event) {
-		event.preventDefault();
+	$('body').on('click', '.js-share', function(e){
+		e.preventDefault();
+		
 		var m = $(this);
+		
 		m.find('.o-icon').toggleClass('s--close');
 		m.toggleClass('is-active');
 		$('.c-album__cover .c-social').toggleClass('is-visible');
@@ -164,38 +165,42 @@ jQuery(document).ready(function($) {
 	//filter
 	var month = '';
 	var year = '';
+
 	function filterProjects(){
-		$('.o-filter-list').on('click', 'a', function(event) {
-			event.preventDefault();
+		$('.o-filter-list').on('click', 'a', function(e) {
+			e.preventDefault();
+			
 			var m = $(this);
 			var f = $('.o-filter-list');
-			var d = m.data('content');
-			var t = m.data('type');
+			var t = m.data('time');
+			// var t = m.data('type');
+
+			year = t;
 
 			f.find('.is-selected').removeClass('is-selected');
-			m.closest('.o-filter').find('.o-filter__active').html(d);
+			m.closest('.o-filter').find('.o-filter__active').html(t);
 			m.closest('.o-filter__wrap').find('.o-filter__button').removeClass('u-hide');
 			m.addClass('is-selected');
 			
-			if((t == 'month')){
-				month = d;
-				// if(!(_.contains(months, d))){
-				// 	months.push(d);
-				// }
-				// else{
-				// 	months = _.without(months, d);
-				// }
-			}
+			// if((t == 'month')){
+			// 	month = d;
+			// 	if(!(_.contains(months, d))){
+			// 		months.push(d);
+			// 	}
+			// 	else{
+			// 		months = _.without(months, d);
+			// 	}
+			// }
 
-			if((t == 'year')){
-				year = d;
-				// if(!(_.contains(years, d))){
-				// 	years.push(d)
-				// }
-				// else{
-				// 	years = _.without(years, d);
-				// }
-			}
+			// if((t == 'year')){
+			// 	year = y;
+			// 	if(!(_.contains(years, d))){
+			// 		years.push(d)
+			// 	}
+			// 	else{
+			// 		years = _.without(years, d);
+			// 	}
+			// }
 		});
 	}
 

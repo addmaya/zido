@@ -1,10 +1,10 @@
 			<footer class="c-footer" id="talk">
 				<div class="u-box">
-					<div class="u-clear u-pd-075">
+					<div class="clear u-pd-075">
 						<section class="u-half">
 							<section class="c-contact__info">
 								<span class="o-line"></span>
-								<div class="u-clear">
+								<div class="clear">
 									<h2 class="u-half">Contact</h2>
 									<div class="u-half">
 										<section>
@@ -73,6 +73,7 @@
 											<option value="Wedding and Engagement">Wedding & Engagement</option>
 											<option value="Wedding">Wedding</option>
 											<option value="Engagement">Engagement</option>
+											<option value="Other">Other</option>
 										</select>
 										<span></span>
 									</div>

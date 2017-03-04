@@ -58,20 +58,19 @@
 						</a>
 						<div class="o-filter-list js-months">
 							<ul>
-								<li><a href="#" data-query="fetch" data-type="year" data-content="all">All</a></li>
+								<li><a class="js-fetch-projects" href="#" data-query="fetch" data-post-type="<?php echo $post_type; ?>" data-time="all">All</a></li>
 								<?php 
 									$i = 2014;
 									foreach (range(date('Y'), $i) as $y) {
-									    echo '<li><a href="#" data-query="fetch" data-type="year" data-content="'.$y.'">'.$y.'</a></li>';
+									    echo '<li><a class="js-fetch-projects" data-query="fetch" data-post-type="'.$post_type.'" href="#" data-query="fetch" data-time="'.$y.'">'.$y.'</a></li>';
 									}
 								 ?>
 							</ul>
 						</div>
 					</div>
-					<a href="#" class="o-filter__button u-hide js-fetch-projects" data-query="fetch" data-post-type="<?php echo $post_type; ?>"><span>Filter</span></a>
 				</div>
 			</header>
-			<section class="u-clear o-collection__list">
+			<section class="clear o-collection__list">
 				<?php $p = 1; ?>
 				<?php while ($projects->have_posts() ) : $projects->the_post();
 					$pjt_title = str_replace('and', '<span>&</span>', get_the_title());
