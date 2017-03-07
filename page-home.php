@@ -87,7 +87,7 @@
 							</div>
 							<span class="o-line"></span>
 							<?php if ($d < 1): ?>
-								<img src="<?php echo $pjt_thumb; ?> " class="u-hide"/ >
+								<img src="<?php echo $pjt_thumb; ?> " class="u-hide"/>
 							<?php endif ?>
 							<figure class="o-album__cover js-lazy" data-thumb="<?php echo $pjt_thumb; ?>"></figure>
 							<section class="o-album__info">
