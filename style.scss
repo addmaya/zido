@@ -505,7 +505,7 @@ $a:0.8em;
 }
 .c-edges{position: fixed; width: 100%;height: 100%; top:0; left:0; z-index: -2; @include prefix((transition: transform 0.5s $powerEase));
   .is-booting &{@include animBack; @include zoomIn;}
-  &.is-active{@include prefix((transform: scale3d(0.3,0.3,0.3)));
+  &.is-active{@include prefix((transform: scale3d(0.45,0.45,0.45)));
     .o-edge{@include blink; @include infinite;}
   }
 }
