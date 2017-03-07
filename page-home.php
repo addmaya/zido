@@ -67,7 +67,7 @@
 				<?php wp_reset_postdata(); ?>
 			</header>
 			<section class="clear">
-				<?php $p = 1; $d=1; ?>
+				<?php $p = 1; $d=0; ?>
 				<?php while ($projects->have_posts() ) : $projects->the_post();
 					$pjt_title = str_replace('and', '<span>&</span>', get_the_title());
 					$pjt_thumb = get_post_thumb();
@@ -75,7 +75,6 @@
 					$pjt_date = time_ago();
 					$pjt_posttype = get_post_type();
 					if($p > 8){$p = 1;}
-					if($d > 3){$d = 1;}
 				?>
 					<div data-index="<?php echo $p; ?>" class="o-album <?php if(($p == 3) || ($p == 8)){echo 'u-full';} else{echo 'u-half';} ?>" data-aos="fade-up">
 						<a data-target="<?php echo get_post_type(); ?>" href="<?php echo $pjt_link; ?>">
@@ -87,6 +86,9 @@
 								<div class="o-edge s--br"><span></span><span></span></div>
 							</div>
 							<span class="o-line"></span>
+							<?php if ($d < 1): ?>
+								<img src="<?php echo $pjt_thumb; ?> " class="u-hide"/ >
+							<?php endif ?>
 							<figure class="o-album__cover js-lazy" data-thumb="<?php echo $pjt_thumb; ?>"></figure>
 							<section class="o-album__info">
 								<h3><?php echo $pjt_title; ?></h3>
