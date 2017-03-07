@@ -96,12 +96,16 @@ jQuery(document).ready(function($) {
 
 	      	if(u){
 	      		m.removeClass('js-lazy');
-		    	i.src = u;
-		    	i.onload = function(){
-		    		m.css('background-image', 'url(' + u + ')');
-		    		m.addClass('is-loaded');
-		    		m.parent().find('.o-spinner__wrap').hide();
-		    	}
+	      		m.css('background-image', 'url(' + u + ')');
+	      		m.addClass('is-loaded');
+	      		m.parent().find('.o-spinner__wrap').hide();
+	      		
+		    	// i.src = u;
+		    	// i.onload = function(){
+		    	// 	m.css('background-image', 'url(' + u + ')');
+		    	// 	m.addClass('is-loaded');
+		    	// 	m.parent().find('.o-spinner__wrap').hide();
+		    	// }
 	    	}
 	      }
 	    });
