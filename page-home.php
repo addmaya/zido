@@ -18,6 +18,9 @@
 						<div class="c-slide__copy layer" data-depth="0.40">
 							<section>
 								<h1><?php echo $slide_title; ?></h1>
+								<?php if ($s == 0): ?>
+									<img src="<?php echo $slide_thumb; ?>" class="u-hide" />
+								<?php endif ?>
 								<div class="c-slide__button">
 									<span class="c-slide__button__title"><?php echo $button_txt; ?></span>
 									<div class="c-edges">

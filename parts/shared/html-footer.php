@@ -2,7 +2,9 @@
 		<script src="<?php echo get_stylesheet_directory_uri(); ?>/js/build/app.js"></script>
 
 		<script>
-		document.addEventListener('contextmenu', event => event.preventDefault());
+		
+		//document.addEventListener('contextmenu', event => event.preventDefault());
+		
 		var ajaxURL="<?php echo admin_url('admin-ajax.php'); ?>";
 		var posts_per_page = "<?php echo get_option( 'posts_per_page' ); ?>";
 		
