@@ -110,8 +110,8 @@
 	<div id="barba-wrapper">
 		<div class="barba-container" data-namespace="<?php
 			if(is_front_page()){echo 'home';}
-			if(is_page('weddings')){echo 'weddings';}
-			if(is_page('engagements')){echo 'engagements';}
+			if(is_page('wedding-photography')){echo 'weddings';}
+			if(is_page('engagement-photography')){echo 'engagements';}
 			if(is_page('video')){echo 'video';}
 			if(is_page('team')){echo 'team';}
 			if(is_tag()) {echo 'archive'; }

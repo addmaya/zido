@@ -132,7 +132,7 @@
 			<?php if($posts_excess > 0): ?>
 				<footer class="o-collection__footer">
 					<a href="#" class="o-button s--big js-fetch-projects js-append" data-query="update" data-year="all" data-post-type="<?php if(!is_page('video')){echo $post_type;} else{echo 'video';} ?>">
-						<span>more <?php echo $page_title; ?><i class="u-super" data-overflow="<?php echo $posts_excess ?>"><?php echo $posts_excess; ?></i></span>
+						<span>more <?php echo $page_title; ?><i class="u-super" data-overflow="<?php echo $posts_excess; ?>"><?php echo $posts_excess; ?></i></span>
 					</a>
 				</footer>
 			<?php endif; ?>

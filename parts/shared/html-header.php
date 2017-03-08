@@ -19,7 +19,7 @@
 
 		<link href="https://fonts.googleapis.com/css?family=Poppins:400,700|Roboto+Condensed:700|Source+Code+Pro" rel="stylesheet">
 		<link rel="shortcut icon" href="<?php echo get_stylesheet_directory_uri(); ?>/favicon.ico"/>
-		<link href="<?php echo get_stylesheet_directory_uri(); ?>/style.css" rel="stylesheet">		
+		<link href="<?php echo get_stylesheet_directory_uri(); ?>/style.css?v0.901" rel="stylesheet">		
 		<?php wp_head(); ?>
 	</head>
 	<body class="is-booting">
