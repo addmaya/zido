@@ -176,9 +176,6 @@
 							</a>
 						</div>
 					</div>
-					<div class="u-align-center">
-						<span class="o-line"></span>
-					</div>
 				</div>
 			</div>	
 		<?php endif ?>

@@ -107,10 +107,10 @@
 					$weddings = new WP_Query(array('posts_per_page'=>-1, 'post_type'=>'wedding', 'meta_query'=> array(array('key'=>'pmt_album', 'value'=>'0', 'compare'=> '!=')))); 
 					$weddings_count = $weddings->post_count;
 				?>
-				<a href="<?php echo home_url(); ?>/weddings" class="o-button s--big">
+				<a href="<?php echo home_url(); ?>/wedding-photography" class="o-button s--big">
 					<span>weddings <i class="u-super"><?php echo $weddings_count; ?></i></span>
 				</a>
-				<a href="<?php echo home_url(); ?>/engagements" class="o-button s--big">
+				<a href="<?php echo home_url(); ?>/engagement-photography" class="o-button s--big">
 					<span>engagements <i class="u-super"><?php echo wp_count_posts('engagement')->publish; ?></i></span>
 				</a>
 			</footer>

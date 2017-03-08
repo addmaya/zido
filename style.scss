@@ -584,7 +584,7 @@ $a:0.8em;
 .c-team{padding:4em 0 1.5em}
 .c-album__cover{height:80%; padding:7.5em 0em 3em;
   .u-box{height: 100%}
-  figure{height:80%; background-color:$grey; margin-bottom: 2em; background-size:cover; background-repeat: no-repeat; background-position: center top; position: relative;
+  figure{height:80%; background-color:$grey; margin-bottom: 2em; background-size:cover; background-repeat: no-repeat; background-position: center; position: relative;
     .js-share{position: absolute; margin:1.5em; bottom: 0; right: 0; background-color: $red; z-index: 1;
       &:hover{background-color: darken($red, 20%)}
       &.is-active{background-color: darken($red, 20%)}
@@ -621,7 +621,7 @@ $a:0.8em;
   h2{padding-left:0.3em; padding-bottom: 0.5em}
   figure{background-blend-mode: luminosity}
 }
-.c-share{padding-top: 2em}
+.c-share{padding: 2em 0}
 .c-share__wrap{@extend .clear; padding: 0.75em;
   @include device(xs){padding:0}
 }
