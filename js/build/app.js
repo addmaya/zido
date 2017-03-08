@@ -87,11 +87,11 @@ jQuery(document).ready(function($) {
 	      if (isInView) {
 	      	var m = $(this);
 	      	var u = m.data('thumb');
-	      	var l = m.data('src');
+	      	var l = m.data('thumb-medium');
 	      	var i = document.createElement('img');
 
 	      	if (l && Modernizr.mq('(max-width: 640px)')) {
-	      		u = m.data('src');
+	      		u = m.data('thumb-medium');
 			}
 
 	      	if(u){

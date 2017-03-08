@@ -3,6 +3,7 @@
 	$pjt_permalink = get_permalink();
 	$pjt_sharelink = preg_replace('#^https?://#', '', $pjt_permalink);
 	$pjt_cover = get_post_thumb();
+	$pjt_cover_medium = get_post_thumb_medium();
 	$pjt_title = get_the_title();
 	$pjt_date = time_ago();
 	$pjt_posttype = get_post_type();
@@ -14,7 +15,7 @@
 ?>
 <header class="c-album__cover">
 	<div class="u-box">
-		<figure class="js-lazy" data-thumb="<?php echo $pjt_cover; ?>" data-aos="fade-up" data-aos-duration="1000">
+		<figure class="js-lazy" data-thumb="<?php echo $pjt_cover; ?>" data-thumb-medium="<?php echo $pjt_cover_medium; ?>" data-aos="fade-up" data-aos-duration="1000">
 			<?php if ($pjt_video): ?>
 				<a href="#" class="js-video no-barba" data-video="<?php echo $pjt_video; ?>">
 					<span class="o-icon s--video"></span>
@@ -93,7 +94,7 @@
 							<article class="u-full o-photo <?php if(($l == 4) || ($l == 5)){echo 's--square';} ?>" data-aos="fade-up" data-aos-duration="700">
 								<section>
 									<div class="o-spinner__wrap"><div class="o-spinner"></div></div>
-									<figure class="js-lazy" data-thumb="<?php echo $photo_url; ?>" data-src="<?php echo $photo_thumb; ?>"></figure>
+									<figure class="js-lazy" data-thumb="<?php echo $photo_url; ?>" data-thumb-medium="<?php echo $photo_thumb; ?>"></figure>
 									<?php if ($photo_caption): ?>
 										<div class="o-caption">
 											<p><?php echo $photo_caption; ?></p>
@@ -114,7 +115,7 @@
 							<article class="u-half o-photo" data-aos="fade-up" data-aos-duration="700">
 								<section>
 									<div class="o-spinner__wrap"><div class="o-spinner"></div></div>
-									<figure class="js-lazy" data-thumb="<?php echo $photo_url; ?>" data-src="<?php echo $photo_thumb; ?>"></figure>
+									<figure class="js-lazy" data-thumb="<?php echo $photo_url; ?>" data-thumb-medium="<?php echo $photo_thumb; ?>"></figure>
 									<?php if ($photo_caption): ?>
 										<div class="o-caption">
 											<p><?php echo $photo_caption; ?></p>

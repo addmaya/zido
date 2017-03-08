@@ -72,6 +72,14 @@
 			return $image[0];
 		}
 	}
+
+	function get_post_thumb_medium(){
+		if (has_post_thumbnail($post->ID)){
+			$image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'medium_large' );
+			return $image[0];
+		}
+	}
+
 	function get_category_count($id){
 		$cat = get_category($id);
 		$cat_count = $cat->category_count;
@@ -151,6 +159,7 @@
 				$projects->the_post();
 				$pjt_title = str_replace('and', '<span>&</span>', get_the_title());
 				$pjt_thumb = get_post_thumb();
+				$pjt_thumb_medium = get_post_thumb_medium();
 				$pjt_link = get_permalink();
 				$pjt_date = time_ago();
 				$pjt_video = get_youtube_id(get_field('pt_video'));
@@ -195,7 +204,7 @@
 				}
 				else{
 					if (is_array($pjt_album)) {
-						$html .= '<div data-overflow="'.$category_balance.'" data-index="'.$index.'" class="is-appended o-album '.$class.'" data-aos="fade-up" data-aos-duration="800"><a data-target="'.get_post_type().'" href="'.$pjt_link.'"><div class="o-spinner__wrap"><div class="o-spinner"></div></div><div class="c-edges"><div class="o-edge s--tl"><span></span><span></span></div><div class="o-edge s--tr"><span></span><span></span></div><div class="o-edge s--bl"><span></span><span></span></div><div class="o-edge s--br"><span></span><span></span></div></div><span class="o-line"></span><figure class="o-album__cover js-lazy" data-thumb="'.$pjt_thumb.'"></figure><section class="o-album__info"><h3>'.$pjt_title.'</h3><ul class="o-meta"><li>'.$pjt_date.'</li></ul></section></a></div>';
+						$html .= '<div data-overflow="'.$category_balance.'" data-index="'.$index.'" class="is-appended o-album '.$class.'" data-aos="fade-up" data-aos-duration="800"><a data-target="'.get_post_type().'" href="'.$pjt_link.'"><div class="o-spinner__wrap"><div class="o-spinner"></div></div><div class="c-edges"><div class="o-edge s--tl"><span></span><span></span></div><div class="o-edge s--tr"><span></span><span></span></div><div class="o-edge s--bl"><span></span><span></span></div><div class="o-edge s--br"><span></span><span></span></div></div><span class="o-line"></span><figure class="o-album__cover js-lazy" data-thumb="'.$pjt_thumb.'" data-thumb-medium="'.$pjt_thumb_medium.'"></figure><section class="o-album__info"><h3>'.$pjt_title.'</h3><ul class="o-meta"><li>'.$pjt_date.'</li></ul></section></a></div>';
 					}
 				}
 				$index ++;

@@ -5,11 +5,11 @@
 	$post_type='';
 	$posts_per_page = get_option('posts_per_page');
 	
-	if(is_page('weddings')){
+	if(is_page('wedding-photography')){
 		$page_title = 'Weddings';
 		$post_type = 'wedding';
 	}
-	if(is_page('engagements')){
+	if(is_page('engagement-photography')){
 		$page_title = 'Engagements';
 		$post_type = 'engagement';
 	}
@@ -75,6 +75,7 @@
 				<?php while ($projects->have_posts() ) : $projects->the_post();
 					$pjt_title = str_replace('and', '<span>&</span>', get_the_title());
 					$pjt_thumb = get_post_thumb();
+					$pjt_thumb_medium = get_post_thumb_medium();
 					$pjt_link = get_permalink();
 					$pjt_date = time_ago();
 					$pjt_video = get_youtube_id(get_field('pt_video'));
@@ -95,7 +96,7 @@
 										<div class="o-edge s--br"><span></span><span></span></div>
 									</div>
 									<span class="o-line"></span>
-									<figure class="o-album__cover js-lazy" data-thumb="<?php if($pjt_thumb) {echo $pjt_thumb;} else {echo $pjt_video_thumb;} ?>"></figure>
+									<figure class="o-album__cover js-lazy" data-thumb="<?php if($pjt_thumb) {echo $pjt_thumb;} else {echo $pjt_video_thumb;} ?>" data-thumb-medium="<?php if($pjt_thumb_medium) {echo $pjt_thumb_medium;} else {echo $pjt_video_thumb;} ?>"></figure>
 									<section class="o-album__info">
 										<h3><?php echo $pjt_title; ?></h3>
 										<ul class="o-meta">
@@ -116,7 +117,7 @@
 									<div class="o-edge s--br"><span></span><span></span></div>
 								</div>
 								<span class="o-line"></span>
-								<figure class="o-album__cover js-lazy" data-thumb="<?php echo $pjt_thumb; ?>"></figure>
+								<figure class="o-album__cover js-lazy" data-thumb-medium="<?php echo $pjt_thumb_medium; ?>" data-thumb="<?php echo $pjt_thumb; ?>"></figure>
 								<section class="o-album__info">
 									<h3><?php echo $pjt_title; ?></h3>
 									<ul class="o-meta">

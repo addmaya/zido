@@ -71,6 +71,7 @@
 				<?php while ($projects->have_posts() ) : $projects->the_post();
 					$pjt_title = str_replace('and', '<span>&</span>', get_the_title());
 					$pjt_thumb = get_post_thumb();
+					$pjt_thumb_medium = get_post_thumb_medium();
 					$pjt_link = get_permalink();
 					$pjt_date = time_ago();
 					$pjt_posttype = get_post_type();
@@ -89,7 +90,7 @@
 							<?php if ($d < 1): ?>
 								<img src="<?php echo $pjt_thumb; ?> " class="u-hide"/>
 							<?php endif ?>
-							<figure class="o-album__cover js-lazy" data-thumb="<?php echo $pjt_thumb; ?>"></figure>
+							<figure class="o-album__cover js-lazy" data-thumb-medium="<?php echo $pjt_thumb_medium; ?>" data-thumb="<?php echo $pjt_thumb; ?>"></figure>
 							<section class="o-album__info">
 								<h3><?php echo $pjt_title; ?></h3>
 								<ul class="o-meta">

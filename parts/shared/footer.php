@@ -9,7 +9,7 @@
 									<div class="u-half">
 										<section>
 											<p><?php the_field('pmt_address',14); ?></p>
-											<a target="_blank" href="<?php the_field('pmt_map',14); ?>" class="u-link">On Google Maps</a>
+											<a target="_blank" href="<?php the_field('pmt_map',14); ?>" class="u-link">Locate on Map</a>
 										</section>
 										<section>
 											<ul class="o-list">

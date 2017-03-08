@@ -86,8 +86,8 @@ $powerEase: cubic-bezier(0.46, -0.01, 0, 0.99);
   @include device(xs){float:none; width:auto}
 }
 .u-link{display: inline-block; font-size: 0.875em; position: relative; @include prefix((transition:color 0.5s ease)); 
-  &:after{content:""; position: absolute; bottom: 12px; left: 0; height: 2px; width: 30%; background-color: $red; @include prefix((transition:transform 0.5s ease)); @include prefix((transform-origin:0% 0%));}
-  &:hover{color: $red;
+  &:after{content:""; position: absolute; bottom: 12px; left: 0; height: 2px; width: 30%; background-color: $gold; @include prefix((transition:transform 0.5s ease)); @include prefix((transform-origin:0% 0%));}
+  &:hover{color: darken($gold, 10%);
     &:after{@include prefix((transform:scale3d(2,1,1)))}
   }
 }
@@ -205,9 +205,9 @@ p{line-height: 1.6; font-size: 0.95em;
     .u-super{color:white}
   }
   &:after{content: ""; position: absolute; left:0; top:10%; width: 100%; height: 100%; background-color: $red; @include prefix((transition: transform 0.5s cubic-bezier(0.7, 0.14, 0, 0.99))); @include prefix((transform-origin:left top)); @include prefix((transform:scale3d(0,1,1))); z-index: 0}
-  @include device(xs){margin-right:0.75em;
-    &.s--big{font-size:1.5em; padding-top:0; padding:0.75em 0}
-    &.s--med{font-size:1.2em; padding-left:0}
+  @include device(xs){margin-right:0.5em;
+    &.s--big{font-size:1.2em; padding-top:0; padding:0.75em 0}
+    &.s--med{font-size:1em; padding-left:0}
   }
 }
 .o-collection{
@@ -295,7 +295,9 @@ p{line-height: 1.6; font-size: 0.95em;
   span{font-weight: 700; font-size: 1.2em; @include u-poppins; position: relative;
     &:after{content:""; position: absolute; bottom: 0; left: 0; height: 2px; width: 30%; background-color: $red; @include prefix((transition:transform 0.5s ease)); @include prefix((transform-origin:0% 0%));}
   }
-  
+  @include device(xs){
+    button{padding-left:0}
+  }
 }
 .o-filter__wrap{position: relative; z-index: 10;
   .is-booting &{@include anim; @include fadeInUp; @include delay(0.4)}
@@ -496,7 +498,12 @@ $a:0.8em;
   .is-booting &{
     .u-box{@include anim; @include fadeInDown; @include delay(1.3)}
   }
-  @include device(xs){padding-top:1.5em}
+  @include device(xs){padding-top:1.5em;
+    &.is-fixed{@include prefix((transform: translateY(0)))}
+    .u-box{
+      &:after, &:before{display:none}
+    }
+  }
 }
 .c-loader{height:2px; width: 100%; background-color:$red; position: absolute; top:40%; z-index: -3; @include prefix((transform-origin:0% 0%)); @include prefix((transform: scale3d(0,1,1)));
   .is-exiting &{@include scaleInLeft; @include duration(3)}
@@ -507,6 +514,7 @@ $a:0.8em;
   &.is-active{@include prefix((transform: scale3d(0.45,0.45,0.45)));
     .o-edge{@include blink; @include infinite;}
   }
+
 }
 .c-frame__left{display: inline-block; @include prefix((transform: rotate(90deg))); position: fixed; left:40px; top:17%; font-size: 0.875em; opacity: 0.5; @include prefix((transform-origin:left top 0)); z-index: 2; @include u-source-code; font-size: 0.875em;
   section{display: inline-block; margin-right: 2em;
@@ -541,6 +549,7 @@ $a:0.8em;
   .t-team &{
     &:after{content:""; position: absolute; top:0; left: 0; height: 100%;width: 100%; background-color: #fff; z-index: -2}
   }
+  a{color: $gold}
 }
 .c-contact__info{
   .c-social{padding-top: 0;
@@ -552,7 +561,8 @@ $a:0.8em;
     .u-half{width:auto; float:none; margin-bottom: 1.5em}
   }
   @include device(xs){
-    section{width:50%; float:left; padding:1.5em 0}
+    section{width:auto; float:none; padding:1.5em 0}
+    h2.u-half{margin-bottom:0}
   }
 }
 .c-profile{color:white; width: 100%; height: 100%;
@@ -603,14 +613,18 @@ $a:0.8em;
     h2{margin-left:0; font-size: 1.5em}
   }
 }
-.c-album__share{padding: 1.2em 2.2em 1em}
+.c-album__share{padding: 1.2em 2.2em 1em;
+  @include device(xs){padding:1.5em 0}
+}
 .c-album__group{margin-bottom: 2em}
 .c-album__link{padding-bottom:5em;
   h2{padding-left:0.3em; padding-bottom: 0.5em}
   figure{background-blend-mode: luminosity}
 }
 .c-share{padding-top: 2em}
-.c-share__wrap{@extend .clear; padding: 0.75em}
+.c-share__wrap{@extend .clear; padding: 0.75em;
+  @include device(xs){padding:0}
+}
 .c-slider{height:100%}
 .c-slides{height: 100%;
   .swiper-slide{height: 100%}
