@@ -1,17 +1,14 @@
 	<div class="c-pop">
 		<div class="u-table">
 			<div class="u-cell">
-				<div class="c-pop__box">
+				<div class="c-pop__box s--narrow">
 					<a href="#" class="o-icon__wrap js-close-pop">
 						<span class="o-icon s--close"></span>
 					</a>
 					<div class="u-canvas u-hide"></div>
 					<div class="c-contact u-hide">
 						<div class="c-contact__wrap">
-							<section class="u-half c-contact__info">
-								<h2>Leave a Message</h2>
-							</section>
-							<section class="u-half c-contact__form c-form">
+							<section class="c-contact__form c-form">
 								<form action="<?php echo get_admin_url();?>admin-post.php" method="post">
 									<div class="u-hide">
 										<input type="hidden" name="action" value="request_quote"/>
@@ -32,7 +29,7 @@
 										<span></span>
 									</div>
 									<div class="o-input">
-										<textarea placeholder="Message" name="txt_message" rows="5"></textarea>
+										<textarea placeholder="Your Comment / Message" name="txt_message" rows="10"></textarea>
 									</div>
 									<div class="o-submit">
 										<button>
@@ -79,7 +76,7 @@
 		</ul>
 		<a href="#" class="o-icon__wrap c-chat js-show-contact">
 			<span class="o-icon s--cht"></span>
-			<div class="c-msg__btn"><span>Leave Message</span></div>
+			<div class="c-msg__btn"><span>Talk to Us</span></div>
 		</a>
 		<a href="#" class="o-icon__wrap c-top js-top" title="Back to Top"><span class="o-icon s--tp"></span></a>
 	</div>

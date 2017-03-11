@@ -247,7 +247,7 @@
 				}
 				if(isset($_POST['slt_event'])){
 					$event = trim($_POST['slt_event']);
-					$emailto = 'info@paramount.ug';
+					$emailto = 'ask@paramount.ug';
 					$body = 'Email: '.$email."\n".'Name: '.$name."\n".'Phone Number: '.$number."\n".'Event: '.$event;
 					$headers = 'From: '.$name.' <'.$emailto.'>' . "\r\n" . 'Reply-To: ' . $email;
 					wp_mail($emailto, 'Request for Quotation', $body, $headers);	
@@ -255,7 +255,7 @@
 				}
 				if(isset($_POST['txt_message'])){
 					$message = trim($_POST['txt_message']);
-					$emailto = 'info@paramount.ug';
+					$emailto = 'ask@paramount.ug';
 					$body = 'Email: '.$email."\n".'Name: '.$name."\n".'Phone Number: '.$number."\n".'Message: '.$message;
 					$headers = 'From: '.$name.' <'.$emailto.'>' . "\r\n" . 'Reply-To: ' . $email;
 					wp_mail($emailto, 'Paramount Website Message', $body, $headers);	

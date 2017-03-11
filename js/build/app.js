@@ -249,20 +249,22 @@ jQuery(document).ready(function($) {
 	});
 
 	$(window).scroll(function() {
-	   if($(window).scrollTop() + $(window).height() == $(document).height()) {
-	       $('.c-msg__btn').addClass('is-visible');
-	   }
-	   else{
-	   	$('.c-msg__btn').removeClass('is-visible');
-	   }
+	   // if($(window).scrollTop() + $(window).height() == $(document).height()) {
+	   //     $('.c-msg__btn').addClass('is-visible');
+	   // }
+	   // else{
+	   // 	$('.c-msg__btn').removeClass('is-visible');
+	   // }
 
 	   if ($(window).scrollTop() > 10){
 	   		$('.c-header').addClass('is-fixed');
 	   		$('.js-top').addClass('is-visible');
+	   		$('.c-msg__btn').addClass('is-visible');
 	   }
 	   else{
 	   		$('.c-header').removeClass('is-fixed');
 	   		$('.js-top').removeClass('is-visible');
+	   		$('.c-msg__btn').removeClass('is-visible');
 	   	}
 	});
 

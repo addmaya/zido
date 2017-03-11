@@ -58,7 +58,6 @@
 		<?php if ($pjt_albums): ?>
 			<?php foreach ($pjt_albums as $pjt_album): ?>
 				<div class="c-album__group">
-					<h2><?php echo $pjt_album['pmt_album_title']; ?></h2>
 					<div class="clear">
 						<?php 
 							$photos = $pjt_album['pmt_album_gallery'];
