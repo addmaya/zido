@@ -61,69 +61,52 @@
 					<div class="clear">
 						<?php 
 							$photos = $pjt_album['pmt_album_gallery'];
-							$landscapes = array();
-							$portraits = array();
-						?>
-						<?php foreach ($photos as $photo):
-							$photo_width = $photo['width'];
-							$photo_height = $photo['height'];
+							$i = 0;
+							foreach ($photos as $photo) {
+								$photo_width = $photo['width'];
+								$photo_height = $photo['height'];
 
-							if ($photo_width > $photo_height){
-								array_push($landscapes, $photo);
-							}
-							else{
-								array_push($portraits, $photo);
+								if ($photo_width > $photo_height){
+									$photos[$i]['ratio'] = 1;
+								}
+								else{
+									$photos[$i]['ratio'] = 0;
+								}
+
+								$i++;
 							}
 						?>
-						<?php endforeach ?>
-						
-						<?php 
-							$l=1; 
-							$landscapes_count = count($landscapes);
-							foreach ($landscapes as $photo): 
-							$photo_url = $photo['url'];
-							$photo_thumb = $photo['sizes']['large'];
+						<?php $portrait_count = 0; $index = 0; foreach ($photos as $photo): 
+							$photo_full = $photo['url'];
+							$photo_large = $photo['sizes']['large'];
 							$photo_caption = $photo['caption'];
-							if($landscapes_count > 5){
-								if($l > 5){
-									$l = 1;
+
+							if($photo['ratio'] == 0){
+								$portrait_count++;
+								if(($photos[$index+1]['ratio']==1) && !($portrait_count % 2 == 0)){
+									$class = 'u-half s--solo';
+								}
+								else {
+									$class = 'u-half';
 								}
 							}
+							else{
+								$portrait_count = 0;
+								$class = 'u-full';
+							}
 						?>
-							<article class="u-full o-photo <?php if(($l == 4) || ($l == 5)){echo 's--square';} ?>" data-aos="fade-up" data-aos-duration="700">
+							<article class="o-photo <?php echo $class; ?>" data-aos="fade-up" data-aos-duration="700">
 								<section>
 									<div class="o-spinner__wrap"><div class="o-spinner"></div></div>
-									<figure class="js-lazy" data-thumb="<?php echo $photo_url; ?>" data-thumb-medium="<?php echo $photo_thumb; ?>"></figure>
+									<figure class="js-lazy" data-thumb="<?php echo $photo_full; ?>" data-thumb-medium="<?php echo $photo_large; ?>"></figure>
 									<?php if ($photo_caption): ?>
 										<div class="o-caption">
 											<p><?php echo $photo_caption; ?></p>
 										</div>
 									<?php endif; ?>
 								</section>
-							</article>
-						<?php $l++; endforeach ?>
-
-						<?php 
-							$p=1; 
-							$portraits_count = count($portraits);
-							foreach ($portraits as $photo): 
-							$photo_url = $photo['url'];
-							$photo_thumb = $photo['sizes']['large'];
-							$photo_caption = $photo['caption'];
-						?>
-							<article class="u-half o-photo" data-aos="fade-up" data-aos-duration="700">
-								<section>
-									<div class="o-spinner__wrap"><div class="o-spinner"></div></div>
-									<figure class="js-lazy" data-thumb="<?php echo $photo_url; ?>" data-thumb-medium="<?php echo $photo_thumb; ?>"></figure>
-									<?php if ($photo_caption): ?>
-										<div class="o-caption">
-											<p><?php echo $photo_caption; ?></p>
-										</div>
-									<?php endif; ?>
-								</section>
-							</article>
-						<?php $p++; endforeach ?>
-
+							</article>	
+						<?php $index++; endforeach ?>
 					</div>
 				</div>
 			<?php endforeach ?>

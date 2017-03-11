@@ -42,8 +42,8 @@ $powerEase: cubic-bezier(0.46, -0.01, 0, 0.99);
 @mixin u-source-code{font-family: 'Source Code Pro', monospace}
 @mixin u-tt(){@include prefix((transition: transform 0.5s $powerEase))}
 @mixin lazy(){
-  &:before{position: absolute; z-index:2; width: 100%; height: 100%; content: ""; top:0; left: 0; @include prefix((transform-origin:100% 0%)); background-color: #e2e1d1; @include prefix((transition: transform 0.8s cubic-bezier(1, 0, 0, 1)))}
-  &.is-loaded{
+  &:before{position: absolute; z-index:2; width: 100%; height: 100%; content: ""; top:0; left: 0; @include prefix((transform-origin:100% 0%)); background-color: $grey; @include prefix((transition: transform 0.8s cubic-bezier(1, 0, 0, 1)))}
+  &.is-loaded{-webkit-background-size: cover; background-size: cover;
     &:before{@include prefix((transform: scale3d(0,1,1)))}
   }
 }
@@ -259,7 +259,7 @@ p{line-height: 1.6; font-size: 0.95em;
     .o-line{margin:1em}
   }
 }
-.o-album__cover{position: absolute; width: 100%; height: 100%; top:0; left:0; background-color: $grey; z-index: 2; background-position: center; background-size: cover; background-repeat: no-repeat; @include u-tt; @include lazy();
+.o-album__cover{position: absolute; width: 100%; height: 100%; top:0; left:0; background-color: $grey; z-index: 2; background-position: center; background-repeat: no-repeat; @include u-tt; @include lazy(); @include image('logo-mark-grey.svg'); background-size:48px;
   &:after{position: absolute; content:""; top:0; left:0; background-color: rgba(0,0,0,0.1); z-index: 1; width: 100%; height: 100%; @include prefix((transition:background-color 0.9s ease))}
 }
 .o-album__info{position: absolute; z-index: 2; margin: 1.5em; bottom:1.5em; color: white; @include prefix((transition: color 0.5s ease));
@@ -392,14 +392,14 @@ $a:0.8em;
   .o-caption{margin:1.2em 0 2em}
   &.u-half{
     figure{padding-bottom: 150%}
+    &.s--solo{width: 100%;
+      section{width: 50%; margin: 0.75em auto}
+    }
   }
   &.u-full{
     figure{padding-bottom: 60%}
     .o-caption{width: 50%}
   }
-  // &.aos-animate{
-  //   figure:after{@include prefix((transform:scale3d(0,1,1))); @include prefix((transition-delay:0.5s))}
-  // }
   @include device(xs){margin-bottom:0.75em;
     section{margin:0}
   }
@@ -647,7 +647,7 @@ $a:0.8em;
   }
   @include device(xs){margin-top:5.5em;
     section{width:auto; padding:0 0.75em 1.2em}
-    h1{font-size:1.75em}
+    h1{font-size:1.5em; padding-bottom:0}
   }
 }
 .c-slide__copy{height: 100%; width: 100%; position: absolute; top:0; left:0;}
