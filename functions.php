@@ -312,7 +312,7 @@
 	 function my_acf_admin_head() {
 	 ?>
 	     <style type="text/css">
-	         #acf_1236 {display: none}
+	         #acf-group_58c3f43471e6f, #acf-group_58c4665bdf1d3{display: none}
 	     </style>
 	     <?php
 	 }

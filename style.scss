@@ -281,8 +281,20 @@ p{line-height: 1.6; font-size: 0.95em;
   }
 }
 .o-input{margin-bottom: 0.75em;
-  select, input, textarea{width: 100%; padding:1em 0 0.4em; border-bottom: solid 2px $red; @include u-poppins; font-size: 0.875em}
+  select, input, textarea{width: 100%; padding:1em 0 0.4em; border-bottom: solid 2px $red; @include u-poppins; font-size: 0.875em;
+    &:focus{border-bottom-color: $black}
+  }
   select{@include image('arrow-down.svg'); background-repeat:no-repeat; background-position: right center; background-size:18px}
+  &.s--inline{
+    input,select{width: 4em; text-align: center; margin-right: 0.5em;}
+  }
+}
+.o-check{margin-bottom: 0.625em;
+  input{border: solid 2px $red; padding: 0.625em; background-size: 12px; background-repeat: no-repeat; background-position: center;
+    &:checked{@include image('check-red.svg'); border-color: $black}
+    &:hover{@include image('check-red.svg')}
+  }
+  label{position: relative; top:-0.625em;}
 }
 .o-submit{margin-top: 2.5em;
   button{cursor: pointer;
@@ -402,6 +414,9 @@ $a:0.8em;
   }
   @include device(xs){margin-bottom:0.75em;
     section{margin:0}
+    &.u-half{
+      &.s--solo section{margin:0; width:auto}
+    }
   }
 }
 .o-caption{font-size: 0.875em}
@@ -699,12 +714,27 @@ $a:0.8em;
 .c-contact__wrap{@extend .clear; padding: 1.5em 1.5em 2em;
   .c-contact__info{width: 40%; padding-top: 1em}
 }
-.c-form__status{font-size:0.75em; @include  u-source-code; text-transform: uppercase; padding:2em 0.5em; display: block}
+.c-form__status{font-size:0.75em; @include u-source-code; text-transform: uppercase; padding:2em 0.5em; display: block}
 .c-form{
+  &.s--quote{padding-left: 0.75em}
   @include device(sm){
     .u-half{float:none; width:auto}
+    &.s--quote{padding:0}
+  }
+  label{cursor: pointer;
+    &:hover{color: darken($red, 20%)}
   }
 }
+.c-form-group{padding-top:2em;
+  h3{padding-bottom:1em; color: $black; font-weight: 700}
+  fieldset{padding-bottom: 2em; @extend .clear}
+  legend{text-transform: uppercase; @include u-source-code; font-size: 0.875em; display: block; padding-bottom: 1.2em; font-weight: bold; color: $black;}
+  label{font-size: 0.875em}
+  section{
+    .s--inline{display: inline-block; margin-right: 1.2em;}
+  }
+}
+
 .c-credits__wrap{padding-top:2em}
 .c-credits{@include  u-source-code; font-size: 0.75em; text-transform: uppercase; @extend .clear; padding-top: 0.5em;
   >li{display: block; margin-bottom:0.5em; margin-right: 0.5em; float: left;

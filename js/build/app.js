@@ -323,9 +323,9 @@ jQuery(document).ready(function($) {
 		                valueNotEquals: "E-mail",
 		                required: true
 		            },
-		            txt_message: {
-		                valueNotEquals: "Message",
-		                required: true
+		            eventOption:{
+		            	valueNotEquals: "",
+		            	required: true
 		            }
 		        },
 		        errorPlacement: function(error, element) {},
@@ -341,10 +341,9 @@ jQuery(document).ready(function($) {
 		                success: function() {
 		                	$('.c-form button').removeClass('is-submiting');
 		                    $('.c-form .c-form__status').html('Thank you. Your Request was sent');
-		                    $('.c-form form input[name=txt_name]').val($('input[name=txt_name]').attr('placeholder'));
-		                    $('.c-form form input[name=txt_email]').val($('input[name=txt_email]').attr('placeholder'));
-		                    $('.c-form form input[name=txt_telephone]').val($('input[name=txt_telephone]').attr('placeholder'));
-		                    ('.c-form textarea').val($('textarea').attr('placeholder'));
+		                    $('.c-form form').each(function(){
+		                    	this.reset();
+		                    });
 		                }
 		            });
 		        }
@@ -353,21 +352,40 @@ jQuery(document).ready(function($) {
 		else {
 		    $('.c-form form').ajaxForm({
 		        beforeSend: function() { 
-		        	
 		            $('.c-form button').addClass('is-submiting');
 		            $('.c-form button span').html('Sending');
 		        },
 		        success: function() {
-		        	
 		        	$('.c-form button').removeClass('is-submiting');
 		            $('.c-form .c-form__status').html('Thank you. Your Request was sent');
 		            $('.c-form button span').html('Send');
-		            $('.c-form form input[type=text]').val('');
-		            $('.c-form textarea').val('');
+		            $('.c-form form').each(function(){
+		            	this.reset();
+		            });
 		        },
 		        resetForm: true
 		    });
 		}
+		$('#eventOption').on('change', function() {
+			var me = $(this);
+			var eventValue = me.val();
+			var weddingForm = $('#c-wedding');
+			var engagementForm = $('#c-engagement');
+			var otherForm = $('#c-other');
+
+			if(eventValue == '1'){
+				$('.c-form-group').not('#c-wedding').addClass('u-hide');
+				weddingForm.removeClass('u-hide');
+			}
+			if(eventValue == '2'){
+				$('.c-form-group').not('#c-engagement').addClass('u-hide');
+				engagementForm.removeClass('u-hide');
+			}
+			if(eventValue == '3'){
+				$('.c-form-group').not('#c-other').addClass('u-hide');
+				otherForm.removeClass('u-hide');
+			}
+		});
 	}
 
 	//home
