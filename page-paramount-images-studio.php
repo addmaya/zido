@@ -104,7 +104,7 @@
 			</section>
 			<footer>
 				<?php 
-					$weddings = new WP_Query(array('posts_per_page'=>-1, 'post_type'=>'wedding', 'meta_query'=> array(array('key'=>'pmt_album', 'value'=>'0', 'compare'=> '!=')))); 
+					$weddings = new WP_Query(array('posts_per_page'=>-1, 'post_type'=>'wedding', 'meta_query'=> array(array('key'=>'pmt_album', 'value'=>'', 'compare'=> '!=')))); 
 					$weddings_count = $weddings->post_count;
 				?>
 				<a href="<?php echo home_url(); ?>/wedding-photography" class="o-button s--big">
