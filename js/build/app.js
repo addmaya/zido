@@ -1,4 +1,5 @@
 jQuery(document).ready(function($) {
+	
 	//projects
 	var p = parseInt(posts_per_page);
 	function fetchProjects(){
@@ -311,19 +312,19 @@ jQuery(document).ready(function($) {
 		    );
 		    $('.c-form form').validate({
 		        rules: {
-		            txt_name: {
+		            userName: {
 		                valueNotEquals: "Your Name",
 		                required: true
 		            },
-		            txt_telephone: {
+		            userTelephone: {
 		                valueNotEquals: "Telephone",
 		                required: true
 		            },
-		            txt_email: {
+		            userEmail: {
 		                valueNotEquals: "E-mail",
 		                required: true
 		            },
-		            eventOption:{
+		            userEvent:{
 		            	valueNotEquals: "",
 		            	required: true
 		            }
@@ -366,7 +367,7 @@ jQuery(document).ready(function($) {
 		        resetForm: true
 		    });
 		}
-		$('#eventOption').on('change', function() {
+		$('#userEvent').on('change', function() {
 			var me = $(this);
 			var eventValue = me.val();
 			var weddingForm = $('#c-wedding');

@@ -233,42 +233,111 @@
 	add_action('admin_post_request_quote', 'request_quote');
 	add_action('admin_post_nopriv_request_quote', 'request_quote');
 	
+	function return_yes($a){
+		if($a){return 'Yes';}
+	}
+	function return_input_value($a){
+		if(isset($_POST[$a])){
+			return trim($_POST[$a]);
+		}
+	}
+
+	function return_email($a){
+		if(isset($_POST[$a])){
+			$userEmail = trim($_POST[$a]));
+			if(($userEmail != 'Email') && (!preg_match("/^[[:alnum:]][a-z0-9_.-]*@[a-z0-9.-]+\.[a-z]{2,4}$/i", $userEmail))){
+				return $userEmail;
+			}
+		}
+	}
+
 	function request_quote(){
 		if (isset($_POST['form_spam_key']) && $_POST['form_spam_key']==''){
 			if(isset($_POST['form_nonce']) || wp_verify_nonce($_POST['form_nonce'], 'form_nonce_key')){
-				if(isset($_POST['txt_name'])){
-					$name = trim($_POST['txt_name']);
+				if(isset($_POST['userName'])){
+					$name = trim($_POST['userName']);
 				}
-				if(isset($_POST['txt_telephone'])){
-					$number = trim($_POST['txt_telephone']);
+				if(isset($_POST['userTelephone'])){
+					$number = trim($_POST['userTelephone']);
 				}			
-				if(isset($_POST['txt_email'])){
-					$email = trim($_POST['txt_email']);
+				if(isset($_POST['userEmail'])){
+					$email = return_email('userEmail');
 				}
-				if(isset($_POST['slt_event'])){
-					$event = trim($_POST['slt_event']);
+				if(isset($_POST['userEvent'])){
+					$event = trim($_POST['userEvent']);
 					$emailto = 'ask@paramount.ug';
-					$body = 'Email: '.$email."\n".'Name: '.$name."\n".'Phone Number: '.$number."\n".'Event: '.$event;
+
+					$wedding_args = array('weddingDate', );
+					
+					if($event == '1'){
+						$body = 'Email: '.$email."\n".
+								'Name: '.$name."\n".
+								'Phone Number: '.$number."\n".
+								'Event: Wedding'."\n".
+								'Wedding Date: '.return_input_value('weddingDate')."\n".
+								'Wedding Location: '.return_input_value('weddingLocation')."\n".
+								'Camera Men: '.return_input_value('cameramenCount')."\n".
+								'Projectors: '.return_input_value('projectorCount')."\n".
+								'Plasma Screens: '.return_input_value('plasmaCount')."\n".
+								'LED Screens: '.return_input_value('ledCount')."\n".
+								'Recording Hours: '.return_input_value('recordingHours')."\n".
+								'Video Lenght: '.return_input_value('videoLength')."\n".
+								'Photographers: '.return_input_value('photographersCount')."\n".
+								'Photo Books: '.return_input_value('photoBookCount')."\n".
+								'Guest Books: '.return_input_value('guestBookCount')."\n".
+								'Signing Photos: '.return_input_value('signingPhotoCount')."\n".
+								'Boards: '.return_input_value('boardsCount')."\n".
+								'Boards Size: '.return_input_value('boardSize')."\n".
+								'Same Day Edit: '.return_yes(return_input_value('sameDay'))."\n".
+								'Photo Booth: '.return_yes(return_input_value('photoBooth'))."\n".
+								'Engagement Shoot: '.return_yes(return_input_value('memoryLane'))."\n".
+								'Post Wedding Shoot: '.return_yes(return_input_value('engagementShoot'))."\n".
+								'Wedding Banner: '.return_yes(return_input_value('postWeddingShoot'))."\n".
+								'Bridal Shower: '.return_yes(return_input_value('weddingBanner'))."\n".
+								'Bridal Shower: '.return_yes(return_input_value('bridalShower'))."\n".
+								'Bachelorette Party: '.return_yes(return_input_value('bacheloretteParty'))."\n".
+								'Bachelor Party: '.return_yes(return_input_value('bachelorParty'))."\n".
+								'Kasuzekatya: '.return_yes(return_input_value('kasuzekatya'))."\n".
+								'Comment: '.return_input_value('weddingComment')."\n";
+					}
+
+					if($event == '2'){
+						$body = 'Email: '.$email."\n".
+								'Name: '.$name."\n".
+								'Phone Number: '.$number."\n".
+								'Event: Engagement'."\n".
+								'Engagement Date: '.return_input_value('engagementDate')."\n".
+								'Engagement Location: '.return_input_value('engagementLocation')."\n".
+								'Engagement Video: '.return_yes(return_input_value('engagementVideo'))."\n".
+								'Comment: '.return_input_value('engagementComment')."\n";
+					}
+
+					if($event == '3'){
+						$body = 'Email: '.$email."\n".
+								'Name: '.$name."\n".
+								'Phone Number: '.$number."\n".
+								'Event: Other'."\n".
+								'Comment: '.return_input_value('otherComment')."\n";
+					}
+
 					$headers = 'From: '.$name.' <'.$emailto.'>' . "\r\n" . 'Reply-To: ' . $email;
 					wp_mail($emailto, 'Request for Quotation', $body, $headers);	
 					echo $body;
 				}
-				if(isset($_POST['txt_message'])){
-					$message = trim($_POST['txt_message']);
+				if(isset($_POST['userMessage'])){
+					$message = trim($_POST['userMessage']);
 					$emailto = 'ask@paramount.ug';
 					$body = 'Email: '.$email."\n".'Name: '.$name."\n".'Phone Number: '.$number."\n".'Message: '.$message;
 					$headers = 'From: '.$name.' <'.$emailto.'>' . "\r\n" . 'Reply-To: ' . $email;
-					wp_mail($emailto, 'Paramount Website Message', $body, $headers);	
+					wp_mail($emailto, 'Paramount Website Comment', $body, $headers);	
 					echo $body;
 				}
 			}
 			else {
-				echo 'LOVE';
 				exit;
 			}	
 		}
 		else {
-			echo 'LOVE';
 			exit;
 		}	
 	}

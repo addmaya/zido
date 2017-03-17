@@ -14,7 +14,7 @@
 					$button_link = get_field('pmt_slide_link');
 				?>
 				<div class="swiper-slide scene" <?php if($s < 1){echo 'data-swiper-autoplay="8000"';} ?>>
-					<a href="<?php if($button_link){echo $button_link;} else{echo '#talk';} ?>" class="c-slide layer" data-thumb="<?php echo $slide_thumb['sizes']['large']; ?>" data-depth="0.20">
+					<a href="<?php if($button_link){echo $button_link;} else{echo '#talk';} ?>" class="c-slide layer" data-thumb="<?php echo $slide_thumb['url']; ?>" data-depth="0.20">
 						<div class="c-slide__copy layer" data-depth="0.40">
 							<section>
 								<h1><?php echo $slide_title; ?></h1>

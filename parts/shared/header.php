@@ -17,19 +17,19 @@
 									</div>
 
 									<div class="o-input">
-										<input type="text" name="txt_name" placeholder="Your Name"/>
+										<input type="text" name="userName" placeholder="Your Name"/>
 										<span></span>
 									</div>
 									<div class="o-input">
-										<input type="email" name="txt_email" placeholder="E-mail"/>
+										<input type="email" name="userEmail" placeholder="E-mail"/>
 										<span></span>
 									</div>
 									<div class="o-input">
-										<input type="number" name="txt_telephone" placeholder="Telephone"/>
+										<input type="number" name="userTelephone" placeholder="Telephone"/>
 										<span></span>
 									</div>
 									<div class="o-input">
-										<textarea placeholder="Your Comment / Message" name="txt_message" rows="10"></textarea>
+										<textarea placeholder="Your Comment / Message" name="userMessage" rows="10"></textarea>
 									</div>
 									<div class="o-submit">
 										<button>

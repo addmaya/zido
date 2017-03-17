@@ -57,16 +57,16 @@
 									</div>
 									<div class="clear">
 										<div class="o-input u-half">
-											<input type="text" name="txt_name" placeholder="Your Name" required/>
+											<input type="text" name="userName" placeholder="Your Name" required/>
 										</div>
 										<div class="o-input u-half">
-											<input type="email" name="txt_email" placeholder="E-mail" required/>
+											<input type="email" name="userEmail" placeholder="E-mail" required/>
 										</div>
 										<div class="o-input u-half">
-											<input type="number" name="txt_telephone" placeholder="Telephone" required/>
+											<input type="number" name="userTelephone" placeholder="Telephone" required/>
 										</div>
 										<div class="o-input u-half">
-											<select id="eventOption" name="eventOption" required>
+											<select id="userEvent" name="userEvent" required>
 												<option disabled selected value="">Select Event</option>
 												<option value="1">Wedding</option>
 												<option value="2">Engagement</option>
@@ -90,38 +90,38 @@
 											<fieldset class="u-half">
 												<legend>Video</legend>
 												<div class="o-input s--inline">
-													<input type="text" id="cameramenCount" name="cameramenCount"/>
+													<input type="number" id="cameramenCount" name="cameramenCount"/>
 													<label for="cameramenCount">Camera Men</label>
 												</div>
 												<div class="o-input s--inline">
-													<input type="text" id="projectorCount" name="projectorCount"/>
+													<input type="number" id="projectorCount" name="projectorCount"/>
 													<label for="projectorCount">Projectors</label>
 												</div>
 												<div class="o-input s--inline">
-													<input type="text" id="plasmaCount" name="plasmaCount"/>
+													<input type="number" id="plasmaCount" name="plasmaCount"/>
 													<label for="plasmaCount">Plasma Screens</label>
 												</div>
 												<div class="o-input s--inline">
-													<input type="text" id="ledCount" name="ledCount"/>
+													<input type="number" id="ledCount" name="ledCount"/>
 													<label for="ledCount">LED Screens</label>
 												</div>
 												<div class="o-input s--inline">
 													<select name="recordingHours" id="recordingHours">
-														<option disabled selected>-</option>
-														<option value="0">24h</option>
-														<option value="1">10h</option>
-														<option value="2">8h</option>
-														<option value="3">6h</option>
+														<option disabled selected value="">-</option>
+														<option value="24h">24h</option>
+														<option value="10h">10h</option>
+														<option value="8h">8h</option>
+														<option value="6h">6h</option>
 													</select>
 													<label for="recordingHours">Recording Hours</label>
 												</div>
 												<div class="o-input s--inline">
 													<select name="videoLength" id="videoLength">
-														<option disabled selected>-</option>
-														<option value="0">1h</option>
-														<option value="1">2h</option>
-														<option value="2">4h</option>
-														<option value="3">6h</option>
+														<option disabled selected value="">-</option>
+														<option value="1h">1h</option>
+														<option value="2h">2h</option>
+														<option value="4h">4h</option>
+														<option value="6h">6h</option>
 													</select>
 													<label for="videoLength">Video Length</label>
 												</div>
@@ -154,10 +154,10 @@
 													</div>
 													<div class="o-input s--inline">
 														<select name="boardSize" id="boardSize">
-															<option disabled selected>Size</option>
-															<option value="0">A3</option>
-															<option value="1">A2</option>
-															<option value="2">A1</option>
+															<option disabled selected value="">Size</option>
+															<option value="A3">A3</option>
+															<option value="A2">A2</option>
+															<option value="A1">A1</option>
 														</select>
 													</div>
 												</section>
@@ -226,11 +226,6 @@
 											</div>
 										</fieldset>
 										<fieldset>
-											<div class="o-check">
-												<input type="checkbox" id="engagementPhotography" name="engagementPhotography" value="1">
-												<label for="engagementPhotography">Photography</label>
-												
-											</div>
 											<div class="o-check">
 												<input type="checkbox" id="engagementVideo" name="engagementVideo" value="1">
 												<label for="engagementVideo">Video</label>
