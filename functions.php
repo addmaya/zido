@@ -270,6 +270,10 @@
 				else{
 					$albumCount = return_input_value('otherAlbumCount');
 				}
+
+				$headers[] = 'From: '.$name.' <'.$email.'>';
+				$headers[] = 'Reply-To: '.$name.' <'.$email.'>';
+
 				if(isset($_POST['userEvent'])){
 					$event = trim($_POST['userEvent']);			
 					if($event == '1'){
@@ -326,13 +330,11 @@
 								'Comment: '.return_input_value('otherComment')."\n";
 					}
 
-					$headers = 'From: '.$name.' <'.$emailto.'>' . "\r\n" . 'Reply-To: ' . $email;
 					wp_mail($emailto, 'Request for Quotation', $body, $headers);	
 				}
 				if(isset($_POST['userMessage'])){
 					$message = trim($_POST['userMessage']);
 					$body = 'Email: '.$email."\n".'Name: '.$name."\n".'Phone Number: '.$number."\n".'Message: '.$message;
-					$headers = 'From: '.$name.' <'.$emailto.'>' . "\r\n" . 'Reply-To: ' . $email;
 					wp_mail($emailto, 'Paramount Website Comment', $body, $headers);	
 				}
 			}
