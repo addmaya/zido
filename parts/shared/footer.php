@@ -39,8 +39,7 @@
 													<li><a target="_blank" href="<?php echo $pmt_social_link; ?>" class="o-icon__wrap"><span class="o-icon js-lazy" data-thumb="<?php echo $pmt_social_icon; ?>"></span></a></li>
 												<?php endforeach ?>
 											</ul>
-										</section>
-										
+										</section>							
 									</div>
 								</div>
 							</section>
@@ -75,49 +74,53 @@
 										</div>
 									</div>
 									<div id="c-wedding" class="c-form-group u-hide clear">
-										<h3>Wedding</h3>
+										<p>We deliver top quality photography and video productions built around your story. Enter your wedding preferences below.</p>
 										<fieldset>
 											<div class="o-input u-half">
 												<label for="weddingDate">Date</label>
 												<input type="text" id="weddingDate" name="weddingDate"/>
 											</div>
 											<div class="o-input u-half">
-												<label for="weddingLocation">Location</label>
+												<label for="weddingLocation">Venue</label>
 												<input type="text" id="weddingLocation" name="weddingLocation"/>
 											</div>
 										</fieldset>
 										<div class="clear">
 											<fieldset class="u-half">
-												<legend>Video</legend>
+												<legend>Photography</legend>
 												<div class="o-input s--inline">
-													<input type="number" id="cameramenCount" name="cameramenCount"/>
-													<label for="cameramenCount">Camera Men</label>
+													<input type="number" id="photoBookCount" name="photoBookCount" />
+													<label for="photoBookCount">No. Albums</label>	
 												</div>
 												<div class="o-input s--inline">
-													<input type="number" id="projectorCount" name="projectorCount"/>
-													<label for="projectorCount">Projectors</label>
-												</div>
-												<div class="o-input s--inline">
-													<input type="number" id="plasmaCount" name="plasmaCount"/>
-													<label for="plasmaCount">Plasma Screens</label>
-												</div>
-												<div class="o-input s--inline">
-													<input type="number" id="ledCount" name="ledCount"/>
-													<label for="ledCount">LED Screens</label>
-												</div>
-												<div class="o-input s--inline">
-													<select name="recordingHours" id="recordingHours">
+													<select name="albumCount" id="albumCount">
 														<option disabled selected value="">-</option>
-														<option value="24h">24h</option>
-														<option value="10h">10h</option>
-														<option value="8h">8h</option>
-														<option value="6h">6h</option>
+														<option value="150">150</option>
+														<option value="200">200</option>
+														<option value="300">300</option>
+														<option value="400">400</option>
+														<option value="other">Other</option>
 													</select>
-													<label for="recordingHours">Recording Hours</label>
+													<label for="albumCount">Photos in Album</label>
 												</div>
+												<div id="otherCount" class="o-input" style="display:none">
+													<label for="otherAlbumCount">Specify No. of Photos</label>
+													<input type="number" id="otherAlbumCount" name="otherAlbumCount"/>
+												</div>
+												<div class="o-input s--inline">
+													<input type="number" id="photographersCount" name="photographersCount" />
+													<label for="photographersCount">Photographers</label>
+												</div>
+											</fieldset>
+											<fieldset class="u-half">
+												<legend>Video</legend>
 												<div class="o-input s--inline">
 													<select name="videoLength" id="videoLength">
 														<option disabled selected value="">-</option>
+														<option value="5min">5 min</option>
+														<option value="15min">15 min</option>
+														<option value="30min">30 min</option>
+														<option value="45min">45 min</option>
 														<option value="1h">1h</option>
 														<option value="2h">2h</option>
 														<option value="4h">4h</option>
@@ -125,49 +128,30 @@
 													</select>
 													<label for="videoLength">Video Length</label>
 												</div>
-											</fieldset>
-											<fieldset class="u-half">
-												<legend>Photography</legend>
-												<div class="o-input s--inline">
-													<input type="number" id="photographersCount" name="photographersCount" />
-													<label for="photographersCount">Photographers</label>
+												<div class="o-input s--inline">			
+													<select name="recordingHours" id="recordingHours">
+														<option disabled selected value="">-</option>
+														<option value="2h">2h</option>
+														<option value="4h">4h</option>
+														<option value="6h">6h</option>
+														<option value="8h">8h</option>
+														<option value="10h">10h</option>
+														<option value="24h">24h</option>
+														<option value="Unlimited">Unlimited</option>
+													</select>
+													<label for="recordingHours">Hours of Recording</label>
 												</div>
 												<div class="o-input s--inline">
-													<input type="number" id="photoBookCount" name="photoBookCount" />
-													<label for="photoBookCount">Photo Book (A3, 25 sheets)</label>
-													
+													<input type="number" id="cameramenCount" name="cameramenCount"/>
+													<label for="cameramenCount">Cameramen</label>
 												</div>
-												<div class="o-input s--inline">
-													<input type="number" id="guestBookCount" name="guestBookCount"/>
-													<label for="guestBookCount">Guest Book</label>
-													
-												</div>
-												<div class="o-input s--inline">
-													<input type="number" id="signingPhotoCount" name="signingPhotoCount"/>
-													<label for="signingPhotoCount">Signing Photo</label>
-													
-												</div>
-												<section class="clear">
-													<div class="o-input s--inline">
-														<input type="number" id="boardsCount" name="boardsCount"/>
-														<label for="boardsCount">Boards</label>
-													</div>
-													<div class="o-input s--inline">
-														<select name="boardSize" id="boardSize">
-															<option disabled selected value="">Size</option>
-															<option value="A3">A3</option>
-															<option value="A2">A2</option>
-															<option value="A1">A1</option>
-														</select>
-													</div>
-												</section>
 											</fieldset>
 										</div>
 										<fieldset>
 											<legend>Extras</legend>
 											<div class="o-check">
-												<input type="checkbox" id="sameDay" name="sameDay" value="1">
-												<label for="sameDay">Same Day Video Edit</label>
+												<input type="checkbox" id="softCopy" name="softCopy" value="1">
+												<label for="softCopy">Soft Copy Photos</label>
 											</div>
 											<div class="o-check">
 												<input type="checkbox" id="photoBooth" name="photoBooth" value="1">
@@ -205,6 +189,34 @@
 												<input type="checkbox" id="kasuzekatya" name="kasuzekatya" value="1">
 												<label for="kasuzekatya">Kaasuzekatya</label>
 											</div>
+											<div class="o-check">
+												<input type="checkbox" id="sameDay" name="sameDay" value="1">
+												<label for="sameDay">Same Day Video Edit</label>
+											</div>
+											<div class="o-input s--inline">
+												<input type="number" id="projectorCount" name="projectorCount"/>
+												<label for="projectorCount">No. Projectors</label>
+											</div>
+											<div class="o-input s--inline">
+												<input type="number" id="plasmaCount" name="plasmaCount"/>
+												<label for="plasmaCount">Plasma Screens</label>
+											</div>
+											<div class="o-input s--inline">
+												<input type="number" id="ledCount" name="ledCount"/>
+												<label for="ledCount">LED Screens</label>
+											</div>
+											<div class="o-input s--inline">
+												<input type="number" id="guestBookCount" name="guestBookCount"/>
+												<label for="guestBookCount">Guest Books</label>
+											</div>
+											<div class="o-input s--inline">
+												<input type="number" id="signingPhotoCount" name="signingPhotoCount"/>
+												<label for="signingPhotoCount">Signing Photos</label>
+											</div>
+											<div class="o-input s--inline">
+												<input type="number" id="boardsCount" name="boardsCount"/>
+												<label for="boardsCount">Wall Hangings</label>
+											</div>
 										</fieldset>
 										<fieldset>
 											<legend>Comment</legend>
@@ -214,22 +226,40 @@
 										</fieldset>
 									</div>
 									<div id="c-engagement" class="u-hide c-form-group">
-										<h3>Engagement</h3>
+										<p>Our engagement photography will amaze you. We select the best location for your story but your free to tell us your preference.</p>
 										<fieldset>
 											<div class="o-input u-half">
 												<label for="engagementDate">Date</label>
 												<input type="text" id="engagementDate" name="engagementDate"/>
 											</div>
 											<div class="o-input u-half">
-												<label for="engagementLocation">Location</label>
+												<label for="engagementLocation">Venue</label>
 												<input type="text" id="engagementLocation" name="engagementLocation"/>
 											</div>
 										</fieldset>
 										<fieldset>
+											<div class="o-input s--inline">			
+												<select name="shootHours" id="shootHours">
+													<option disabled selected value="">-</option>
+													<option value="1h">1h</option>
+													<option value="3h">3h</option>
+													<option value="6h">6h</option>
+													<option value="9h">9h</option>
+													<option value="12h">12h</option>
+													<option value="24h">24h</option>
+													<option value="Unlimited">Unlimited</option>
+												</select>
+												<label for="shootHours">Hours of Shooting</label>
+											</div>
+											<div class="o-check">
+												<input type="checkbox" id="engagementSoftCopy" name="engagementSoftCopy" value="1">
+												<label for="engagementSoftCopy">Soft Copy Photos</label>
+											</div>
 											<div class="o-check">
 												<input type="checkbox" id="engagementVideo" name="engagementVideo" value="1">
-												<label for="engagementVideo">Video</label>
+												<label for="engagementVideo">Album</label>
 											</div>
+											
 										</fieldset>
 										<fieldset>
 											<legend>Comment</legend>
@@ -239,9 +269,8 @@
 										</fieldset>
 									</div>
 									<div id="c-other" class="u-hide c-form-group">
-										<h3>Other</h3>
 										<fieldset>
-											<legend>Comment</legend>
+											<legend>Enter details about event</legend>
 											<div class="o-input">
 												<textarea name="otherComment" id="otherComment" rows="5"></textarea>
 											</div>

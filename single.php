@@ -57,58 +57,54 @@
 	<div class="u-box">
 		<?php if ($pjt_albums): ?>
 			<?php foreach ($pjt_albums as $pjt_album): ?>
-				<div class="c-album__group">
-					<div class="clear">
-						<?php 
-							$photos = $pjt_album['pmt_album_gallery'];
-							$i = 0;
-							foreach ($photos as $photo) {
-								$photo_width = $photo['width'];
-								$photo_height = $photo['height'];
+				<?php 
+					$photos = $pjt_album['pmt_album_gallery'];
+					$i = 0;
+					foreach ($photos as $photo) {
+						$photo_width = $photo['width'];
+						$photo_height = $photo['height'];
 
-								if ($photo_width > $photo_height){
-									$photos[$i]['ratio'] = 1;
-								}
-								else{
-									$photos[$i]['ratio'] = 0;
-								}
+						if ($photo_width > $photo_height){
+							$photos[$i]['ratio'] = 1;
+						}
+						else{
+							$photos[$i]['ratio'] = 0;
+						}
 
-								$i++;
-							}
-						?>
-						<?php $portrait_count = 0; $index = 0; foreach ($photos as $photo): 
-							$photo_full = $photo['url'];
-							$photo_large = $photo['sizes']['large'];
-							$photo_caption = $photo['caption'];
+						$i++;
+					}
+				?>
+				<?php $portrait_count = 0; $index = 0; foreach ($photos as $photo): 
+					$photo_full = $photo['url'];
+					$photo_large = $photo['sizes']['large'];
+					$photo_caption = $photo['caption'];
 
-							if($photo['ratio'] == 0){
-								$portrait_count++;
-								if(($photos[$index+1]['ratio']==1) && !($portrait_count % 2 == 0)){
-									$class = 'u-half s--solo';
-								}
-								else {
-									$class = 'u-half';
-								}
-							}
-							else{
-								$portrait_count = 0;
-								$class = 'u-full';
-							}
-						?>
-							<article class="o-photo <?php echo $class; ?>" data-aos="fade-up" data-aos-duration="700">
-								<section>
-									<div class="o-spinner__wrap"><div class="o-spinner"></div></div>
-									<figure class="js-lazy" data-thumb="<?php echo $photo_full; ?>" data-thumb-medium="<?php echo $photo_large; ?>"></figure>
-									<?php if ($photo_caption): ?>
-										<div class="o-caption">
-											<p><?php echo $photo_caption; ?></p>
-										</div>
-									<?php endif; ?>
-								</section>
-							</article>	
-						<?php $index++; endforeach ?>
-					</div>
-				</div>
+					if($photo['ratio'] == 0){
+						$portrait_count++;
+						if(($photos[$index+1]['ratio']==1) && !($portrait_count % 2 == 0)){
+							$class = 'u-half s--solo';
+						}
+						else {
+							$class = 'u-half';
+						}
+					}
+					else{
+						$portrait_count = 0;
+						$class = 'u-full';
+					}
+				?>
+					<article class="o-photo <?php echo $class; ?>" data-aos="fade-up" data-aos-duration="700">
+						<section>
+							<div class="o-spinner__wrap"><div class="o-spinner"></div></div>
+							<figure class="js-lazy" data-thumb="<?php echo $photo_full; ?>" data-thumb-medium="<?php echo $photo_large; ?>"></figure>
+							<?php if ($photo_caption): ?>
+								<div class="o-caption">
+									<p><?php echo $photo_caption; ?></p>
+								</div>
+							<?php endif; ?>
+						</section>
+					</article>	
+				<?php $index++; endforeach ?>
 			<?php endforeach ?>
 			<div class="clear">
 				<div class="u-full c-share">

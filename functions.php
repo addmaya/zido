@@ -245,7 +245,7 @@
 	function return_email($a){
 		if(isset($_POST[$a])) {
 			$userEmail = trim($_POST[$a]);
-			if(($userEmail != 'Email') && (!preg_match("/^[[:alnum:]][a-z0-9_.-]*@[a-z0-9.-]+\.[a-z]{2,4}$/i", $userEmail))){
+			if(($userEmail != 'Email') && (preg_match("/^[[:alnum:]][a-z0-9_.-]*@[a-z0-9.-]+\.[a-z]{2,4}$/i", $userEmail))){
 				return $userEmail;
 			}
 		}
@@ -254,6 +254,7 @@
 	function request_quote(){
 		if (isset($_POST['form_spam_key']) && $_POST['form_spam_key']==''){
 			if(isset($_POST['form_nonce']) || wp_verify_nonce($_POST['form_nonce'], 'form_nonce_key')){
+				$emailto = 'ask@paramount.ug';
 				if(isset($_POST['userName'])){
 					$name = trim($_POST['userName']);
 				}
@@ -262,20 +263,22 @@
 				}			
 				if(isset($_POST['userEmail'])){
 					$email = return_email('userEmail');
+				}	
+				if(return_input_value('albumCount') != 'other'){
+					$albumCount = return_input_value('albumCount');
+				}
+				else{
+					$albumCount = return_input_value('otherAlbumCount');
 				}
 				if(isset($_POST['userEvent'])){
-					$event = trim($_POST['userEvent']);
-					$emailto = 'ask@paramount.ug';
-
-					$wedding_args = array('weddingDate', );
-					
+					$event = trim($_POST['userEvent']);			
 					if($event == '1'){
 						$body = 'Email: '.$email."\n".
 								'Name: '.$name."\n".
 								'Phone Number: '.$number."\n".
 								'Event: Wedding'."\n".
 								'Wedding Date: '.return_input_value('weddingDate')."\n".
-								'Wedding Location: '.return_input_value('weddingLocation')."\n".
+								'Wedding Venue: '.return_input_value('weddingLocation')."\n".
 								'Camera Men: '.return_input_value('cameramenCount')."\n".
 								'Projectors: '.return_input_value('projectorCount')."\n".
 								'Plasma Screens: '.return_input_value('plasmaCount')."\n".
@@ -284,10 +287,11 @@
 								'Video Lenght: '.return_input_value('videoLength')."\n".
 								'Photographers: '.return_input_value('photographersCount')."\n".
 								'Photo Books: '.return_input_value('photoBookCount')."\n".
+								'Photos in Album: '.$albumCount."\n".
+								'Soft Copy Photos: '.return_input_value('softCopy')."\n".
 								'Guest Books: '.return_input_value('guestBookCount')."\n".
 								'Signing Photos: '.return_input_value('signingPhotoCount')."\n".
 								'Boards: '.return_input_value('boardsCount')."\n".
-								'Boards Size: '.return_input_value('boardSize')."\n".
 								'Same Day Edit: '.return_yes(return_input_value('sameDay'))."\n".
 								'Photo Booth: '.return_yes(return_input_value('photoBooth'))."\n".
 								'Engagement Shoot: '.return_yes(return_input_value('memoryLane'))."\n".
@@ -306,9 +310,11 @@
 								'Name: '.$name."\n".
 								'Phone Number: '.$number."\n".
 								'Event: Engagement'."\n".
-								'Engagement Date: '.return_input_value('engagementDate')."\n".
-								'Engagement Location: '.return_input_value('engagementLocation')."\n".
-								'Engagement Video: '.return_yes(return_input_value('engagementVideo'))."\n".
+								'Date: '.return_input_value('engagementDate')."\n".
+								'Venue: '.return_input_value('engagementLocation')."\n".
+								'Shooting Hours: '.return_input_value('shootHours')."\n".
+								'Video: '.return_yes(return_input_value('engagementVideo'))."\n".
+								'Soft Copy: '.return_yes(return_input_value('engagementSoftCopy'))."\n".
 								'Comment: '.return_input_value('engagementComment')."\n";
 					}
 
@@ -322,23 +328,18 @@
 
 					$headers = 'From: '.$name.' <'.$emailto.'>' . "\r\n" . 'Reply-To: ' . $email;
 					wp_mail($emailto, 'Request for Quotation', $body, $headers);	
-					echo $body;
 				}
 				if(isset($_POST['userMessage'])){
 					$message = trim($_POST['userMessage']);
-					$emailto = 'ask@paramount.ug';
 					$body = 'Email: '.$email."\n".'Name: '.$name."\n".'Phone Number: '.$number."\n".'Message: '.$message;
 					$headers = 'From: '.$name.' <'.$emailto.'>' . "\r\n" . 'Reply-To: ' . $email;
 					wp_mail($emailto, 'Paramount Website Comment', $body, $headers);	
-					echo $body;
 				}
 			}
-			else {
-				exit;
+			else {exit;
 			}	
 		}
-		else {
-			exit;
+		else {exit;
 		}	
 	}
 

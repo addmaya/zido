@@ -286,7 +286,10 @@ p{line-height: 1.6; font-size: 0.95em;
   }
   select{@include image('arrow-down.svg'); background-repeat:no-repeat; background-position: right center; background-size:18px}
   &.s--inline{
-    input,select{width: 4em; text-align: center; margin-right: 0.5em;}
+    input,select{width: 4.5em; text-align: center; margin-right: 0.5em;}
+  }
+  &#otherCount{padding:2em 0;
+    input{padding-top:0.5em}
   }
 }
 .o-check{margin-bottom: 0.625em;
@@ -296,7 +299,7 @@ p{line-height: 1.6; font-size: 0.95em;
   }
   label{position: relative; top:-0.625em;}
 }
-.o-submit{margin-top: 2.5em;
+.o-submit{margin-top: 1.5em;
   button{cursor: pointer;
     &:hover{color: $red;
       span:after{@include prefix((transform:scale3d(2,1,1)))}
@@ -725,10 +728,11 @@ $a:0.8em;
     &:hover{color: darken($red, 20%)}
   }
 }
-.c-form-group{padding-top:2em;
+.c-form-group{margin-top:1.5em; background-color: #FFF; padding:1.5em;
+  p{font-size:0.8em; padding-bottom:3em}
   h3{padding-bottom:1em; color: $black; font-weight: 700}
   fieldset{padding-bottom: 2em; @extend .clear}
-  legend{text-transform: uppercase; @include u-source-code; font-size: 0.875em; display: block; padding-bottom: 1.2em; font-weight: bold; color: $black;}
+  legend{text-transform: uppercase; @include u-source-code; font-size: 0.875em; display: block; padding-bottom: 1.2em; font-weight: bold}
   label{font-size: 0.875em}
   section{
     .s--inline{display: inline-block; margin-right: 1.2em;}

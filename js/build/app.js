@@ -239,8 +239,11 @@ jQuery(document).ready(function($) {
 	function closePop(){
 		$('body').removeClass('u-oh');
 		$('.c-pop__box .u-canvas').html('');
+		$('.c-pop__box').removeClass('s--narrow');
 		$('.s--quote').addClass('c-form');
 		$('.c-pop').hide();
+		$('.c-pop__box .c-contact').addClass('u-hide');
+		$('.c-pop__box .u-canvas').addClass('u-hide');
 	}
 
 	//scroll top
@@ -250,13 +253,6 @@ jQuery(document).ready(function($) {
 	});
 
 	$(window).scroll(function() {
-	   // if($(window).scrollTop() + $(window).height() == $(document).height()) {
-	   //     $('.c-msg__btn').addClass('is-visible');
-	   // }
-	   // else{
-	   // 	$('.c-msg__btn').removeClass('is-visible');
-	   // }
-
 	   if ($(window).scrollTop() > 10){
 	   		$('.c-header').addClass('is-fixed');
 	   		$('.js-top').addClass('is-visible');
@@ -275,8 +271,17 @@ jQuery(document).ready(function($) {
 		$('body').addClass('u-oh');
 		$('.c-pop').show();
 		$('.s--quote').removeClass('c-form');
+		$('.c-pop__box').addClass('s--narrow');
 	    $('.c-pop__box .c-contact').removeClass('u-hide');
 	    return false;
+	});
+	$('#albumCount').on('change', function() {
+		var me = $(this);
+		if(me.val() == 'other'){
+			$('#otherCount').show();
+		} else{
+			$('#otherCount').hide();
+		}
 	});
 
 	function submitRequest(){

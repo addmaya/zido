@@ -1,7 +1,7 @@
 	<div class="c-pop">
 		<div class="u-table">
 			<div class="u-cell">
-				<div class="c-pop__box s--narrow">
+				<div class="c-pop__box">
 					<a href="#" class="o-icon__wrap js-close-pop">
 						<span class="o-icon s--close"></span>
 					</a>
