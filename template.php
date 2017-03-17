@@ -14,7 +14,7 @@
 		$post_type = 'engagement';
 	}
 
-	$posts = new WP_Query(array('posts_per_page'=>-1, 'post_type'=>$post_type, 'meta_query'=> array(array('key'=>'pmt_album', 'value'=>'0', 'compare'=> '!='))));
+	$posts = new WP_Query(array('posts_per_page'=>-1, 'post_type'=>$post_type, 'meta_query'=> array(array('key'=>'pmt_album', 'value'=>'', 'compare'=> '!='))));
 	$posts_count = $posts->post_count;
 	$posts_excess = $posts_count - $posts_per_page;
 	wp_reset_postdata();
