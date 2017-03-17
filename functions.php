@@ -243,8 +243,8 @@
 	}
 
 	function return_email($a){
-		if(isset($_POST[$a])){
-			$userEmail = trim($_POST[$a]));
+		if(isset($_POST[$a])) {
+			$userEmail = trim($_POST[$a]);
 			if(($userEmail != 'Email') && (!preg_match("/^[[:alnum:]][a-z0-9_.-]*@[a-z0-9.-]+\.[a-z]{2,4}$/i", $userEmail))){
 				return $userEmail;
 			}
