@@ -41,7 +41,7 @@
 			</section>
 		</header>
 		<?php 
-			$projects = new WP_Query(array('post_type'=>$post_type, 'meta_query'=> array(array('key'=>'pmt_album', 'value'=>'0', 'compare'=> '!=')))); 
+			$projects = new WP_Query(array('post_type'=>$post_type, 'meta_query'=> array(array('key'=>'pmt_album', 'value'=>'', 'compare'=> '!=')))); 
 			if(is_page('video')){
 				$projects = new WP_Query(array('post_type'=>array('wedding', 'engagement'), 'meta_query'=> array(array('key'=>'pt_video', 'value'=>'', 'compare'=> '!='))));
 			}
