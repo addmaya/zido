@@ -16,6 +16,10 @@
 	}
 	show_admin_bar(false);
 
+	function checkNum($num){
+	  return ($num%2) ? TRUE : FALSE;
+	}
+
 	function disable_wp_emojicons() {
 	  remove_action( 'admin_print_styles', 'print_emoji_styles' );
 	  remove_action( 'wp_head', 'print_emoji_detection_script', 7 );

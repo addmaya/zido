@@ -57,7 +57,7 @@
 <section class="c-album">
 	<div class="u-box">
 		<?php if ($pjt_albums): ?>
-			<?php foreach ($pjt_albums as $pjt_album): ?>
+			<?php $portrait_count = 0; foreach ($pjt_albums as $pjt_album): ?>
 				<?php 
 					$photos = $pjt_album['pmt_album_gallery'];
 					$i = 0;
@@ -75,19 +75,26 @@
 						$i++;
 					}
 				?>
-				<?php $portrait_count = 0; $index = 0; foreach ($photos as $photo): 
+				<?php $index = 0; foreach ($photos as $photo){ 
 					$photo_full = $photo['url'];
 					$photo_large = $photo['sizes']['large'];
 					$photo_caption = $photo['caption'];
 
 					if($photo['ratio'] == 0){
-						$portrait_count++;
-						if(($photos[$index+1]['ratio']==1) && !($portrait_count % 2 == 0)){
-							$class = 'u-half s--solo';
+						if(($photos[$index+1]['ratio']==1) && ($portrait_count % 2 == 0)){
+							$class = $portrait_count.' u-half s--solo';
+							$portrait_count++;
 						}
 						else {
-							$class = 'u-half';
+							$class = $portrait_count.' u-half';
+							if($photos[$index+1]){
+								$portrait_count++;
+							}
+							else {
+								$portrait_count = 1;
+							}
 						}
+						
 					}
 					else{
 						$portrait_count = 0;
@@ -105,7 +112,7 @@
 							<?php endif; ?>
 						</section>
 					</article>	
-				<?php $index++; endforeach ?>
+				<?php $index++; } ?>
 			<?php endforeach ?>
 			<div class="clear">
 				<div class="u-full c-share">
