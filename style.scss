@@ -724,6 +724,8 @@ $a:0.8em;
   &.s--quote{padding-left: 0.75em}
   @include device(sm){
     .u-half{float:none; width:auto}
+  }
+  @include device(xs){
     &.s--quote{padding:0}
   }
   label{cursor: pointer;
@@ -740,8 +742,9 @@ $a:0.8em;
     .s--inline{display: inline-block; margin-right: 1.2em;}
   }
 }
-.c-subscribe{padding-left:0.75em; padding-top:1em;
+.c-subscribe{padding:1em 0 3em 0.75em;
   form{padding-top:1em}
+  @include device(xs){padding-left:0;}
 }
 
 .c-credits__wrap{padding-top:2em}
