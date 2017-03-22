@@ -37,7 +37,7 @@ $powerEase: cubic-bezier(0.46, -0.01, 0, 0.99);
         #{$prop}: #{$value};
   }
 }
-@mixin u-roboto {font-family: 'Roboto Condensed', sans-serif}
+@mixin u-roboto {font-family: 'Roboto Condensed', sans-serif; font-weight:700}
 @mixin u-poppins {font-family: 'Poppins', sans-serif}
 @mixin u-source-code{font-family: 'Source Code Pro', monospace}
 @mixin u-tt(){@include prefix((transition: transform 0.5s $powerEase))}
