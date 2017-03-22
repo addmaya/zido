@@ -405,7 +405,7 @@
 	    global $post;
 	    $brief = get_field('pmt_brief', $post->ID);
 	    if( has_post_thumbnail( $post->ID ) ) {
-	        $content = '<p><img src="' . get_post_thumb_medium() .'" />'. $brief . '</p>' . $content;
+	        $content = '<p><a href="'.get_permalink().'"><img src="' . get_post_thumb_medium() .'" /></a>'. $brief . '</p>' . $content;
 	    }
 	    return $content;
 	}
