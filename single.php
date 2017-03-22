@@ -30,12 +30,13 @@
 				<li><a target="_blank" href="https://plus.google.com/share?url=<?php echo $pjt_sharelink; ?>" class="o-icon__wrap"><span class="o-icon s--gp"></span></a></li>
 				<li><a target="_blank" href="https://pinterest.com/pin/create/button/?url=<?php echo $pjt_sharelink; ?>&media=<?php echo $pjt_cover; ?>&description=<?php echo $pjt_title; ?>" class="o-icon__wrap"><span class="o-icon s--pt"></span></a></li>
 				<li><a target="_blank" href="mailto:?&subject=Check out this Project by Paramount Images" class="o-icon__wrap"><span class="o-icon s--ml"></span></a></li>
+				<li><a target="_blank" href="whatsapp://send?text=Paramount Images Studio - <?php echo $pjt_title; ?>" class="o-icon__wrap"><span class="o-icon s--wa"></span></a></li>
 			</ul>
 		</figure>
 		<section data-aos="fade-up" data-aos-duration="1000" data-aos-delay="500">
 			<div class="clear">
 				<div class="u-half">
-					<h1><?php echo str_replace('and', '<span>&</span>', $pjt_title); ?></h1>
+					<h1><?php echo str_replace(' and ', '<span> & </span>', $pjt_title); ?></h1>
 					<ul class="o-meta">
 						<li><?php echo $pjt_posttype; ?></li>
 						<li><?php echo $pjt_date; ?></li>
@@ -147,6 +148,7 @@
 									<li><a target="_blank" href="https://plus.google.com/share?url=<?php echo $pjt_sharelink; ?>" class="o-icon__wrap"><span class="o-icon s--gp"></span></a></li>
 									<li><a target="_blank" href="https://pinterest.com/pin/create/button/?url=<?php echo $pjt_sharelink; ?>&media=<?php echo $pjt_cover; ?>&description=<?php echo $pjt_title; ?>" class="o-icon__wrap"><span class="o-icon s--pt"></span></a></li>
 									<li><a target="_blank" href="mailto:?&subject=Check out this Project by Paramount Images&body=<?php echo $pjt_sharelink; ?>" class="o-icon__wrap"><span class="o-icon s--ml"></span></a></li>
+									<li><a target="_blank" href="whatsapp://send?text=Paramount Images Studio - <?php echo $pjt_title; ?>" class="o-icon__wrap"><span class="o-icon s--wa"></span></a></li>
 								</ul>
 							</section>
 							<a href="#talk" class="o-button s--med s--call">
@@ -177,7 +179,7 @@
 					<span class="o-line"></span>
 					<figure class="o-album__cover js-lazy" data-thumb="<?php echo get_post_thumb(); ?>"></figure>
 					<section class="o-album__info">
-						<h3><?php echo str_replace('and', '<span>&</span>', get_the_title()); ?></h3>
+						<h3><?php echo str_replace(' and ', '<span> & </span>', get_the_title()); ?></h3>
 						<ul class="o-meta">
 							<li><?php echo time_ago(); ?></li>
 						</ul>
@@ -186,6 +188,7 @@
 			</div>
 		</div>
 	</section>
+
 	<?php endforeach ?>
 <?php wp_reset_postdata(); } 
 	else {
@@ -208,7 +211,7 @@
 							<span class="o-line"></span>
 							<figure class="o-album__cover js-lazy" data-thumb="<?php echo get_post_thumb(); ?>"></figure>
 							<section class="o-album__info">
-								<h3><?php echo str_replace('and', '<span>&</span>', get_the_title()); ?></h3>
+								<h3><?php echo str_replace(' and ', '<span> & </span>', get_the_title()); ?></h3>
 								<ul class="o-meta">
 									<li><?php echo time_ago(); ?></li>
 								</ul>
@@ -221,7 +224,7 @@
 <?php } ?>
 
 <?php 
-	$projects = new WP_Query(array('orderby'=>'rand', 'posts_per_page'=>3, 'post__not_in' => array($pjt_id), 'post_type'=>$post_type, 'meta_query'=> array(array('key'=>'pmt_album', 'value'=>'0', 'compare'=> '!='))));
+	$projects = new WP_Query(array('orderby'=>'rand', 'posts_per_page'=>3, 'post__not_in' => array($pjt_id), 'post_type'=>$post_type, 'meta_query'=> array(array('key'=>'pmt_album', 'value'=>'', 'compare'=> '!='))));
  ?>
  <?php if ( $projects->have_posts() ) : ?>
  <section class="c-suggest">
@@ -239,7 +242,7 @@
  						<span class="o-line"></span>
  						<figure class="o-album__cover js-lazy" data-thumb="<?php echo get_post_thumb(); ?>"></figure>
  						<section class="o-album__info">
- 							<h3><?php echo str_replace('and', '<span>&</span>', get_the_title()); ?></h3>
+ 							<h3><?php echo str_replace(' and ', '<span> & </span>', get_the_title()); ?></h3>
  							<ul class="o-meta">
  								<li><?php echo time_ago(); ?></li>
  							</ul>

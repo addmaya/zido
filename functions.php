@@ -157,7 +157,7 @@
 		if ($projects->have_posts()){
 			while ($projects->have_posts()){
 				$projects->the_post();
-				$pjt_title = str_replace('and', '<span>&</span>', get_the_title());
+				$pjt_title = str_replace(' and ', '<span> & </span>', get_the_title());
 				$pjt_thumb = get_post_thumb();
 				$pjt_thumb_medium = get_post_thumb_medium();
 				$pjt_link = get_permalink();

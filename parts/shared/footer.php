@@ -284,9 +284,23 @@
 								</form>
 								<span class="c-form__status"></span>
 							</div>
+							<div class="c-subscribe">
+								<h2>Get Updates</h2>
+								<form action="//paramount.us15.list-manage.com/subscribe/post?u=22803013887746a6b605f7cc8&amp;id=f6da169156" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank" novalidate>
+									<div class="o-input">
+										<input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="Your Email Address" required>
+									</div>
+								    <div class="u-hide" aria-hidden="true"><input type="text" name="b_22803013887746a6b605f7cc8_f6da169156" tabindex="-1" value=""></div>
+								    <div class="o-submit u-half">
+								    	<button>
+								    		<span>Subscribe</span>
+								    	</button>
+								    </div>
+								</form>
+							</div>
 						</section>
 					</div>
 				</div>
 			</footer>
 		</div>
-	</div>	
+	</div>
