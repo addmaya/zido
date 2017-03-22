@@ -118,7 +118,6 @@
 				<div class="u-full c-share">
 					<div class="c-share__wrap">
 						<div class="u-half">
-							
 							<?php $project_tags = get_the_tags(); if ($project_tags) {?>
 							<section class="c-tags">
 								<h4>Tagged</h4>
