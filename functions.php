@@ -113,19 +113,19 @@
 			if($post_type != 'video'){
 				if ($year != 'all') {
 					if($method == 'update'){
-						$projects_args = array('post_type'=>$post_type, 'offset'=>$offset, 'date_query' => array(array('year'=>$year)), 'meta_query'=> array(array('key'=>'pmt_album', 'value'=>'0', 'compare'=> '!=')));
+						$projects_args = array('post_type'=>$post_type, 'offset'=>$offset, 'date_query' => array(array('year'=>$year)), 'meta_query'=> array(array('key'=>'pmt_album', 'value'=>'', 'compare'=> '!=')));
 					}
 					else{
-						$projects_args = array('post_type'=>$post_type, 'date_query' => array(array('year'=>$year)), 'meta_query'=> array(array('key'=>'pmt_album', 'value'=>'0', 'compare'=> '!=')));
+						$projects_args = array('post_type'=>$post_type, 'date_query' => array(array('year'=>$year)), 'meta_query'=> array(array('key'=>'pmt_album', 'value'=>'', 'compare'=> '!=')));
 					}
-					$collection_args = array('post_type'=>$post_type, 'posts_per_page'=>'-1', 'date_query' => array(array('year'=>$year)), 'meta_query'=> array(array('key'=>'pmt_album', 'value'=>'0', 'compare'=> '!=')));
+					$collection_args = array('post_type'=>$post_type, 'posts_per_page'=>'-1', 'date_query' => array(array('year'=>$year)), 'meta_query'=> array(array('key'=>'pmt_album', 'value'=>'', 'compare'=> '!=')));
 				} else{
 					if($method == 'update'){
-						$projects_args = array('post_type'=>$post_type, 'offset'=>$offset, 'meta_query'=> array(array('key'=>'pmt_album', 'value'=>'0', 'compare'=> '!=')));
+						$projects_args = array('post_type'=>$post_type, 'offset'=>$offset, 'meta_query'=> array(array('key'=>'pmt_album', 'value'=>'', 'compare'=> '!=')));
 					} else{
-						$projects_args = array('post_type'=>$post_type, 'meta_query'=> array(array('key'=>'pmt_album', 'value'=>'0', 'compare'=> '!=')));
+						$projects_args = array('post_type'=>$post_type, 'meta_query'=> array(array('key'=>'pmt_album', 'value'=>'', 'compare'=> '!=')));
 					}
-					$collection_args = array('posts_per_page'=>'-1', 'post_type'=>$post_type, 'meta_query'=> array(array('key'=>'pmt_album', 'value'=>'0', 'compare'=> '!=')));
+					$collection_args = array('posts_per_page'=>'-1', 'post_type'=>$post_type, 'meta_query'=> array(array('key'=>'pmt_album', 'value'=>'', 'compare'=> '!=')));
 				}
 			}
 			else {//videos
@@ -151,8 +151,8 @@
 			}
 		}
 		else{
-			$projects_args = array('post_type'=>$post_type, 'offset'=>$offset, 'tag_id'=>$tag, 'meta_query'=> array(array('key'=>'pmt_album', 'value'=>'0', 'compare'=> '!=')));
-			$collection_args = array('posts_per_page'=>'-1', 'post_type'=>$post_type, 'tag_id'=>$tag, 'meta_query'=> array(array('key'=>'pmt_album', 'value'=>'0', 'compare'=> '!=')));
+			$projects_args = array('post_type'=>$post_type, 'offset'=>$offset, 'tag_id'=>$tag, 'meta_query'=> array(array('key'=>'pmt_album', 'value'=>'', 'compare'=> '!=')));
+			$collection_args = array('posts_per_page'=>'-1', 'post_type'=>$post_type, 'tag_id'=>$tag, 'meta_query'=> array(array('key'=>'pmt_album', 'value'=>'', 'compare'=> '!=')));
 		}
 
 		$projects = new WP_Query($projects_args);
