@@ -266,6 +266,7 @@ jQuery(document).ready(function($) {
 	   	}
 	});
 
+	
 	//contact
 	$('.js-show-contact').click(function(e){
 		e.preventDefault();
@@ -276,7 +277,8 @@ jQuery(document).ready(function($) {
 	    $('.c-pop__box .c-contact').removeClass('u-hide');
 	    return false;
 	});
-	$('#albumCount').on('change', function() {
+
+	$('body').on('change', '#albumCount', function() {
 		var me = $(this);
 		if(me.val() == 'other'){
 			$('#otherCount').show();

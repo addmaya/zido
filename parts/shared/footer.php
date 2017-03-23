@@ -77,7 +77,7 @@
 										<p>We deliver top quality photography and video productions built around your story. Enter your wedding preferences below.</p>
 										<fieldset>
 											<div class="o-input u-half">
-												<label for="weddingDate">Date</label>
+												<label for="weddingDate">Wedding Date</label>
 												<input type="text" id="weddingDate" name="weddingDate"/>
 											</div>
 											<div class="o-input u-half">
@@ -229,7 +229,7 @@
 										<p>Our engagement photography will amaze you. We select the best location for your story but your free to tell us your preference.</p>
 										<fieldset>
 											<div class="o-input u-half">
-												<label for="engagementDate">Date</label>
+												<label for="engagementDate">Shoot Date</label>
 												<input type="text" id="engagementDate" name="engagementDate"/>
 											</div>
 											<div class="o-input u-half">
