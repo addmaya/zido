@@ -686,7 +686,7 @@ $a:0.8em;
 .c-suggest{background-color: #ebebeb; padding-top: 2em;
   figure{background-blend-mode:luminosity}
 }
-.c-pop{position: fixed; top: 0; left:0; background-color:rgba(0, 0, 0, 0.53); width: 100%; height: 100%; z-index: 200; display: none;
+.c-pop{position: fixed; top: 0; left:0; background-color:rgba(0, 0, 0, 0.53); width: 100%; height: 100%; z-index: 200; display: none; overflow:scroll;
   .u-table{width: 100%;height: 100%;}
   .u-cell{vertical-align: middle}
   .u-canvas{width: 100%; height: 540px}
@@ -696,13 +696,13 @@ $a:0.8em;
     .js-close-pop{top:0; z-index: 20}
   }
 }
-.c-pop__box{background-color: #fff; width: 960px; height: auto; margin: 0 auto; position: relative; box-shadow: 30px 30px 50px 0px rgba(0, 0, 0, 0.35);
+.c-pop__box{background-color: #fff; width: 960px; height: auto; margin: 1.5em auto; position: relative; box-shadow: 30px 30px 50px 0px rgba(0, 0, 0, 0.35);
   &.s--narrow{width:480px}
   @include device(sm){width:90%;
     &.s--narrow{width:90%;}
   }
 }
-.c-chat{position: fixed; bottom: 5em; right: 20px; z-index:200; @include u-source-code; font-size: 0.875em;
+.c-chat{position: fixed; bottom: 5em; right: 20px; z-index:190; @include u-source-code; font-size: 0.875em;
   &:hover{
     .c-msg__btn{background-color:$red}
     .c-msg__btn{opacity: 1}
