@@ -51,14 +51,14 @@
 				<div class="o-filter__wrap">
 					<div class="o-filter">
 						<a href="#" class="o-filter__label">
-							<span class="o-filter__active"><?php echo date("Y"); ?></span>
+							<span class="o-filter__active">All</span>
 							<div class="o-arrow">
 								<span></span><span></span>
 							</div>
 						</a>
 						<div class="o-filter-list js-months">
 							<ul>
-								<li><a class="js-fetch-projects" href="#" data-query="fetch" data-post-type="<?php echo $post_type; ?>" data-time="all">All</a></li>
+								<li class=""><a class="js-fetch-projects" href="#" data-query="fetch" data-post-type="<?php echo $post_type; ?>" data-time="all">All</a></li>
 								<?php 
 									$i = 2014;
 									foreach (range(date('Y'), $i) as $y) {

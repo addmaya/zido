@@ -45,6 +45,10 @@
 			</div>
 		</div>
 	</div>
+	<a href="#" class="o-icon__wrap c-chat js-show-contact">
+		<span class="o-icon s--cht"></span>
+		<div class="c-msg__btn"><span>Talk to Us</span></div>
+	</a>
 	<div class="c-edges">
 		<div class="c-loader"></div>
 		<div class="o-edge s--tl"><span></span><span></span></div>
@@ -74,10 +78,6 @@
 			<li><?php $pmt_p = get_field('pmt_phones',14); $pmt_p_number = $pmt_p[0]['pmt_phone_number']; ?><a href="tel:<?php echo str_replace(' ', '', $pmt_p_number); ?>"><?php echo $pmt_p_number; ?></a></li>
 			<li><?php $pmt_e = get_field('pmt_email',14); ?><a href="mailto:<?php echo $pmt_e; ?>"><?php echo $pmt_e; ?></a></li>
 		</ul>
-		<a href="#" class="o-icon__wrap c-chat js-show-contact">
-			<span class="o-icon s--cht"></span>
-			<div class="c-msg__btn"><span>Talk to Us</span></div>
-		</a>
 		<a href="#" class="o-icon__wrap c-top js-top" title="Back to Top"><span class="o-icon s--tp"></span></a>
 	</div>
 	<section class="c-header">

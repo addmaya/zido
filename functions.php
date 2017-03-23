@@ -72,7 +72,7 @@
 
 	function get_post_thumb(){
 		if (has_post_thumbnail($post->ID)){
-			$image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'large' );
+			$image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'full' );
 			return $image[0];
 		}
 	}

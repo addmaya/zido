@@ -547,7 +547,6 @@ $a:0.8em;
   .is-booting &{
     .c-social{@include anim; @include fadeInRight; @include delay(0.7)}
     .s--frame li{@include anim; @include fadeInDown; @include delay(0.7)}
-    .c-chat{@include anim; @include fadeInRight; @include delay(0.7)}
   }
   .is-exiting &{@include anim; @include fadeOut;}
   @include device(xs){display:none}
@@ -703,11 +702,13 @@ $a:0.8em;
     &.s--narrow{width:90%;}
   }
 }
-.c-chat{position: absolute; bottom: 5em; right: 0;
+.c-chat{position: fixed; bottom: 5em; right: 20px; z-index:200; @include u-source-code; font-size: 0.875em;
   &:hover{
     .c-msg__btn{background-color:$red}
     .c-msg__btn{opacity: 1}
   }
+  .is-booting &{@include anim; @include fadeInRight; @include delay(0.7)}
+  @include device(xs){bottom:2em; right: 15px}
 }
 .c-msg__btn{height:2em; width: 8em; background-color: #212121; position: absolute; top:0; color: white; z-index: -1; border-radius:36px 0 0 36px; right: 1em; opacity: 0;@include prefix((transition: opacity 0.5s ease));
   &.is-visible{opacity: 1}

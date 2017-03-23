@@ -219,9 +219,10 @@ jQuery(document).ready(function($) {
 		$('body').addClass('u-oh');
 		$('.c-pop').show();
 	    $('.c-pop__box .u-canvas').removeClass('u-hide');
-	    $('.c-pop__box .u-canvas').html('<iframe id=ytplayer type=text/html src=https://www.youtube.com/embed/'+videoID+'?autoplay=1></iframe>');
+	    $('.c-pop__box .u-canvas').html('<iframe id=ytplayer type=text/html src=https://www.youtube.com/embed/'+videoID+'?autoplay=1&vq=hd720></iframe>');
 	    return false;
 	});
+
 	
 	$('.js-close-pop').click(function(e) {
 		e.preventDefault();
@@ -372,7 +373,7 @@ jQuery(document).ready(function($) {
 		        resetForm: true
 		    });
 		}
-		$('#userEvent').on('change', function() {
+		$('body').on('change', '#userEvent', function() {
 			var me = $(this);
 			var eventValue = me.val();
 			var weddingForm = $('#c-wedding');
