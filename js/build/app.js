@@ -147,11 +147,20 @@ jQuery(document).ready(function($) {
 	{
 	    var container = $('.c-header');
 
-	    if (!container.is(e.target)
-	        && container.has(e.target).length === 0)
+	    if (!container.is(e.target) && container.has(e.target).length === 0)
 	    {
 	        $('.c-menu').removeClass('is-open');
 			$('.c-menu__toggle').removeClass('is-active');
+	    }
+	});
+
+	$(document).mouseup(function (e)
+	{
+	    var container = $('.o-filter');
+
+	    if (!container.is(e.target) && container.has(e.target).length === 0)
+	    {
+	        $('.o-filter-list').removeClass('is-open');
 	    }
 	});
 	
@@ -171,6 +180,11 @@ jQuery(document).ready(function($) {
 	var month = '';
 	var year = '';
 
+	$('.o-filter__label').click(function(e) {
+		e.preventDefault();
+		$('.o-filter-list').toggleClass('is-open');
+	});
+
 	function filterProjects(){
 		$('.o-filter-list').on('click', 'a', function(e) {
 			e.preventDefault();
@@ -186,6 +200,7 @@ jQuery(document).ready(function($) {
 			m.closest('.o-filter').find('.o-filter__active').html(t);
 			m.closest('.o-filter__wrap').find('.o-filter__button').removeClass('u-hide');
 			m.addClass('is-selected');
+			m.closest('.o-filter-list').removeClass('is-open');
 			
 			// if((t == 'month')){
 			// 	month = d;

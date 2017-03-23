@@ -394,12 +394,12 @@
 	 }
 	add_action('acf/input/admin_head', 'my_acf_admin_head');
 
-	function get_custom_feeds($feed_query) {
-		if (isset($feed_query['feed']) && !isset($feed_query['post_type']))
-			$feed_query['post_type'] = array('wedding', 'engagement');
-		return $feed_query;
-	}
-	add_filter('request', 'get_custom_feeds');
+	// function get_custom_feeds($feed_query) {
+	// 	if (isset($feed_query['feed']) && !isset($feed_query['post_type']))
+	// 		$feed_query['post_type'] = array('wedding', 'engagement');
+	// 	return $feed_query;
+	// }
+	// add_filter('request', 'get_custom_feeds');
 
 	function wcs_post_thumbnails_in_feeds( $content ) {
 	    global $post;

@@ -319,11 +319,7 @@ p{line-height: 1.6; font-size: 0.95em;
 .o-filter__wrap{position: relative; z-index: 10;
   .is-booting &{@include anim; @include fadeInUp; @include delay(0.4)}
 }
-.o-filter{position: relative; display: inline-block; z-index: 2;
-  &:hover{
-    .o-filter-list{display: block}
-  }
-}
+.o-filter{position: relative; display: inline-block; z-index: 2}
 .o-filter__label{display: inline-block; border:solid 1px $red; padding:0.75em; color: $red;
   span{display: inline-block;}
   .o-icon{@include image('arrow-down.svg'); margin: 0; margin-left: 0.75em}
@@ -345,6 +341,7 @@ p{line-height: 1.6; font-size: 0.95em;
     }
   }
   li:last-child{border-bottom: solid 1px $red}
+  &.is-open{display:block}
 }
 .o-filter__button{display: inline-block; border: solid 1px #FA3131; padding: 0.75em; color: #FA3131;
   &:hover{background-color: $red; color: white}
