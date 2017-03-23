@@ -8,7 +8,7 @@
 		<title><?php wp_title('-', true, 'right'); ?><?php bloginfo( 'name' ); ?></title>
 		<meta charset="<?php bloginfo( 'charset' ); ?>" />
 	  	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
 		<meta name="description" content="Paramount Images is a dynamic photography studio based in Uganda, Kampala specialising in Weddings and Engagements.">
 		<meta name="keywords" content="<?php $seo_keywords=get_field('pmt_keywords'); if($seo_keywords){echo $seo_keywords;}else{echo get_field('pmt_keywords', 17);} ?>">
 		<meta property="og:url" content="<?php echo get_permalink();?>"/>
