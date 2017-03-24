@@ -30,7 +30,7 @@
 	  remove_filter( 'comment_text_rss', 'wp_staticize_emoji' );
 	  add_filter( 'tiny_mce_plugins', 'disable_emojicons_tinymce' );
 	}
-	add_action( 'init', 'disable_wp_emojicons' );
+	//add_action( 'init', 'disable_wp_emojicons' );
 
 	remove_action('wp_head', 'wp_generator');
 	remove_action('wp_head', 'wlwmanifest_link');
