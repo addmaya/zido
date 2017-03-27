@@ -1,3 +1,32 @@
+function writeCookie(name, value, days) {
+    var date, expires;
+    
+    if (days) {
+        date = new Date();
+        date.setTime(date.getTime()+(days*24*60*60*1000));
+        expires = "; expires=" + date.toGMTString();
+            }else{
+        expires = "";
+    }
+    document.cookie = name + "=" + value + expires + "; path=/";
+}
+
+function readCookie(name) {
+    var i, c, ca, nameEQ = name + "=";
+    ca = document.cookie.split(';');
+    
+    for(i=0;i < ca.length;i++) {
+        c = ca[i];
+        while (c.charAt(0)==' ') {
+            c = c.substring(1,c.length);
+        }
+        if (c.indexOf(nameEQ) == 0) {
+            return c.substring(nameEQ.length,c.length);
+        }
+    }
+    return '';
+}
+
 jQuery(document).ready(function($) {
 	
 	//projects
@@ -88,11 +117,11 @@ jQuery(document).ready(function($) {
 	      if (isInView) {
 	      	var m = $(this);
 	      	var u = m.data('thumb');
-	      	var l = m.data('src');
-	      	var i = document.createElement('img');
+	      	var l = m.data('thumb-medium');
+	      	// var i = document.createElement('img');
 
 	      	if (l && Modernizr.mq('(max-width: 640px)')) {
-	      		u = m.data('src');
+	      		u = l;
 			}
 
 	      	if(u){
@@ -269,16 +298,24 @@ jQuery(document).ready(function($) {
 	});
 
 	$(window).scroll(function() {
-	   if ($(window).scrollTop() > 10){
+		var scroll = $(window).scrollTop();
+	   if (scroll > 10){
 	   		$('.c-header').addClass('is-fixed');
 	   		$('.js-top').addClass('is-visible');
-	   		$('.c-msg__btn').addClass('is-visible');
 	   }
-	   else{
+	   else {
 	   		$('.c-header').removeClass('is-fixed');
 	   		$('.js-top').removeClass('is-visible');
+	   		
+	   	}
+
+	   	if((scroll > 500) && (scroll < 1500)){
+	   		$('.c-msg__btn').addClass('is-visible');
+	   	}
+	   	else{
 	   		$('.c-msg__btn').removeClass('is-visible');
 	   	}
+
 	});
 
 	
@@ -367,6 +404,7 @@ jQuery(document).ready(function($) {
 		                    $('.c-form .c-form__status').html('Thank you. Your Request was sent');
 		                    $('.c-form form').each(function(){
 		                    	this.reset();
+		                    	writeCookie('contact', 1, 100);
 		                    });
 		                }
 		            });

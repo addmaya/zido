@@ -12,10 +12,15 @@
 	$pjt_albums = get_field('pmt_album');
 	$pjt_id = get_the_id();
 	$pjt_credits = get_field('pt_credits');
+	$pjt_video_thumb = get_field('pt_video_thumb');
 ?>
 <header class="c-album__cover">
 	<div class="u-box">
-		<figure class="js-lazy" data-thumb="<?php echo $pjt_cover; ?>" data-thumb-medium="<?php echo $pjt_cover_medium; ?>" data-aos="fade-up" data-aos-duration="1000">
+		<?php if ($pjt_cover){?>
+			<figure class="js-lazy" data-thumb="<?php echo $pjt_cover; ?>" data-thumb-medium="<?php echo $pjt_cover_medium; ?>" data-aos="fade-up" data-aos-duration="1000">
+		<?php } else {?>
+			<figure class="js-lazy" data-thumb="<?php echo $pjt_video_thumb; ?>" data-aos="fade-up" data-aos-duration="1000">
+		<?php } ?>
 			<?php if ($pjt_video): ?>
 				<a href="#" class="js-video no-barba" data-video="<?php echo $pjt_video; ?>">
 					<span class="o-icon s--video"></span>
@@ -30,7 +35,7 @@
 				<li><a target="_blank" href="https://plus.google.com/share?url=<?php echo $pjt_sharelink; ?>" class="o-icon__wrap"><span class="o-icon s--gp"></span></a></li>
 				<li><a target="_blank" href="https://pinterest.com/pin/create/button/?url=<?php echo $pjt_sharelink; ?>&media=<?php echo $pjt_cover; ?>&description=<?php echo $pjt_title; ?>" class="o-icon__wrap"><span class="o-icon s--pt"></span></a></li>
 				<li><a target="_blank" href="mailto:?&subject=Check out this Project by Paramount Images" class="o-icon__wrap"><span class="o-icon s--ml"></span></a></li>
-				<li><a target="_blank" href="whatsapp://send?text=Paramount Images Studio - <?php echo $pjt_title; ?>" class="o-icon__wrap"><span class="o-icon s--wa"></span></a></li>
+				<li><a target="_blank" href="whatsapp://send?text=<?php echo $pjt_permalink; ?>" class="o-icon__wrap"><span class="o-icon s--wa"></span></a></li>
 			</ul>
 		</figure>
 		<section data-aos="fade-up" data-aos-duration="1000" data-aos-delay="500">
@@ -154,7 +159,7 @@
 									<li><a target="_blank" href="https://plus.google.com/share?url=<?php echo $pjt_sharelink; ?>" class="o-icon__wrap"><span class="o-icon s--gp"></span></a></li>
 									<li><a target="_blank" href="https://pinterest.com/pin/create/button/?url=<?php echo $pjt_sharelink; ?>&media=<?php echo $pjt_cover; ?>&description=<?php echo $pjt_title; ?>" class="o-icon__wrap"><span class="o-icon s--pt"></span></a></li>
 									<li><a target="_blank" href="mailto:?&subject=Check out this Project by Paramount Images&body=<?php echo $pjt_sharelink; ?>" class="o-icon__wrap"><span class="o-icon s--ml"></span></a></li>
-									<li><a target="_blank" href="whatsapp://send?text=Paramount Images Studio - <?php echo $pjt_title; ?>" class="o-icon__wrap"><span class="o-icon s--wa"></span></a></li>
+									<li><a target="_blank" href="whatsapp://send?text=<?php echo $pjt_permalink; ?>" class="o-icon__wrap"><span class="o-icon s--wa"></span></a></li>
 								</ul>
 							</section>
 							<a href="#talk" class="o-button s--med s--call">
