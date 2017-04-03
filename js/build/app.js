@@ -217,7 +217,6 @@ jQuery(document).ready(function($) {
 	});
 
 	var projectsList = [];
-
 	$.getJSON(projectsURL, function(data) {
 		var i = 0;
 		for(i=0;i<data.length;i++){

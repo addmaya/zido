@@ -196,8 +196,11 @@ p{line-height: 1.6; font-size: 0.95em;
 .o-button-round{padding: 0; cursor: pointer; display: inline-block; border:solid 2px white; border-radius: 48px; width: 3.125em; height:3.125em;
   span{font-size: 1.5em; position: relative; left: -1px; top:-2px;}
   &:hover{background-color: white}
-  &.s--close{width: 1.875em; height: 1.875em;}
+  &.s--close{width: 2.875em; height: 2.875em;
+    @include device(xs){width: 1.875em; height: 1.875em;}
+  }
 }
+
 
 .o-button{display: inline-block; padding: 1.5em; border:solid 2px white; @include u-roboto; text-transform: uppercase; color:white; position: relative; padding-top: 1.2em; font-size: 0.875em; overflow: hidden; @include prefix((transition: color 0.3s ease));
   span{display: block; position: relative; z-index: 2;
