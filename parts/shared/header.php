@@ -1,3 +1,16 @@
+	<div class="c-search">
+		<div class="u-box">
+			<form role="search" method="get" action="<?php echo home_url();?>">
+				<input id="search" class="c-search__input" type="text" name="s" placeholder="Name or Couple" autofocus/>
+				<button class="o-button-round">
+					<span class="o-icon s--search"></span>
+				</button>
+				<a class="o-button-round s--close" href="#">
+					<span class="o-icon s--close"></span>
+				</a>
+			</form>
+		</div>
+	</div>
 	<div class="c-pop">
 		<div class="u-table">
 			<div class="u-cell">
@@ -99,6 +112,7 @@
 					<li class="js-videos c-menu__item <?php if(is_page('video')){echo 'is-active';} ?>"><a href="<?php echo home_url();?>/video"><span>Video</span></a></li>
 					<!-- <li class="js-team c-menu__item <?php if(is_page('team')){echo 'is-active';} ?>"><a href="<?php echo home_url();?>/team"><span>Team</span></a></li> -->
 					<li class="c-menu__item"><a href="#talk"><span>Contact</span></a></li>
+					<li class="c-menu__item"><a href="#" class="js-show-search"><span>Search</span></a></li>
 				</ul>
 			</nav>
 		</div>

@@ -7,17 +7,7 @@ blockquote, q {quotes: none}
 blockquote:before, blockquote:after, q:before, q:after {content: ''; content: none}
 table{border-collapse: collapse;border-spacing: 0}
 a{text-decoration: none; outline: 0}
-
 input, textarea, select, button{border: none; background: none; font-size: 100%; resize: none; -webkit-appearance: none; -moz-appearance: none; appearance: none; outline: none; border-radius: 0}
 input::-moz-focus-inner{border:0; padding:0}
 input{-webkit-appearance: none;}
-
-@mixin placeholder {color:#212121}
-
-::-webkit-input-placeholder{@include placeholder}
-:-moz-placeholder{@include placeholder}
-::-moz-placeholder{@include placeholder}
-:-ms-input-placeholder{@include placeholder}
-
-
 input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button { -webkit-appearance: none;-moz-appearance: none; appearance: none;margin: 0}

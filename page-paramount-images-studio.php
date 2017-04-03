@@ -105,6 +105,8 @@
 			<footer>
 				<?php 
 					$weddings = new WP_Query(array('posts_per_page'=>-1, 'post_type'=>'wedding', 'meta_query'=> array(array('key'=>'pmt_album', 'value'=>'', 'compare'=> '!=')))); 
+					$videos = new WP_Query(array('posts_per_page'=>-1, 'post_type'=>array('wedding', 'engagement'), 'meta_query'=> array(array('key'=>'pt_video', 'value'=>'', 'compare'=> '!='))));
+					$videos_count = $videos->post_count; 
 					$weddings_count = $weddings->post_count;
 				?>
 				<a href="<?php echo home_url(); ?>/wedding-photography" class="o-button s--big">
@@ -112,6 +114,9 @@
 				</a>
 				<a href="<?php echo home_url(); ?>/engagement-photography" class="o-button s--big">
 					<span>engagements <i class="u-super"><?php echo wp_count_posts('engagement')->publish; ?></i></span>
+				</a>
+				<a href="<?php echo home_url(); ?>/video" class="o-button s--big">
+					<span>video <i class="u-super"><?php echo $videos_count; ?></i></span>
 				</a>
 			</footer>
 		</div>

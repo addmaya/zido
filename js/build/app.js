@@ -77,12 +77,8 @@ jQuery(document).ready(function($) {
 		           		if(data != '0'){
 		           			$('.o-collection__list').append(data);
 		           			loadImages($('.is-appended .js-lazy'));
-		           			e = $('.o-album').last().data('overflow');
 		           			m.find('.u-super').html(e);
 		           			p = p + parseInt(posts_per_page);
-		           			if(e == '0'){
-		           				m.html('<span>back top</span>');
-		           			}
 		           		}
 		           		else{
 							$('html, body').animate({scrollTop: 0}, 500);
@@ -157,10 +153,14 @@ jQuery(document).ready(function($) {
 
 	//menu
 	$('.c-menu').on('click', 'a', function() {
-		$('.c-menu').find('.is-active').removeClass('is-active');
-		$(this).closest('.c-menu__item').addClass('is-active');
-		$('.c-menu').removeClass('is-open');
-		$('.c-menu__toggle').removeClass('is-active');
+		var me =$(this);
+		if(!me.hasClass('js-show-search')){
+			$('.c-menu').find('.is-active').removeClass('is-active');
+			$(this).closest('.c-menu__item').addClass('is-active');
+			$('.c-menu').removeClass('is-open');
+			$('.c-menu__toggle').removeClass('is-active');
+		}
+
 	});
 	$('.c-logo').click(function() {
 		$('.c-menu').find('.is-active').removeClass('is-active');
@@ -186,13 +186,52 @@ jQuery(document).ready(function($) {
 	$(document).mouseup(function (e)
 	{
 	    var container = $('.o-filter');
-
 	    if (!container.is(e.target) && container.has(e.target).length === 0)
 	    {
 	        $('.o-filter-list').removeClass('is-open');
 	    }
 	});
+
+	$(document).mouseup(function (e)
+	{
+	    var container = $('.c-search');
+	    if (!container.is(e.target) && container.has(e.target).length === 0)
+	    {
+	        $('.c-search').removeClass('is-active');
+	    }
+	});
 	
+	//search
+	$('.js-show-search').click(function(e) {
+		e.preventDefault();
+		$('.c-search').toggleClass('is-active');
+		$('.c-search__input').focus();
+		$('.c-menu').removeClass('is-open');
+	});
+	$('.c-search .s--close').click(function(e) {
+		e.preventDefault();
+		$('.c-search').removeClass('is-active');
+		$('.c-search form').each(function(){
+			this.reset();
+		});
+	});
+
+	var projectsList = [];
+
+	$.getJSON(projectsURL, function(data) {
+		var i = 0;
+		for(i=0;i<data.length;i++){
+			projectsList.push(data[i]);
+		}
+	});
+
+	$('#search').autocomplete({
+		lookup: projectsList,
+		dataType: 'json',
+	    onSelect: function (suggestion) {
+	    	window.location.href = suggestion.data; 
+	    }
+	});
 
 	//share
 	$('body').on('click', '.js-share', function(e){

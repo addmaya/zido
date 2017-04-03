@@ -7,6 +7,7 @@
 		
 		var ajaxURL="<?php echo admin_url('admin-ajax.php'); ?>";
 		var posts_per_page = "<?php echo get_option( 'posts_per_page' ); ?>";
+		var projectsURL = "<?php echo home_url().'/requests'; ?>";
 		
 		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),

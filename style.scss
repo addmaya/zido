@@ -175,9 +175,14 @@ p{line-height: 1.6; font-size: 0.95em;
   &.s--ml{@include image('envelope.svg')}
   &.s--gp{@include image('google-plus.svg')}
   &.s--sh{@include image('share.svg')}
-  &.s--close{@include image('close.svg')}
+  &.s--close{@include image('close.svg');
+    .c-search &{@include image('search_close.svg'); width:18px; left: 2px;
+      @include device(xs){width: 13px; left: 4px; margin: 5px; top:-2px;}
+    }
+  }
   &.s--video{@include image('btn-play.svg'); width: 5em; height: 5em; top:50%; left: 50%; position: absolute; z-index: 5; @include prefix((transform: translate(-50%, -50%))); margin:0;
   }
+  &.s--search{@include image('search.svg')}
 }
 .o-icon__wrap{display: inline-block; background-color: $black; border-radius: 2em; @include prefix((transition: background-color 0.3s ease));
   &:hover{background-color: $red}
@@ -188,6 +193,12 @@ p{line-height: 1.6; font-size: 0.95em;
   }
   &.s--frame{@include prefix((transform: rotate(90deg))); opacity:0.5; display: inline-block; position: absolute; left:20px; top:40%; width:300px; @include prefix((transform-origin: left top 0))}
 }
+.o-button-round{padding: 0; cursor: pointer; display: inline-block; border:solid 2px white; border-radius: 48px; width: 3.125em; height:3.125em;
+  span{font-size: 1.5em; position: relative; left: -1px; top:-2px;}
+  &:hover{background-color: white}
+  &.s--close{width: 1.875em; height: 1.875em;}
+}
+
 .o-button{display: inline-block; padding: 1.5em; border:solid 2px white; @include u-roboto; text-transform: uppercase; color:white; position: relative; padding-top: 1.2em; font-size: 0.875em; overflow: hidden; @include prefix((transition: color 0.3s ease));
   span{display: block; position: relative; z-index: 2;
      &:after{content:""; position: absolute; bottom: -7px; left: 0; height:0.125em; width: 15%; background-color: $black; z-index: 1;}
@@ -567,6 +578,13 @@ $a:0.8em;
   }
   a{color: $gold}
   h2{font-size:1.7em}
+
+  @mixin placeholder {color:#212121}
+  ::-webkit-input-placeholder{@include placeholder}
+  :-moz-placeholder{@include placeholder}
+  ::-moz-placeholder{@include placeholder}
+  :-ms-input-placeholder{@include placeholder}
+
 }
 .c-contact__info{
   .c-social{padding-top: 0;
@@ -760,4 +778,31 @@ $a:0.8em;
     &:hover{background-color: $gold; color:white;}
   }
 }
+
+.c-search{background-color: $black; z-index: 400; position: fixed; top: 0; left: 0; width: 100%; color: white; @include prefix((transform: translateY(-105%))); @include prefix((transition: transform 0.3s ease));
+  @mixin placeholder {color:#a9a9a9}
+  ::-webkit-input-placeholder{@include placeholder}
+  :-moz-placeholder{@include placeholder}
+  ::-moz-placeholder{@include placeholder}
+  :-ms-input-placeholder{@include placeholder}
+  .o-button-round{float: left; margin: 0 3px;}
+  &.is-active{@include prefix((transform: translateY(0%)))}
+  form{@extend .clear; padding:2em;}
+  @include device(xs){
+    form{padding:2em 0}
+    button{display: none}
+  }
+}
+.c-search__input{padding:0; font-size: 2em; font-weight: bold; @include u-poppins; color:white; float: left; width: 80%; position: relative; top:-3px;
+  @include device(xs){font-size: 1.5em; top:0; width: 85%}
+}
+
+.autocomplete-suggestions {background: #FFF; overflow: auto;
+  @include device(xs){font-size: 0.87em}
+}
+.autocomplete-suggestion { padding: 0.625em 0.5em; white-space: nowrap; overflow: hidden; }
+.autocomplete-no-suggestion { padding: 0.625em 0.5em;}
+.autocomplete-selected { background: #F0F0F0; }
+.autocomplete-suggestions strong { font-weight: bold; color: #000; }
+.autocomplete-group { padding: 2px 5px; font-weight: bold; font-size: 16px; color: #000; display: block; border-bottom: 1px solid #000; }
 
