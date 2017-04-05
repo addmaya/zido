@@ -344,9 +344,6 @@ p{line-height: 1.6; font-size: 0.95em;
 .o-filter-list{position:absolute; display: none; width: 9em; top:105%; background-color: #fff; z-index: 200;
   a{display: block; padding: 0.75em; border:solid 1px $red; border-bottom: none; color:$red; position: relative;
     &:after{content:""; position: absolute; right:0.75em; width: 1em; height: 1em; top:0.75em; display: none; background-size:contain; background-repeat:no-repeat; background-position: center; @include image('check-white.svg'); z-index:2}
-    &:hover{
-      &:after{display: block; @include image('check-red.svg')}
-    }
     &.is-selected{background-color: $red; color: white;
       &:after{@include image('check-white.svg'); display: block}
       &:hover{
@@ -362,7 +359,7 @@ p{line-height: 1.6; font-size: 0.95em;
   &.u-hide{display: none}
 }
 
-$a:0.8em;
+$a: 0.8em;
 .o-arrow{ width:$a; height: $a; display: inline-block; position: relative; margin-left:0.75em; top:1px; left:-2px;
   span{display: block; height: 2px; background-color: $red; position: absolute; top:0; width: 100%;
     &:first-child{@include prefix((transform-origin:left top 0)); @include prefix((transform: rotate(45deg)))}
