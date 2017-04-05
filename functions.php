@@ -411,4 +411,25 @@
 	}
 	add_filter( 'the_excerpt_rss', 'wcs_post_thumbnails_in_feeds' );
 	add_filter( 'the_content_feed', 'wcs_post_thumbnails_in_feeds' );
+	
+	function remove_menus(){
+	  global $menu;
+	  global $submenu;
+	  remove_menu_page( 'index.php' );                 
+	  remove_menu_page( 'jetpack' ); 
+	  remove_menu_page( 'edit.php' ); 
+	  remove_menu_page( 'upload.php' );              
+	  // remove_menu_page( 'edit.php?post_type=page' );    
+	  remove_menu_page( 'edit-comments.php' );          
+	  remove_menu_page( 'themes.php' );                
+	  remove_menu_page( 'plugins.php' );         
+	  remove_menu_page( 'users.php' );                
+	  remove_menu_page( 'tools.php' );
+	}
+	add_action( 'admin_menu', 'remove_menus' );
+	
+	function admin_default_page() {
+	  return 'wp-admin/edit.php?post_type=wedding';
+	}
+	add_filter('login_redirect', 'admin_default_page');
 ?>
