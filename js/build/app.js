@@ -247,19 +247,18 @@ jQuery(document).ready(function($) {
 	var month = '';
 	var year = '';
 
-	$('.o-filter__label').click(function(e) {
-		e.preventDefault();
-		$('.o-filter-list').toggleClass('is-open');
-	});
-
 	function filterProjects(){
+		$('.o-filter__label').click(function(e) {
+			e.preventDefault();
+			$('.o-filter-list').toggleClass('is-open');
+		});
+		
 		$('.o-filter-list').on('click', 'a', function(e) {
 			e.preventDefault();
 			
 			var m = $(this);
 			var f = $('.o-filter-list');
 			var t = m.data('time');
-			// var t = m.data('type');
 
 			year = t;
 
@@ -268,26 +267,6 @@ jQuery(document).ready(function($) {
 			m.closest('.o-filter__wrap').find('.o-filter__button').removeClass('u-hide');
 			m.addClass('is-selected');
 			m.closest('.o-filter-list').removeClass('is-open');
-			
-			// if((t == 'month')){
-			// 	month = d;
-			// 	if(!(_.contains(months, d))){
-			// 		months.push(d);
-			// 	}
-			// 	else{
-			// 		months = _.without(months, d);
-			// 	}
-			// }
-
-			// if((t == 'year')){
-			// 	year = y;
-			// 	if(!(_.contains(years, d))){
-			// 		years.push(d)
-			// 	}
-			// 	else{
-			// 		years = _.without(years, d);
-			// 	}
-			// }
 		});
 	}
 
