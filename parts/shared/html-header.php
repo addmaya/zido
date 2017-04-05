@@ -10,17 +10,19 @@
 	  	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
 		<meta name="description" content="Paramount Images is a dynamic photography studio based in Uganda, Kampala specialising in Weddings and Engagements.">
-		<meta name="keywords" content="<?php $seo_keywords=get_field('pmt_keywords'); if($seo_keywords){echo $seo_keywords;}else{echo get_field('pmt_keywords', 17);} ?>">
+		<meta name="keywords" content="<?php $seo_keywords=get_field('pmt_keywords',17); if($seo_keywords){echo $seo_keywords;}else{echo get_field('pmt_keywords', 17);} ?>">
 		<meta property="og:url" content="<?php echo get_permalink();?>"/>
 		<meta property="og:site_name" content="<?php bloginfo('name');?>"/>
 		<meta property="og:type" content="website" />
 		<meta property="og:title" content="<?php echo get_the_title(); ?>"/>
-		<meta property="og:description" content="Paramount Images is a dynamic photography studio based in Uganda, Kampala specialising in Weddings and Engagements." />
+		<meta property="og:description" content="<?php $seo_info = wp_strip_all_tags(get_field('pmt_brief'), true); $page_info = wp_strip_all_tags(get_field('pmt_sct_brief'), true); if($seo_info){echo $seo_info;}else {if($page_info){echo $page_info;}else{echo "Paramount Images is a dynamic photography studio based in Uganda, Kampala specialising in Weddings and Engagements.";}}?>"/>
 		<meta property="og:image" content="<?php $seo_img = wp_get_attachment_image_url(get_post_thumbnail_id($post->ID), 'full'); if($seo_img){echo $seo_img;} else{echo get_stylesheet_directory_uri().'/images/dummy-1.jpg';} ?>"/>
 
 		<link href="https://fonts.googleapis.com/css?family=Poppins:400,700|Roboto+Condensed:700|Source+Code+Pro" rel="stylesheet">
 		<link rel="shortcut icon" href="<?php echo get_stylesheet_directory_uri(); ?>/favicon.ico"/>
-		<link href="<?php echo get_stylesheet_directory_uri(); ?>/style.css?v0.908" rel="stylesheet">		
+		<link href="<?php echo get_stylesheet_directory_uri(); ?>/style.css?v0.909" rel="stylesheet">		
 		<?php wp_head(); ?>
 	</head>
 	<body class="is-booting">
+
+		

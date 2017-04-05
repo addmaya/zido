@@ -415,7 +415,7 @@
 	function remove_menus(){
 	  global $menu;
 	  global $submenu;
-	  remove_menu_page( 'index.php' );                 
+	  //remove_menu_page( 'index.php' );                 
 	  remove_menu_page( 'jetpack' ); 
 	  remove_menu_page( 'edit.php' ); 
 	  remove_menu_page( 'upload.php' );              

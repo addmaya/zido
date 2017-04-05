@@ -140,7 +140,7 @@
 										<?php foreach ($pjt_credits as $credit):
 											$credit_name = $credit['credit_name'];
 											$credit_role = $credit['credit_role'];
-											$credit_website = $credit['credit_website'];
+											$credit_website = esc_url($credit['credit_website']);
 										?>
 											<?php if ($credit_name && $credit_role): ?>
 												<li><a target="_blank" <?php if($credit_website){echo 'href="'.$credit_website.'"';} ?>><?php echo $credit_role; ?> - <?php echo $credit_name; ?></a></li>

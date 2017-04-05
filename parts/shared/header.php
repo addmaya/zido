@@ -1,14 +1,11 @@
 	<div class="c-search">
 		<div class="u-box">
-			<form role="search" method="get" action="<?php echo home_url();?>">
-				<input id="search" class="c-search__input" type="text" name="s" placeholder="Name or Couple" autofocus/>
-				<button class="o-button-round">
-					<span class="o-icon s--search"></span>
-				</button>
+			<section>
+				<input id="search" class="c-search__input" type="text" name="s" placeholder="Enter Name" autofocus/>
 				<a class="o-button-round s--close" href="#">
 					<span class="o-icon s--close"></span>
 				</a>
-			</form>
+			</section>
 		</div>
 	</div>
 	<div class="c-pop">
@@ -71,10 +68,10 @@
 	</div>
 	<div class="c-frame__left">
 		<section>
-			<p>&copy; <?php echo date("Y"); ?> <?php bloginfo( 'name' ); ?>.</p>
+			<p>&copy; <?php echo date("Y"); ?> Paramount Images Studio.</p>
 		</section>
 		<section>
-			<p>ISO 142 - lens 48mm - aperture 2.2 AWB</p>
+			<p>ISO 142 - lens48mm - AP2.2 AWB</p>
 		</section>
 	</div>
 	<div class="c-frame__right">
@@ -89,10 +86,10 @@
 		</ul>
 		<ul class="o-list s--inline s--frame">
 			<li><?php $pmt_p = get_field('pmt_phones',14); $pmt_p_number = $pmt_p[0]['pmt_phone_number']; ?><a href="tel:<?php echo str_replace(' ', '', $pmt_p_number); ?>"><?php echo $pmt_p_number; ?></a></li>
-			<li><?php $pmt_e = get_field('pmt_email',14); ?><a href="mailto:<?php echo $pmt_e; ?>"><?php echo $pmt_e; ?></a></li>
+<!-- 			<li><?php $pmt_e = get_field('pmt_email',14); ?><a href="mailto:<?php echo $pmt_e; ?>"><?php echo $pmt_e; ?></a></li> -->
 		</ul>
-		<a href="#" class="o-icon__wrap c-top js-top" title="Back to Top"><span class="o-icon s--tp"></span></a>
-	</div>
+<!-- 		<a href="#" class="o-icon__wrap c-top js-top" title="Back to Top"><span class="o-icon s--tp"></span></a>
+ -->	</div>
 	<section class="c-header">
 		<div class="u-box">
 			<a href="<?php echo home_url();?>" class="c-logo"></a>
@@ -102,6 +99,9 @@
 					<span></span>
 					<span></span>
 				</div>
+			</a>
+			<a href="#" class="c-search__toggle js-show-search">
+				<span class="o-icon s--search"></span>
 			</a>
 			<nav class="c-menu">
 				<ul>

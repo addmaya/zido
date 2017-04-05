@@ -185,7 +185,7 @@ jQuery(document).ready(function($) {
 
 	$(document).mouseup(function (e)
 	{
-	    var container = $('.o-filter');
+	    var container = $('.o-filter__wrap');
 	    if (!container.is(e.target) && container.has(e.target).length === 0)
 	    {
 	        $('.o-filter-list').removeClass('is-open');

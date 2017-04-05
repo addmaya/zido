@@ -191,7 +191,7 @@ p{line-height: 1.6; font-size: 0.95em;
   &.s--inline{
     li{display: inline-block;}
   }
-  &.s--frame{@include prefix((transform: rotate(90deg))); opacity:0.5; display: inline-block; position: absolute; left:20px; top:40%; width:300px; @include prefix((transform-origin: left top 0))}
+  &.s--frame{@include prefix((transform: rotate(90deg))); opacity:0.5; display: inline-block; position: absolute; left:20px; top:50%; width:170px; @include prefix((transform-origin: left top 0))}
 }
 .o-button-round{padding: 0; cursor: pointer; display: inline-block; border:solid 2px white; border-radius: 48px; width: 3.125em; height:3.125em;
   span{font-size: 1.5em; position: relative; left: -1px; top:-2px;}
@@ -330,7 +330,7 @@ p{line-height: 1.6; font-size: 0.95em;
     button{padding-left:0}
   }
 }
-.o-filter__wrap{position: relative; z-index: 10;
+.o-filter__wrap{position: relative; z-index: 10; display: inline-block;
   .is-booting &{@include anim; @include fadeInUp; @include delay(0.4)}
 }
 .o-filter{position: relative; display: inline-block; z-index: 2}
@@ -547,8 +547,8 @@ $a:0.8em;
   }
 
 }
-.c-frame__left{display: inline-block; @include prefix((transform: rotate(90deg))); position: fixed; left:40px; top:17%; font-size: 0.875em; opacity: 0.5; @include prefix((transform-origin:left top 0)); z-index: 2; @include u-source-code; font-size: 0.875em;
-  section{display: inline-block; margin-right: 2em;
+.c-frame__left{display: inline-block; @include prefix((transform: rotate(90deg))); position: fixed; left:40px; top:10%; font-size: 0.875em; opacity: 0.5; @include prefix((transform-origin:left top 0)); z-index: 2; @include u-source-code; font-size: 0.875em;
+  section{display: inline-block;
     .is-booting &{@include anim; @include fadeInUp; @include delay(0.7)}
   }
   .is-exiting &{@include anim; @include fadeOut;}
@@ -681,6 +681,7 @@ $a:0.8em;
     .swiper-button-next{right:12px; top:60%}
   }
 }
+
 .c-slide{margin-top:7.5em; height: 80%; display: block; background-size:cover; background-repeat: no-repeat; background-position: center; position: relative; opacity:0; @include prefix((transition: opacity 0.5s ease)); background-color: $grey;
   section{width: 60%; padding-bottom:3em; padding-left:3em; position: absolute; bottom:0; left: 0;}
   h1{padding-bottom: 0.75em; color: #fff}
@@ -783,21 +784,24 @@ $a:0.8em;
 }
 
 .c-search{background-color: $black; z-index: 400; position: fixed; top: 0; left: 0; width: 100%; color: white; @include prefix((transform: translateY(-105%))); @include prefix((transition: transform 0.3s ease));
-  @mixin placeholder {color:#a9a9a9}
+  @mixin placeholder {color:#fff}
   ::-webkit-input-placeholder{@include placeholder}
   :-moz-placeholder{@include placeholder}
   ::-moz-placeholder{@include placeholder}
   :-ms-input-placeholder{@include placeholder}
   .o-button-round{float: left; margin: 0 3px;}
   &.is-active{@include prefix((transform: translateY(0%)))}
-  form{@extend .clear; padding:2em;}
+  section{@extend .clear; padding:2em;}
   @include device(xs){
-    form{padding:2em 0}
+    section{padding:2em 0}
     button{display: none}
   }
 }
-.c-search__input{padding:0; font-size: 2em; font-weight: bold; @include u-poppins; color:white; float: left; width: 80%; position: relative; top:-3px;
+.c-search__input{padding:0; font-size: 2em; font-weight: bold; @include u-poppins; color:white; float: left; width: 90%; position: relative; top:-3px;
   @include device(xs){font-size: 1.5em; top:0; width: 85%}
+}
+.c-search__toggle{display: none; background-color: $black; float: right; border-radius:1em; margin-right: 0.3em; 
+  @include device(xs){display:inline-block}
 }
 
 .autocomplete-suggestions {background: #FFF; overflow: auto;
