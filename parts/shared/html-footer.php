@@ -1,5 +1,5 @@
 		<script src="<?php echo get_stylesheet_directory_uri(); ?>/js/build/vendors.js"></script>
-		<script src="<?php echo get_stylesheet_directory_uri(); ?>/js/build/app.js"></script>
+		<script src="<?php echo get_stylesheet_directory_uri(); ?>/js/build/app.js?v0.910"></script>
 
 		<script>
 		
