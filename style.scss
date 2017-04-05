@@ -191,7 +191,7 @@ p{line-height: 1.6; font-size: 0.95em;
   &.s--inline{
     li{display: inline-block;}
   }
-  &.s--frame{@include prefix((transform: rotate(90deg))); opacity:0.5; display: inline-block; position: absolute; left:20px; top:50%; width:170px; @include prefix((transform-origin: left top 0))}
+  &.s--frame{@include prefix((transform: rotate(90deg))); opacity:0; display: inline-block; position: absolute; left:20px; top:50%; width:170px; @include prefix((transform-origin: left top 0))}
 }
 .o-button-round{padding: 0; cursor: pointer; display: inline-block; border:solid 2px white; border-radius: 48px; width: 3.125em; height:3.125em;
   span{font-size: 1.5em; position: relative; left: -1px; top:-2px;}
@@ -544,7 +544,7 @@ $a: 0.8em;
   }
 
 }
-.c-frame__left{display: inline-block; @include prefix((transform: rotate(90deg))); position: fixed; left:40px; top:10%; font-size: 0.875em; opacity: 0.5; @include prefix((transform-origin:left top 0)); z-index: 2; @include u-source-code; font-size: 0.875em;
+.c-frame__left{display: inline-block; @include prefix((transform: rotate(90deg))); position: fixed; left:40px; top:10%; font-size: 0.875em; opacity: 0; @include prefix((transform-origin:left top 0)); z-index: 2; @include u-source-code; font-size: 0.875em;
   section{display: inline-block;
     .is-booting &{@include anim; @include fadeInUp; @include delay(0.7)}
   }
