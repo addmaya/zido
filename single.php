@@ -265,12 +265,12 @@
  		</section>
  		<div class="u-align-center">
  			<?php if ($pjt_posttype == 'wedding'): ?>
- 				<a href="<?php echo home_url(); ?>/weddings" class="o-button s--med">
+ 				<a href="<?php echo home_url(); ?>/wedding-photography" class="o-button s--med">
  					<span>More Weddings</span>
  				</a>
  			<?php endif ?>
  			<?php if ($pjt_posttype == 'engagement'): ?>
- 				<a href="<?php echo home_url(); ?>/engagements" class="o-button s--med">
+ 				<a href="<?php echo home_url(); ?>/engagement-photography" class="o-button s--med">
  					<span>More Engagements</span>
  				</a>
  			<?php endif ?>

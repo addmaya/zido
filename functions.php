@@ -98,7 +98,6 @@
 		$post_type = $_GET['post_type'];
 		$tag = intval($_GET['tag']);
 		
-		$category_balance = 0;
 		$html = '';
 		$class = '';
 
@@ -159,7 +158,14 @@
 		$collection = new WP_Query($collection_args);
 
 		if ($projects->have_posts()){
+			if(intval($_GET['project_id'])){
+				$projectID = intval($_GET['project_id']);
+			}
+			else {
+				$projectID = 0;
+			}
 			while ($projects->have_posts()){
+				 
 				$projects->the_post();
 				$pjt_title = str_replace(' and ', '<span> & </span>', get_the_title());
 				$pjt_thumb = get_post_thumb();
@@ -182,36 +188,19 @@
 					$class = 'u-half';
 				}
 
-				if($method == 'fetch'){
-					if($projects_count > 0){			
-						$category_balance = $collection_count - $projects_count;
-						if ($category_balance < 0){
-							$category_balance = 0;
-						}
-					}
-				}
-				else{
-					if($collection_count > 0){
-						$category_balance = $collection_count - ($offset * 2);
-						if($category_balance < 0){
-							$category_balance = 0;
-						}
-					}
-				}
-
-
 				if($post_type == 'video'){
 					if(!$pjt_thumb){
 						$pjt_thumb = $pjt_video_thumb;
 					}
-					$html .= '<div data-overflow="'.$category_balance.'" data-index="'.$index.'" class="is-appended o-album '.$class.'" data-aos="fade-up" data-aos-duration="800"><a href="'.$pjt_link.'" class="js-video no-barba" data-video="'.$pjt_video.'"><span class="o-icon s--video"></span><div class="o-spinner__wrap"><div class="o-spinner"></div></div><div class="c-edges"><div class="o-edge s--tl"><span></span><span></span></div><div class="o-edge s--tr"><span></span><span></span></div><div class="o-edge s--bl"><span></span><span></span></div><div class="o-edge s--br"><span></span><span></span></div></div><span class="o-line"></span><figure class="o-album__cover js-lazy" data-thumb="'.$pjt_thumb.'"></figure><section class="o-album__info"><h3>'.$pjt_title.'</h3><ul class="o-meta"><li>'.$pjt_date.'</li></ul></section></a></div>';
+					$html .= '<div data-count="'.$collection_count.'" data-id="'.$projectID.'" data-index="'.$index.'" class="is-appended o-album '.$class.'" data-aos="fade-up" data-aos-duration="800"><a href="'.$pjt_link.'" class="js-video no-barba" data-video="'.$pjt_video.'"><span class="o-icon s--video"></span><div class="o-spinner__wrap"><div class="o-spinner"></div></div><div class="c-edges"><div class="o-edge s--tl"><span></span><span></span></div><div class="o-edge s--tr"><span></span><span></span></div><div class="o-edge s--bl"><span></span><span></span></div><div class="o-edge s--br"><span></span><span></span></div></div><span class="o-line"></span><figure class="o-album__cover js-lazy" data-thumb="'.$pjt_thumb.'"></figure><section class="o-album__info"><h3>'.$pjt_title.'</h3><ul class="o-meta"><li>'.$pjt_date.'</li></ul></section></a></div>';
 				}
 				else{
 					if (is_array($pjt_album)) {
-						$html .= '<div data-overflow="'.$category_balance.'" data-index="'.$index.'" class="is-appended o-album '.$class.'" data-aos="fade-up" data-aos-duration="800"><a data-target="'.get_post_type().'" href="'.$pjt_link.'"><div class="o-spinner__wrap"><div class="o-spinner"></div></div><div class="c-edges"><div class="o-edge s--tl"><span></span><span></span></div><div class="o-edge s--tr"><span></span><span></span></div><div class="o-edge s--bl"><span></span><span></span></div><div class="o-edge s--br"><span></span><span></span></div></div><span class="o-line"></span><figure class="o-album__cover js-lazy" data-thumb="'.$pjt_thumb.'" data-thumb-medium="'.$pjt_thumb_medium.'"></figure><section class="o-album__info"><h3>'.$pjt_title.'</h3><ul class="o-meta"><li>'.$pjt_date.'</li></ul></section></a></div>';
+						$html .= '<div data-count="'.$collection_count.'" data-id="'.$projectID.'" data-index="'.$index.'" class="is-appended o-album '.$class.'" data-aos="fade-up" data-aos-duration="800"><a data-target="'.get_post_type().'" href="'.$pjt_link.'"><div class="o-spinner__wrap"><div class="o-spinner"></div></div><div class="c-edges"><div class="o-edge s--tl"><span></span><span></span></div><div class="o-edge s--tr"><span></span><span></span></div><div class="o-edge s--bl"><span></span><span></span></div><div class="o-edge s--br"><span></span><span></span></div></div><span class="o-line"></span><figure class="o-album__cover js-lazy" data-thumb="'.$pjt_thumb.'" data-thumb-medium="'.$pjt_thumb_medium.'"></figure><section class="o-album__info"><h3>'.$pjt_title.'</h3><ul class="o-meta"><li>'.$pjt_date.'</li></ul></section></a></div>';
 					}
 				}
 				$index ++;
+				$projectID ++;
 			}
 			wp_reset_postdata();
 			echo $html;

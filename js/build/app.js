@@ -42,8 +42,11 @@ jQuery(document).ready(function($) {
 			var y = '';
 			var i = $('.o-album').last().data('index');
 			var z = m.data('query');
-			var e = '';
+			var e = 0;
 			var t = m.data('tag');
+			var projectID = parseInt($('.o-album').last().data('id')) + 1;
+			var projectsCount = 0;
+			var projectsRemainder = 0;
 
 			if(year){
 				y = year;
@@ -53,14 +56,15 @@ jQuery(document).ready(function($) {
 
 			if(z == 'fetch'){
 				i = 0;
+				projectID = 0;
 			}
 		
 			$.ajax({
 	           url: ajaxURL,
-	           data: {action: 'fetch_projects', offset: p, post_type: c, year: y, index: i, query: z, tag: t},
+	           data: {action: 'fetch_projects', offset: p, post_type: c, year: y, index: i, query: z, tag: t, project_id: projectID},
 	           dataType: 'text',
 	           beforeSend: function(){
-	           	console.log('offset: '+p+' post_type: '+c+' year: '+y+' index: '+i+' query: '+z+' tag: '+t);
+	           	console.log('offset: '+p+' post_type: '+c+' year: '+y+' index: '+i+' query: '+z+' tag: '+t+' count:'+projectsCount);
 	           		if(z == 'update'){
 	           			m.addClass('is-loading');
 	           			m.find('.u-super').html(' fetching');
@@ -77,7 +81,16 @@ jQuery(document).ready(function($) {
 		           		if(data != '0'){
 		           			$('.o-collection__list').append(data);
 		           			loadImages($('.is-appended .js-lazy'));
-		           			m.find('.u-super').html(e);
+		           			
+		           			e = parseInt($('.o-album').last().data('id'));
+		           			projectsCount = parseInt($('.o-album').last().data('count'));
+		           			projectsRemainder = projectsCount - (e+1);
+		           			
+		           			if(projectsRemainder > 0){
+		           				m.find('.u-super').html(projectsRemainder);
+		           			} else {
+		           				m.find('span').html('Back to Top');
+		           			}
 		           			p = p + parseInt(posts_per_page);
 		           		}
 		           		else{
@@ -85,20 +98,26 @@ jQuery(document).ready(function($) {
 		           		}
 	           		}
 	           		else {
+	           			$('.js-others').addClass('u-hide');
 	           			k.removeClass('s--empty');
-	           			// m.html('Filter');
 	           			m.removeClass('is-loading');
 	           			if(data != '0'){
+
 	           				k.html(data);
 	           				loadImages($('.is-appended .js-lazy'));
-	           				e = $('.o-album').last().data('overflow');
-	           				if(e == '0'){
-	           					q.addClass('u-hide');
-	           				}
-	           				else{
+	           				
+	           				e = parseInt($('.o-album').last().data('id'));
+	           				projectsCount = parseInt($('.o-album').last().data('count'));
+	           				projectsRemainder = projectsCount - (e+1);
+
+	           				
+	           				if(projectsRemainder > 0){
 	           					q.removeClass('u-hide');
-	           					q.find('.u-super').html(e);
-	           					q.find('.u-super').data('overflow', e);
+	           					q.find('.u-super').html(projectsRemainder);
+	           				}
+	           				else {
+	           					q.addClass('u-hide');
+	           					$('.js-others').removeClass('u-hide');
 	           				}
 	           			}
 	           		}

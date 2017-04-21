@@ -71,7 +71,7 @@
 				</div>
 			</header>
 			<section class="clear o-collection__list">
-				<?php $p = 1; ?>
+				<?php $p = 1; $projectID = 0; ?>
 				<?php while ($projects->have_posts() ) : $projects->the_post();
 					$pjt_title = str_replace(' and ', '<span> & </span>', get_the_title());
 					$pjt_thumb = get_post_thumb();
@@ -85,7 +85,7 @@
 				?>
 					<?php if((is_page('video'))){ ?>
 						<?php if ($pjt_video): ?>
-							<div data-index="<?php echo $p; ?>" class="o-album <?php if(($p == 3) || ($p == 8)){echo 'u-full';} else{echo 'u-half';} ?>" data-aos="fade-up" data-aos-duration="800">
+							<div data-id="<?php echo $projectID; ?>" data-index="<?php echo $p; ?>" class="o-album <?php if(($p == 3) || ($p == 8)){echo 'u-full';} else{echo 'u-half';} ?>" data-aos="fade-up" data-aos-duration="800">
 								<a href="<?php echo $pjt_link; ?>" class="js-video no-barba" data-video="<?php echo $pjt_video; ?>">
 									<span class="o-icon s--video"></span>
 									<div class="o-spinner__wrap"><div class="o-spinner"></div></div>
@@ -107,7 +107,7 @@
 							</div>
 						<?php endif ?>
 					<?php } else {?>
-						<div data-index="<?php echo $p; ?>" class="o-album <?php if(($p == 3) || ($p == 8)){echo 'u-full';} else{echo 'u-half';} ?>" data-aos="fade-up" data-aos-duration="800">
+						<div data-id="<?php echo $projectID; ?>" data-index="<?php echo $p; ?>" class="o-album <?php if(($p == 3) || ($p == 8)){echo 'u-full';} else{echo 'u-half';} ?>" data-aos="fade-up" data-aos-duration="800">
 							<a data-target="<?php echo get_post_type(); ?>" href="<?php echo $pjt_link; ?>">
 								<div class="o-spinner__wrap"><div class="o-spinner"></div></div>
 								<div class="c-edges">
@@ -127,13 +127,24 @@
 							</a>
 						</div>
 					<?php } ?>
-				<?php $p++; endwhile; wp_reset_postdata();?>
+				<?php $p++; $projectID++; endwhile; wp_reset_postdata();?>
 			</section>
 			<?php if($posts_excess > 0): ?>
 				<footer class="o-collection__footer">
 					<a href="#" class="o-button s--big js-fetch-projects js-append" data-query="update" data-year="all" data-post-type="<?php if(!is_page('video')){echo $post_type;} else{echo 'video';} ?>">
 						<span>more <?php echo $page_title; ?><i class="u-super" data-overflow="<?php echo $posts_excess; ?>"><?php echo $posts_excess; ?></i></span>
 					</a>
+					<div class="js-others u-hide">
+						<a href="<?php echo home_url(); ?>/wedding-photography" class="o-button s--big">
+							<span>weddings</span>
+						</a>
+						<a href="<?php echo home_url(); ?>/engagement-photography" class="o-button s--big">
+							<span>engagements</span>
+						</a>
+						<a href="<?php echo home_url(); ?>/video" class="o-button s--big">
+							<span>video</span>
+						</a>
+					</div>
 				</footer>
 			<?php endif; ?>
 		</div>
